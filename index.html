@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Runa Design — Websites for Local Businesses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F6F8;
+    --card: #FFFFFF;
+    --ink: #1A171C;
+    --ink-soft: #5C5763;
+    --border: #E7E4EA;
+    --accent: #4A2545;
+    --accent-light: #6B3D65;
+    --accent-tint: #F0E5EE;
+    --radius-lg: 22px;
+    --radius-md: 14px;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--bg); color:var(--ink); font-family:'Inter', sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:'Manrope', sans-serif; color:var(--ink); letter-spacing:-0.02em; }
+  a{ color:inherit; }
+  .wrap{ max-width:1140px; margin:0 auto; padding:0 32px; }
+  .eyebrow{ font-size:0.82rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--accent); }
+
+  header{ position:sticky; top:0; z-index:50; background:rgba(247,246,248,0.85); backdrop-filter:blur(10px); }
+  nav{ display:flex; align-items:center; justify-content:space-between; padding:20px 32px; max-width:1140px; margin:0 auto; }
+  .logo{ font-family:'Manrope', sans-serif; font-weight:800; font-size:1.2rem; }
+  .nav-links{ display:flex; gap:36px; list-style:none; font-size:0.95rem; font-weight:500; }
+  .nav-links a{ text-decoration:none; color:var(--ink-soft); transition:color .2s; }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-cta{ background:var(--accent); color:#fff; padding:11px 22px; border-radius:100px; text-decoration:none; font-size:0.9rem; font-weight:600; transition:background .2s, transform .2s; }
+  .nav-cta:hover{ background:var(--accent-light); transform:translateY(-1px); }
+  .menu-btn{ display:none; background:none; border:none; font-size:1.5rem; cursor:pointer; }
+
+  /* Hero */
+  .hero{ position:relative; padding:96px 32px 70px; overflow:hidden; text-align:center; }
+  .hero::before{
+    content:''; position:absolute; top:-220px; left:50%; transform:translateX(-50%); width:680px; height:680px;
+    background:radial-gradient(circle, var(--accent-tint) 0%, transparent 70%); z-index:0;
+  }
+  .hero-inner{ position:relative; z-index:1; max-width:760px; margin:0 auto; }
+  .hero h1{ font-size:clamp(2.4rem, 5vw, 3.6rem); font-weight:800; line-height:1.08; margin:16px 0 20px; }
+  .hero p{ font-size:1.14rem; color:var(--ink-soft); max-width:52ch; margin:0 auto 32px; }
+  .btn-row{ display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:center; margin-bottom:36px; }
+  .btn-primary{ display:inline-block; background:var(--accent); color:#fff; padding:16px 30px; border-radius:100px; text-decoration:none; font-weight:600; font-size:0.98rem; transition:background .2s, transform .2s; }
+  .btn-primary:hover{ background:var(--accent-light); transform:translateY(-1px); }
+  .btn-secondary{ display:inline-block; padding:16px 26px; border-radius:100px; border:1.5px solid var(--border); text-decoration:none; color:var(--ink); font-weight:600; font-size:0.95rem; transition:border-color .2s; }
+  .btn-secondary:hover{ border-color:var(--ink); }
+  .trust-line{ display:flex; gap:26px; flex-wrap:wrap; justify-content:center; font-size:0.86rem; color:var(--ink-soft); }
+  .trust-line span{ display:flex; align-items:center; gap:6px; }
+  .trust-line svg{ width:15px; height:15px; color:var(--accent); }
+
+  /* Portfolio */
+  .portfolio{ background:var(--card); padding:100px 32px; }
+  .section-head{ max-width:56ch; margin-bottom:52px; }
+  .section-head h2{ font-size:clamp(1.8rem, 3.2vw, 2.4rem); font-weight:800; margin-top:10px; }
+  .portfolio-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:24px; }
+  .p-card{ background:var(--bg); border-radius:var(--radius-lg); overflow:hidden; transition:transform .25s, box-shadow .25s; }
+  .p-card:hover{ transform:translateY(-4px); box-shadow:0 24px 48px -20px rgba(26,23,28,0.16); }
+  .p-thumb{ aspect-ratio:16/10; position:relative; display:flex; align-items:flex-end; padding:20px; }
+  .p-thumb.live::after{ content:'LIVE'; position:absolute; top:16px; right:16px; background:#1F4B3F; color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:0.06em; padding:5px 10px; border-radius:100px; }
+  .p-thumb.soon::after{ content:'COMING SOON'; position:absolute; top:16px; right:16px; background:rgba(26,23,28,0.55); color:#fff; font-size:0.68rem; font-weight:700; letter-spacing:0.06em; padding:5px 10px; border-radius:100px; }
+  .p-thumb span.title{ background:rgba(255,255,255,0.92); font-family:'Manrope', sans-serif; font-weight:700; font-size:0.95rem; padding:8px 14px; border-radius:10px; }
+  .t1{ background:linear-gradient(150deg,#DCE4DE,#B7C4BB); }
+  .t2{ background:linear-gradient(150deg,#E9E1EC,#C6B4CE); }
+  .t3{ background:linear-gradient(150deg,#E2E7EF,#B9C4D6); }
+  .t4{ background:linear-gradient(150deg,#F0E7D8,#D8C7A3); }
+  .p-body{ padding:22px 24px 26px; }
+  .p-body h3{ font-size:1.05rem; font-weight:700; margin-bottom:6px; }
+  .p-body p{ font-size:0.9rem; color:var(--ink-soft); margin-bottom:10px; }
+  .p-body a.link{ font-size:0.85rem; font-weight:600; color:var(--accent); text-decoration:none; }
+  .p-body a.link:hover{ text-decoration:underline; }
+
+  /* Services */
+  .services{ background:var(--bg); padding:100px 32px; }
+  .service-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:22px; margin-bottom:22px; }
+  .service-card{ background:var(--card); border-radius:var(--radius-md); padding:34px 30px; box-shadow:0 16px 34px -22px rgba(26,23,28,0.14); }
+  .service-icon{ width:46px; height:46px; border-radius:12px; background:var(--accent-tint); display:flex; align-items:center; justify-content:center; margin-bottom:20px; }
+  .service-icon svg{ width:23px; height:23px; color:var(--accent); }
+  .service-card h3{ font-size:1.15rem; font-weight:700; margin-bottom:8px; }
+  .service-card p{ font-size:0.92rem; color:var(--ink-soft); }
+  .soon-strip{ display:flex; gap:16px; flex-wrap:wrap; padding:22px 26px; background:transparent; border:1px dashed var(--border); border-radius:var(--radius-md); }
+  .soon-item{ font-size:0.88rem; color:var(--ink-soft); display:flex; align-items:center; gap:8px; }
+  .soon-item .tag{ font-size:0.68rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; background:var(--border); color:var(--ink-soft); padding:3px 9px; border-radius:100px; }
+
+  /* Process */
+  .process{ background:var(--card); padding:100px 32px; }
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:28px; position:relative; }
+  .steps::before{ content:''; position:absolute; top:22px; left:12.5%; right:12.5%; height:1.5px; background:var(--border); z-index:0; }
+  .step{ position:relative; z-index:1; }
+  .step-dot{ width:44px; height:44px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Manrope',sans-serif; font-weight:700; margin-bottom:18px; }
+  .step h3{ font-size:1rem; font-weight:700; margin-bottom:6px; }
+  .step p{ font-size:0.88rem; color:var(--ink-soft); }
+
+  /* About */
+  .about{ background:var(--bg); padding:100px 32px; }
+  .about-inner{ max-width:640px; }
+  .about h2{ font-size:clamp(1.8rem,3.2vw,2.3rem); font-weight:800; margin:12px 0 18px; }
+  .about p{ color:var(--ink-soft); font-size:1.05rem; margin-bottom:16px; }
+
+  /* CTA */
+  .cta{ background:var(--accent); color:#fff; padding:100px 32px; text-align:center; }
+  .cta .eyebrow{ color:#D9BFD4; }
+  .cta h2{ color:#fff; font-size:clamp(2rem,4vw,2.8rem); font-weight:800; margin:14px 0 18px; }
+  .cta p{ color:#EADCE7; max-width:44ch; margin:0 auto 34px; font-size:1.05rem; }
+  .cta .btn-primary{ background:#fff; color:var(--accent); }
+  .cta .btn-primary:hover{ background:#F2F2F2; }
+
+  footer{ background:#14121A; color:#8A858F; padding:40px 32px; text-align:center; font-size:0.85rem; }
+
+  @media (max-width:900px){
+    .nav-links, .nav-cta{ display:none; }
+    .menu-btn{ display:block; }
+    .portfolio-grid, .service-grid{ grid-template-columns:1fr; }
+    .steps{ grid-template-columns:1fr 1fr; row-gap:36px; }
+    .steps::before{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">Runa Design</div>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Get a quote</a>
+    <button class="menu-btn" aria-label="Menu">&#9776;</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Web Design for Local Businesses</p>
+    <h1>Fast, modern websites that make your business look as good as it is.</h1>
+    <p>I design and build clean, professional websites for local businesses across Scotland — quick turnaround, fair pricing, and a site you actually own.</p>
+    <div class="btn-row">
+      <a class="btn-primary" href="#contact">Get a free quote</a>
+      <a class="btn-secondary" href="#work">See my work</a>
+    </div>
+    <div class="trust-line">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Fixed, upfront pricing</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Delivered in days, not months</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>You own the site, no lock-in</span>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Selected work</p>
+      <h2>A few examples of what I build.</h2>
+    </div>
+    <div class="portfolio-grid">
+      <div class="p-card">
+        <div class="p-thumb t1 soon"><span class="title">Kame Joinery</span></div>
+        <div class="p-body">
+          <p>Example site for a trade business — service pages, booking CTA, and a simple quote process.</p>
+          <a class="link" href="#">Concept build — not a live client site</a>
+        </div>
+      </div>
+      <div class="p-card">
+        <div class="p-thumb t4 live"><span class="title">Battery Calculator</span></div>
+        <div class="p-body">
+          <p>A live, interactive lead-generation tool built for UK solar battery installers — real users, real leads.</p>
+          <a class="link" href="https://batterycalculator.co.uk" target="_blank" rel="noopener">Visit batterycalculator.co.uk &rarr;</a>
+        </div>
+      </div>
+      <div class="p-card">
+        <div class="p-thumb t2 soon"><span class="title">Café Concept</span></div>
+        <div class="p-body">
+          <p>A warm, menu-led site for a café or restaurant — coming soon.</p>
+          <a class="link" href="#">In progress</a>
+        </div>
+      </div>
+      <div class="p-card">
+        <div class="p-thumb t3 soon"><span class="title">Professional Services Concept</span></div>
+        <div class="p-body">
+          <p>A polished site for a salon, clinic or consultancy — coming soon.</p>
+          <a class="link" href="#">In progress</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What I offer</p>
+      <h2>Two ways I can help right now.</h2>
+    </div>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg></div>
+        <h3>Static Websites</h3>
+        <p>A clean, professional site for your business — home, services, about and contact, built fast and priced fairly.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17l6-6-4-4"/><path d="M12 19h8"/></svg></div>
+        <h3>Interactive Web Tools</h3>
+        <p>Calculators, quote tools, and booking widgets that do more than just display information — like the one above.</p>
+      </div>
+    </div>
+    <div class="soon-strip">
+      <div class="soon-item"><span class="tag">Coming soon</span> Website Optimisation</div>
+      <div class="soon-item"><span class="tag">Coming soon</span> Marketing</div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">How it works</p>
+      <h2>Four steps, start to finish.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="step-dot">1</div><h3>Get in touch</h3><p>Book a free call — no obligation, no hard sell.</p></div>
+      <div class="step"><div class="step-dot">2</div><h3>Quick brief</h3><p>Tell me what you need and who your customers are.</p></div>
+      <div class="step"><div class="step-dot">3</div><h3>Fixed quote</h3><p>A clear, upfront price before any work starts.</p></div>
+      <div class="step"><div class="step-dot">4</div><h3>Build &amp; launch</h3><p>Your site built, hosted, and live within days.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap about-inner">
+    <p class="eyebrow">About</p>
+    <h2>Built by someone who actually ships things.</h2>
+    <p>I'm a Scotland-based developer who builds real, working tools — not just mockups. The battery calculator above is a live project of mine, generating genuine leads for installers across the UK.</p>
+    <p>I bring the same approach to every website I build: clean design, honest pricing, and something that actually works on day one.</p>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <p class="eyebrow">Get started</p>
+  <h2>Let's build your website.</h2>
+  <p>Book a free 15-minute call and tell me what you need. No pressure, no obligation.</p>
+  <a class="btn-primary" href="https://calendly.com/runa-design" target="_blank" rel="noopener">Book a free consultation</a>
+</section>
+
+<footer>
+  &copy; 2026 Runa Design. All rights reserved.
+</footer>
+
+</body>
+</html>
