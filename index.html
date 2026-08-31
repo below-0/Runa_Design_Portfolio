@@ -81,6 +81,9 @@
   .category-head{ display:flex; gap:18px; align-items:flex-start; margin-bottom:28px; }
   .category-head h3{ font-size:1.3rem; font-weight:800; margin-bottom:6px; }
   .category-head p{ font-size:0.95rem; color:var(--ink-soft); max-width:56ch; }
+  .service-list{ list-style:none; display:grid; grid-template-columns:repeat(2, 1fr); gap:12px 24px; }
+  .service-list li{ display:flex; gap:10px; align-items:flex-start; font-size:0.95rem; color:var(--ink-soft); }
+  .service-list svg{ width:18px; height:18px; color:var(--accent); flex-shrink:0; margin-top:3px; }
   .p-embed{ position:relative; background:#fff; }
   .p-embed .embed-bar{ height:26px; background:#F0F0EE; display:flex; align-items:center; gap:6px; padding:0 12px; border-bottom:1px solid var(--border); }
   .p-embed .embed-dot{ width:7px; height:7px; border-radius:50%; background:#D8D8D4; }
@@ -186,8 +189,8 @@
 <section class="portfolio" id="work">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">What I offer</p>
-      <h2>Two ways I can help, with examples of each.</h2>
+      <p class="eyebrow">Services</p>
+      <h2>Websites, tools, and the growth work that follows.</h2>
     </div>
 
     <div class="category-block">
@@ -242,9 +245,38 @@
       </div>
     </div>
 
-    <div class="soon-strip">
-      <div class="soon-item"><span class="tag">Coming soon</span> Website Optimisation</div>
-      <div class="soon-item"><span class="tag">Coming soon</span> Marketing</div>
+    <div class="category-block">
+      <div class="category-head">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.5" y2="16.5"/></svg></div>
+        <div>
+          <h3>Search Engine Optimisation</h3>
+          <p>Making sure your site is easy to find, not just easy to look at.</p>
+        </div>
+      </div>
+      <ul class="service-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Google Business Profile setup &amp; management</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>On-page SEO improvements</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Local search visibility</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Review generation &amp; management</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Monthly performance reporting</li>
+      </ul>
+    </div>
+
+    <div class="category-block">
+      <div class="category-head">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11v2a1 1 0 001 1h3l4 4V6l-4 4H4a1 1 0 00-1 1z"/><path d="M16 8a5 5 0 010 8"/></svg></div>
+        <div>
+          <h3>Meta Ads Campaigns</h3>
+          <p>Putting your business in front of the right people, on Facebook and Instagram.</p>
+        </div>
+      </div>
+      <ul class="service-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Facebook &amp; Instagram ad campaigns</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Audience targeting &amp; testing</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Ad creative design</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Monthly budget management</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Performance tracking &amp; reporting</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -287,9 +319,6 @@
   document.addEventListener('DOMContentLoaded', function(){
     document.querySelector('.hero-inner').classList.add('is-visible');
   });
-</script>
-</body>
-</html>
 </script>
 </body>
 </html>
