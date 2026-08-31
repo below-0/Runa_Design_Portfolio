@@ -131,6 +131,23 @@
     .steps{ grid-template-columns:1fr 1fr; row-gap:36px; }
     .steps::before{ display:none; }
   }
+
+  @keyframes fadeUpIn{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .hero-inner > *{ opacity:0; }
+  .hero-inner.is-visible > *{
+    animation:fadeUpIn 0.6s ease-out forwards;
+  }
+  .hero-inner.is-visible > *:nth-child(1){ animation-delay:0s; }
+  .hero-inner.is-visible > *:nth-child(2){ animation-delay:0.12s; }
+  .hero-inner.is-visible > *:nth-child(3){ animation-delay:0.24s; }
+  .hero-inner.is-visible > *:nth-child(4){ animation-delay:0.36s; }
+  .hero-inner.is-visible > *:nth-child(5){ animation-delay:0.48s; }
+  @media (prefers-reduced-motion: reduce){
+    .hero-inner > *{ opacity:1; animation:none; }
+  }
 </style>
 </head>
 <body>
@@ -267,8 +284,10 @@
   &copy; 2026 Runa Design. All rights reserved.
 </footer>
 
-</body>
-</html>
-
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelector('.hero-inner').classList.add('is-visible');
+  });
+</script>
 </body>
 </html>
