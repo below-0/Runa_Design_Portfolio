@@ -54,7 +54,6 @@
   .btn-secondary:hover{ border-color:var(--ink); }
   .trust-line{ display:flex; gap:26px; flex-wrap:wrap; justify-content:center; font-size:0.86rem; color:var(--ink-soft); }
   .trust-line span{ display:flex; align-items:center; gap:6px; }
-  .trust-line svg{ width:15px; height:15px; color:var(--accent); }
 
   /* Portfolio */
   .portfolio{ background:var(--card); padding:100px 32px; }
@@ -81,9 +80,8 @@
   .category-head{ margin-bottom:28px; }
   .category-head h3{ font-size:1.3rem; font-weight:800; margin-bottom:6px; }
   .category-head p{ font-size:0.95rem; color:var(--ink-soft); max-width:56ch; }
-  .service-list{ list-style:none; display:grid; grid-template-columns:repeat(2, 1fr); gap:12px 24px; }
-  .service-list li{ display:flex; gap:10px; align-items:flex-start; font-size:0.95rem; color:var(--ink-soft); }
-  .service-list svg{ width:18px; height:18px; color:var(--accent); flex-shrink:0; margin-top:3px; }
+  .service-list{ list-style:disc; padding-left:1.2em; display:grid; grid-template-columns:repeat(2, 1fr); gap:12px 24px; }
+  .service-list li{ font-size:0.95rem; color:var(--ink-soft); }
   .p-embed{ position:relative; background:#fff; }
   .p-embed .embed-bar{ height:26px; background:#F0F0EE; display:flex; align-items:center; gap:6px; padding:0 12px; border-bottom:1px solid var(--border); }
   .p-embed .embed-dot{ width:7px; height:7px; border-radius:50%; background:#D8D8D4; }
@@ -168,16 +166,16 @@
       <a class="btn-secondary" href="#work">See our work</a>
     </div>
     <div class="trust-line">
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Fixed, upfront pricing</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Delivered in days, not months</span>
-      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>No long-term contract</span>
+      <span>Fixed, upfront pricing</span>
+      <span>Delivered in days, not months</span>
+      <span>No long-term contract</span>
     </div>
   </div>
 </section>
 
 <section class="portfolio" id="work">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head" style="max-width:none;">
       <p class="eyebrow">Services</p>
       <h2>Websites, tools, and the growth work that follows.</h2>
     </div>
@@ -235,11 +233,11 @@
           <p>Making sure your site is easy to find, not just easy to look at.</p>
         </div>
         <ul class="service-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Google Business Profile setup &amp; management</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>On-page SEO improvements</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Local search visibility</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Review generation &amp; management</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Monthly performance reporting</li>
+          <li>Google Business Profile setup &amp; management</li>
+          <li>On-page SEO improvements</li>
+          <li>Local search visibility</li>
+          <li>Review generation &amp; management</li>
+          <li>Monthly performance reporting</li>
         </ul>
       </div>
 
@@ -249,11 +247,11 @@
           <p>Putting your business in front of the right people, on Facebook and Instagram.</p>
         </div>
         <ul class="service-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Facebook &amp; Instagram ad campaigns</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Audience targeting &amp; testing</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Ad creative design</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Monthly budget management</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Performance tracking &amp; reporting</li>
+          <li>Facebook &amp; Instagram ad campaigns</li>
+          <li>Audience targeting &amp; testing</li>
+          <li>Ad creative design</li>
+          <li>Monthly budget management</li>
+          <li>Performance tracking &amp; reporting</li>
         </ul>
       </div>
     </div>
