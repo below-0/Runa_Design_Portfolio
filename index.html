@@ -103,7 +103,7 @@
   .soon-item .tag{ font-size:0.68rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; background:var(--border); color:var(--ink-soft); padding:3px 9px; border-radius:100px; }
 
   /* Process */
-  .process{ background:var(--card); padding:100px 32px; }
+  .process{ background:var(--bg); padding:100px 32px; }
   .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:28px; position:relative; }
   .steps::before{ content:''; position:absolute; top:22px; left:12.5%; right:12.5%; height:1.5px; background:var(--border); z-index:0; }
   .step{ position:relative; z-index:1; }
@@ -112,7 +112,7 @@
   .step p{ font-size:0.88rem; color:var(--ink-soft); }
 
   /* About */
-  .about{ background:var(--bg); padding:100px 32px; }
+  .about{ background:var(--card); padding:100px 32px; }
   .about-inner{ max-width:640px; }
   .about h2{ font-size:clamp(1.8rem,3.2vw,2.3rem); font-weight:800; margin:12px 0 18px; }
   .about p{ color:var(--ink-soft); font-size:1.05rem; margin-bottom:16px; }
@@ -273,11 +273,11 @@
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">How it works</p>
-      <h2>Four steps, start to finish.</h2>
+      <h2>You focus on your customers. We'll handle the site.</h2>
     </div>
     <div class="steps">
       <div class="step"><div class="step-dot">1</div><h3>Get in touch</h3><p>Book a free call — no obligation, no hard sell.</p></div>
-      <div class="step"><div class="step-dot">2</div><h3>Quick brief</h3><p>Tell me what you need and who your customers are.</p></div>
+      <div class="step"><div class="step-dot">2</div><h3>Quick brief</h3><p>Tell me what you do and who your customers are.</p></div>
       <div class="step"><div class="step-dot">3</div><h3>Fixed quote</h3><p>A clear, upfront price before any work starts.</p></div>
       <div class="step"><div class="step-dot">4</div><h3>Build &amp; launch</h3><p>Your site built, hosted, and live within days.</p></div>
     </div>
@@ -287,7 +287,7 @@
 <section class="about">
   <div class="wrap about-inner">
     <p class="eyebrow">About</p>
-    <h2>Built by someone who values form and function</h2>
+    <h2>Built by someone who values form <span style="font-weight:300; font-style:italic; margin:0 0.08em;">and</span> function</h2>
     <p>Runa Design is a small, founder-led studio building websites and tools for small businesses. An elegant, modern design approach, paired with real world experience in industry, delivering tools that work well for both you and your customers.</p>
   </div>
 </section>
@@ -307,6 +307,9 @@
   document.addEventListener('DOMContentLoaded', function(){
     document.querySelector('.hero-inner').classList.add('is-visible');
   });
+</script>
+</body>
+</html>
 </script>
 </body>
 </html>
