@@ -82,11 +82,26 @@
   .category-head p{ font-size:0.95rem; color:var(--ink-soft); max-width:56ch; }
   .service-list{ list-style:disc; padding-left:1.2em; display:grid; grid-template-columns:repeat(2, 1fr); gap:12px 24px; }
   .service-list li{ font-size:0.95rem; color:var(--ink-soft); }
-  .p-embed{ position:relative; background:#fff; }
-  .p-embed .embed-bar{ height:26px; background:#F0F0EE; display:flex; align-items:center; gap:6px; padding:0 12px; border-bottom:1px solid var(--border); }
-  .p-embed .embed-dot{ width:7px; height:7px; border-radius:50%; background:#D8D8D4; }
-  .p-embed .embed-badge{ position:absolute; top:34px; right:12px; background:#1F4B3F; color:#fff; font-size:0.65rem; font-weight:700; letter-spacing:0.06em; padding:5px 10px; border-radius:100px; z-index:2; }
-  .p-embed iframe{ width:100%; height:420px; border:none; display:block; }
+  .p-shot{ position:relative; overflow:hidden; aspect-ratio:16/10; background:var(--bg); display:block; }
+  .grid-2x2{ grid-template-columns:repeat(2, 1fr); }
+  .shot-chrome{ position:absolute; top:0; left:0; right:0; height:22px; background:rgba(255,255,255,0.92); display:flex; align-items:center; gap:5px; padding:0 10px; z-index:2; }
+  .shot-chrome span{ width:6px; height:6px; border-radius:50%; background:#D8D8D4; }
+  .shot-cta{
+    position:absolute; bottom:14px; left:14px; background:rgba(26,23,28,0.85); color:#fff;
+    font-size:0.8rem; font-weight:600; padding:8px 14px; border-radius:100px;
+    opacity:0; transform:translateY(6px); transition:opacity .25s ease, transform .25s ease; z-index:2;
+  }
+  .p-card:hover .shot-cta{ opacity:1; transform:translateY(0); }
+  .p-tag{ font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:6px; }
+  .p-tag--live{ color:#1F4B3F; }
+  .p-card--empty{ opacity:0.55; }
+  .p-shot-empty{ aspect-ratio:16/10; border:1px dashed var(--border); border-radius:var(--radius-md); background:var(--bg); }
+  .p-card--empty .p-body p{ font-size:0.85rem; color:var(--ink-soft); font-style:italic; }
+  .grid-featured{ grid-template-columns:1fr; }
+  .p-shot--wide{ aspect-ratio:21/9; }
+  .p-shot--wide .p-thumb{ width:100%; height:100%; margin:0; }
+  .p-shot img{ width:100%; height:100%; object-fit:cover; object-position:top; display:block; transition:transform .35s ease; }
+  .p-card:hover .p-shot img{ transform:scale(1.06); }
 
   /* Process */
   .process{ background:var(--bg); padding:100px 32px; }
@@ -182,28 +197,42 @@
 
     <div class="category-block">
       <div class="category-head">
-        <h3>Static Websites</h3>
-        <p>A clean, professional site for your business — home, services, about and contact, built fast and priced fairly.</p>
+        <h3>Websites</h3>
+        <p>Distinctive, responsive websites designed around your brand.</p>
       </div>
-      <div class="portfolio-grid">
+      <div class="portfolio-grid grid-2x2">
         <div class="p-card">
-          <div class="p-embed">
-            <div class="embed-bar"><div class="embed-dot"></div><div class="embed-dot"></div><div class="embed-dot"></div></div>
-            <iframe src="https://runadesign.co.uk/work/cafe/" loading="lazy" title="Birchwood Coffee & Bakery — live preview"></iframe>
-          </div>
+          <a class="p-shot" href="https://runadesign.co.uk/work/cafe/" target="_blank" rel="noopener">
+            <div class="shot-chrome"><span></span><span></span><span></span></div>
+            <img src="/images/cafe-preview.png" alt="Preview of Birchwood Coffee & Bakery" loading="lazy">
+            <span class="shot-cta">View website &#8599;</span>
+          </a>
           <div class="p-body">
+            <p class="p-tag">Concept</p>
             <p>A warm, photo-led site for a café or bakery — full menu, story, and visit info.</p>
-            <a class="link" href="/work/cafe/">Concept build — not a live client site</a>
           </div>
         </div>
         <div class="p-card">
-          <div class="p-embed">
-            <div class="embed-bar"><div class="embed-dot"></div><div class="embed-dot"></div><div class="embed-dot"></div></div>
-            <iframe src="https://runadesign.co.uk/work/landscaping/" loading="lazy" title="Braemar Landscaping — live preview"></iframe>
-          </div>
+          <a class="p-shot" href="https://runadesign.co.uk/work/landscaping/" target="_blank" rel="noopener">
+            <div class="shot-chrome"><span></span><span></span><span></span></div>
+            <img src="/images/landscaping-preview.png" alt="Preview of Braemar Landscaping" loading="lazy">
+            <span class="shot-cta">View website &#8599;</span>
+          </a>
           <div class="p-body">
+            <p class="p-tag">Concept</p>
             <p>An editorial, image-rich site for a garden design and landscaping business.</p>
-            <a class="link" href="/work/landscaping/">Concept build — not a live client site</a>
+          </div>
+        </div>
+        <div class="p-card p-card--empty">
+          <div class="p-shot-empty"></div>
+          <div class="p-body">
+            <p>More examples in progress.</p>
+          </div>
+        </div>
+        <div class="p-card p-card--empty">
+          <div class="p-shot-empty"></div>
+          <div class="p-body">
+            <p>More examples in progress.</p>
           </div>
         </div>
       </div>
@@ -211,15 +240,19 @@
 
     <div class="category-block">
       <div class="category-head">
-        <h3>Interactive Web Tools</h3>
-        <p>Calculators, quote tools, and booking widgets that do more than just display information.</p>
+        <h3>Interactive Tools</h3>
+        <p>Purpose-built digital tools that turn ideas and data into useful experiences.</p>
       </div>
-      <div class="portfolio-grid">
-        <div class="p-card">
-          <div class="p-thumb t4 live"><span class="title">Battery Calculator</span></div>
+      <div class="portfolio-grid grid-featured">
+        <div class="p-card p-card--featured">
+          <a class="p-shot p-shot--wide" href="https://batterycalculator.co.uk" target="_blank" rel="noopener">
+            <div class="shot-chrome"><span></span><span></span><span></span></div>
+            <div class="p-thumb t4"><span class="title">Battery Calculator</span></div>
+            <span class="shot-cta">Launch tool &#8599;</span>
+          </a>
           <div class="p-body">
+            <p class="p-tag p-tag--live">Live</p>
             <p>A live, interactive lead-generation tool built for UK solar battery installers — real users, real leads.</p>
-            <a class="link" href="https://batterycalculator.co.uk" target="_blank" rel="noopener">Visit batterycalculator.co.uk &rarr;</a>
           </div>
         </div>
       </div>
