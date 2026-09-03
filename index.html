@@ -31,6 +31,7 @@
   header{ position:sticky; top:0; z-index:50; background:rgba(247,246,248,0.85); backdrop-filter:blur(10px); }
   nav{ display:flex; align-items:center; justify-content:space-between; padding:20px 32px; max-width:1140px; margin:0 auto; }
   .logo{ font-family:'Manrope', sans-serif; font-weight:800; font-size:1.2rem; }
+  .nav-right{ display:flex; align-items:center; gap:36px; }
   .nav-links{ display:flex; gap:36px; list-style:none; font-size:0.95rem; font-weight:500; }
   .nav-links a{ text-decoration:none; color:var(--ink-soft); transition:color .2s; }
   .nav-links a:hover{ color:var(--ink); }
@@ -129,8 +130,15 @@
   footer{ background:#14121A; color:#8A858F; padding:40px 32px; text-align:center; font-size:0.85rem; }
 
   @media (max-width:900px){
-    .nav-links, .nav-cta{ display:none; }
-    .menu-btn{ display:block; }
+    .menu-btn{ display:block; position:relative; z-index:61; }
+    .menu-btn.open{ color:var(--accent); }
+    .nav-right{
+      position:fixed; top:0; right:0; height:100vh; width:75%; max-width:320px;
+      background:var(--card); display:none; flex-direction:column; align-items:flex-start;
+      padding:100px 36px; gap:28px; z-index:60; border-left:1px solid var(--border);
+    }
+    .nav-right.open{ display:flex; }
+    .nav-links{ flex-direction:column; gap:22px; }
     .portfolio-grid, .service-grid{ grid-template-columns:1fr; }
     .steps{ grid-template-columns:1fr 1fr; row-gap:36px; }
     .steps::before{ display:none; }
@@ -160,14 +168,16 @@
 <header>
   <nav>
     <div class="logo">Runa Design</div>
-    <ul class="nav-links">
-      <li><a href="#work">Services</a></li>
-      <li><a href="#process">Process</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <a class="nav-cta" href="#contact">Get a quote</a>
-    <button class="menu-btn" aria-label="Menu">&#9776;</button>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#work">Services</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="nav-cta" href="#contact">Get a quote</a>
+    </div>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
   </nav>
 </header>
 
@@ -336,6 +346,24 @@
   document.addEventListener('DOMContentLoaded', function(){
     document.querySelector('.hero-inner').classList.add('is-visible');
   });
+
+  (function(){
+    var menuBtn = document.querySelector('.menu-btn');
+    var navRight = document.querySelector('.nav-right');
+    if(!menuBtn || !navRight) return;
+    menuBtn.addEventListener('click', function(){
+      var isOpen = navRight.classList.toggle('open');
+      menuBtn.classList.toggle('open', isOpen);
+      menuBtn.setAttribute('aria-expanded', isOpen);
+    });
+    navRight.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navRight.classList.remove('open');
+        menuBtn.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
 </script>
 </body>
 </html>
