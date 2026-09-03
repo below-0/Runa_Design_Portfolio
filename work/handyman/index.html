@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graham McLeod Handyman — Falkirk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #E9E1D3;
+    --paper: #F3EEE4;
+    --ink: #476066;
+    --ink-soft: #4F6359;
+    --border: #DED3BE;
+    --accent: #D69E49;
+    --accent-light: #E3B570;
+    --radius: 4px;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--bg); color:var(--ink); font-family:'Inter', sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:'Archivo', sans-serif; font-weight:700; color:var(--ink); letter-spacing:-0.01em; }
+  a{ color:inherit; }
+  .wrap{ max-width:1140px; margin:0 auto; padding:0 clamp(20px, 5vw, 60px); }
+  .eyebrow{ font-size:0.8rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); }
+
+  header{ position:sticky; top:0; z-index:50; background:rgba(233,225,211,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--border); }
+  .top-bar{ background:var(--ink); color:#fff; text-align:center; padding:8px 20px; font-size:0.85rem; }
+  .top-bar a{ color:var(--accent-light); font-weight:700; text-decoration:none; }
+  nav{ display:flex; align-items:center; justify-content:space-between; padding:20px clamp(20px, 5vw, 60px); width:100%; }
+  .logo{ font-family:'Archivo', sans-serif; font-weight:800; font-size:1.25rem; }
+  .nav-right{ display:flex; align-items:center; gap:30px; }
+  .nav-links{ display:flex; gap:28px; list-style:none; font-size:0.92rem; font-weight:600; }
+  .nav-links a{ text-decoration:none; color:var(--ink-soft); transition:color .2s; }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-cta{ background:var(--accent); color:#fff; padding:11px 22px; border-radius:var(--radius); text-decoration:none; font-size:0.88rem; font-weight:700; }
+  .menu-btn{ display:none; background:none; border:none; font-size:1.5rem; cursor:pointer; color:var(--ink); }
+
+  .hero{ position:relative; padding:80px clamp(20px,5vw,60px); }
+  .hero-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; max-width:1140px; margin:0 auto; }
+  .hero h1{ font-size:clamp(2.4rem, 4.6vw, 3.6rem); line-height:1.05; margin-bottom:20px; }
+  .hero h1 .accent{ color:var(--accent); }
+  .hero p{ font-size:1.12rem; color:var(--ink-soft); max-width:48ch; margin-bottom:32px; }
+  .btn-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn-primary{ display:inline-block; background:var(--accent); color:#fff; padding:16px 30px; border-radius:var(--radius); text-decoration:none; font-weight:700; font-size:0.96rem; transition:background .2s; }
+  .btn-primary:hover{ background:#B87F35; }
+  .btn-secondary{ display:inline-block; padding:16px 28px; border-radius:var(--radius); border:1.5px solid var(--ink); text-decoration:none; color:var(--ink); font-weight:700; font-size:0.94rem; }
+  .hero-photo{ aspect-ratio:4/5; border-radius:var(--radius); overflow:hidden; }
+  .hero-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity 0.6s ease-out, transform 0.6s ease-out; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+
+  .trust-strip{ background:var(--ink); padding:32px clamp(20px,5vw,60px); }
+  .trust-row{ max-width:1140px; margin:0 auto; display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px; text-align:left; }
+  .trust-item{ color:#fff; font-weight:700; font-size:1rem; display:flex; align-items:center; gap:10px; }
+  .trust-item .dot{ width:8px; height:8px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+
+  .services{ background:var(--paper); padding:100px clamp(20px,5vw,60px); }
+  .section-head{ max-width:600px; margin-bottom:52px; }
+  .section-head h2{ font-size:clamp(2rem, 3.6vw, 2.7rem); margin-top:12px; }
+  .service-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
+  .service-card{ background:var(--bg); border-radius:var(--radius); overflow:hidden; }
+  .service-photo{ aspect-ratio:4/3; overflow:hidden; }
+  .service-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .service-body{ padding:22px 24px; }
+  .service-body h3{ font-size:1.08rem; margin-bottom:8px; }
+  .service-body p{ font-size:0.9rem; color:var(--ink-soft); }
+
+  .photo-band{ height:380px; overflow:hidden; }
+  .photo-band img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  .faq{ background:var(--bg); padding:100px clamp(20px,5vw,60px); }
+  .faq-list{ display:flex; flex-direction:column; border-top:1px solid var(--border); max-width:800px; }
+  .faq-item{ padding:26px 0; border-bottom:1px solid var(--border); }
+  .faq-item h3{ font-size:1.05rem; margin-bottom:8px; }
+  .faq-item p{ color:var(--ink-soft); font-size:0.95rem; max-width:64ch; }
+
+  .testimonials{ background:var(--paper); padding:100px clamp(20px,5vw,60px); }
+  .testimonial-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; }
+  .testimonial-card{ background:var(--bg); border-radius:var(--radius); padding:28px 26px; }
+  .testimonial-card p{ font-size:0.95rem; color:var(--ink); margin-bottom:16px; }
+  .testimonial-name{ font-size:0.85rem; font-weight:700; color:var(--ink-soft); }
+
+  .areas{ background:var(--ink); color:#fff; padding:90px clamp(20px,5vw,60px); text-align:center; }
+  .areas .eyebrow{ color:var(--accent-light); }
+  .areas h2{ color:#fff; font-size:clamp(1.9rem,3.6vw,2.5rem); margin:14px 0 26px; }
+  .areas-list{ max-width:700px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:center; gap:14px 28px; list-style:none; }
+  .areas-list li{ color:#E9E1D3; font-size:0.98rem; }
+
+  .cta{ background:var(--accent); padding:100px clamp(20px,5vw,60px); text-align:center; }
+  .cta h2{ color:#fff; font-size:clamp(2.2rem,4.6vw,3.4rem); margin:14px 0 18px; }
+  .cta .eyebrow{ color:#6B4A22; }
+  .cta p{ color:#fff; max-width:44ch; margin:0 auto 32px; font-size:1.05rem; opacity:0.95; }
+  .cta .btn-primary{ background:var(--ink); color:#fff; }
+  .cta .btn-primary:hover{ background:#34474C; }
+
+  footer{ background:var(--paper); border-top:1px solid var(--border); color:var(--ink-soft); padding:50px clamp(20px,5vw,60px) 30px; }
+  .footer-grid{ max-width:1140px; margin:0 auto; display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; margin-bottom:36px; }
+  .footer-col h4{ font-family:'Archivo', sans-serif; font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink); margin-bottom:16px; }
+  .footer-col p, .footer-col a{ font-size:0.92rem; color:var(--ink-soft); text-decoration:none; display:block; margin-bottom:10px; }
+  .footer-col a:hover{ color:var(--accent); }
+  .footer-bottom{ max-width:1140px; margin:0 auto; border-top:1px solid var(--border); padding-top:24px; text-align:center; font-size:0.85rem; }
+
+  @media (max-width:900px){
+    .menu-btn{ display:block; position:relative; z-index:61; }
+    .menu-btn.open{ color:var(--accent); }
+    .nav-right{
+      position:fixed; top:0; right:0; height:100vh; width:75%; max-width:320px;
+      background:var(--paper); display:none; flex-direction:column; align-items:flex-start;
+      padding:100px 36px; gap:28px; z-index:60; border-left:1px solid var(--border);
+    }
+    .nav-right.open{ display:flex; }
+    .nav-links{ flex-direction:column; gap:22px; }
+    .nav-cta{ display:inline-block; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-photo{ order:-1; aspect-ratio:16/10; }
+    .service-grid{ grid-template-columns:repeat(2,1fr); }
+    .testimonial-grid{ grid-template-columns:1fr; }
+    .footer-grid{ grid-template-columns:1fr; gap:28px; }
+  }
+  @media (max-width:600px){
+    .service-grid{ grid-template-columns:1fr; }
+    .trust-row{ flex-direction:column; gap:14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">Need help today? Call <a href="tel:+441324556677">01324 556 677</a></div>
+
+<header>
+  <nav>
+    <div class="logo">Graham McLeod</div>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#areas">Areas</a></li>
+      </ul>
+      <a class="nav-cta" href="#contact">Get a free quote</a>
+    </div>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false">&#9776;</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div class="reveal">
+      <p class="eyebrow">Handyman Services — Falkirk</p>
+      <h1>The <span class="accent">reliable</span> handyman your street already recommends.</h1>
+      <p>From flat-pack furniture to fixing the door that's stuck shut — Graham handles the small jobs other tradespeople won't return your call about.</p>
+      <div class="btn-row">
+        <a class="btn-primary" href="#contact">Get a free quote</a>
+        <a class="btn-secondary" href="tel:+441324556677">Call 01324 556 677</a>
+      </div>
+    </div>
+    <div class="hero-photo reveal">
+      <img src="https://images.pexels.com/photos/5691544/pexels-photo-5691544.jpeg" alt="Handyman at work with tools" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-row">
+    <div class="trust-item"><span class="dot"></span> Free, no-obligation quotes</div>
+    <div class="trust-item"><span class="dot"></span> Fully insured</div>
+    <div class="trust-item"><span class="dot"></span> No job too small</div>
+  </div>
+</div>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">What I do</p>
+      <h2>The jobs that keep getting put off.</h2>
+    </div>
+    <div class="service-grid">
+      <div class="service-card reveal">
+        <div class="service-photo"><img src="https://images.unsplash.com/photo-1623161551727-54c918bdcec1?fm=jpg&amp;q=60&amp;w=800&amp;auto=format&amp;fit=crop" alt="Furniture assembly" loading="lazy"></div>
+        <div class="service-body"><h3>Furniture Assembly</h3><p>Flat-pack furniture built properly, first time — no leftover screws.</p></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-photo"><img src="https://images.unsplash.com/photo-1618832515490-e181c4794a45?fm=jpg&amp;q=60&amp;w=800&amp;auto=format&amp;fit=crop" alt="Shelving and TV mounting" loading="lazy"></div>
+        <div class="service-body"><h3>Shelving &amp; TV Mounting</h3><p>Secure, level, and actually fixed to a stud — not just the plasterboard.</p></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-photo"><img src="https://images.unsplash.com/photo-1731168273756-e02cae42265b?fm=jpg&amp;q=60&amp;w=800&amp;auto=format&amp;fit=crop" alt="Minor repairs and touch-ups" loading="lazy"></div>
+        <div class="service-body"><h3>Doors &amp; Locks</h3><p>Sticking doors, worn hinges, and lock repairs sorted in one visit.</p></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-photo"><img src="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?fm=jpg&amp;q=60&amp;w=800&amp;auto=format&amp;fit=crop" alt="General repairs" loading="lazy"></div>
+        <div class="service-body"><h3>General Repairs</h3><p>Guttering, fences, and the odd jobs that build up over a year.</p></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-photo"><img src="https://images.unsplash.com/photo-1676311396794-f14881e9daaa?fm=jpg&amp;q=60&amp;w=800&amp;auto=format&amp;fit=crop" alt="Painting and touch-ups" loading="lazy"></div>
+        <div class="service-body"><h3>Painting &amp; Touch-Ups</h3><p>Scuffed walls, chipped skirting, and small painting jobs done neatly.</p></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-photo"><img src="https://images.unsplash.com/photo-1606676539940-12768ce0e762?fm=jpg&amp;q=60&amp;w=800&amp;auto=format&amp;fit=crop" alt="Minor plumbing" loading="lazy"></div>
+        <div class="service-body"><h3>Minor Plumbing</h3><p>Dripping taps, running toilets, and simple fixture swaps.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="photo-band">
+  <img src="https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?fm=jpg&amp;q=60&amp;w=2000&amp;auto=format&amp;fit=crop" alt="A well-maintained Scottish home" loading="lazy">
+</div>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">Questions</p>
+      <h2>What people usually ask.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <h3>What kind of jobs do you take on?</h3>
+        <p>Pretty much anything short of a full renovation — furniture assembly, shelving, minor repairs, painting touch-ups, and general odd jobs around the house.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you charge for quotes?</h3>
+        <p>No. Quotes are free and no-obligation — you'll know the cost before any work starts.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Are you insured?</h3>
+        <p>Yes, fully insured for work in and around your home.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How quickly can you come out?</h3>
+        <p>Most small jobs can be booked within a few days — sooner if it's urgent, just ask.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is there a minimum job size?</h3>
+        <p>No — genuinely no job too small. A single shelf or a five-minute fix is fine.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="eyebrow">What people say</p>
+      <h2>Recent feedback.</h2>
+    </div>
+    <div class="testimonial-grid reveal">
+      <div class="testimonial-card">
+        <p>"Turned up when he said he would, fixed our sticking door in ten minutes. Wish I'd called sooner."</p>
+        <div class="testimonial-name">— Customer, Falkirk</div>
+      </div>
+      <div class="testimonial-card">
+        <p>"Built our entire bedroom's worth of flat-pack furniture in an afternoon. Genuinely stress-free."</p>
+        <div class="testimonial-name">— Customer, Larbert</div>
+      </div>
+      <div class="testimonial-card">
+        <p>"Fair price, tidy work, no messing about. Already booked him back for more jobs."</p>
+        <div class="testimonial-name">— Customer, Grangemouth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="areas" id="areas">
+  <p class="eyebrow">Coverage</p>
+  <h2>Based in Falkirk, working across the area.</h2>
+  <ul class="areas-list">
+    <li>Falkirk</li>
+    <li>Larbert</li>
+    <li>Grangemouth</li>
+    <li>Bo'ness</li>
+    <li>Denny</li>
+    <li>Stenhousemuir</li>
+  </ul>
+</section>
+
+<section class="cta" id="contact">
+  <p class="eyebrow">Get in touch</p>
+  <h2>Got a job that needs doing?</h2>
+  <p>Free, no-obligation quotes. Tell me what needs fixing and I'll get back to you the same day.</p>
+  <a class="btn-primary" href="tel:+441324556677">Call 01324 556 677</a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>Graham McLeod Handyman</h4>
+      <p>Reliable handyman services across Falkirk and the surrounding area. Free quotes, fully insured, no job too small.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#services">Furniture Assembly</a>
+      <a href="#services">Shelving &amp; TV Mounting</a>
+      <a href="#services">Doors &amp; Locks</a>
+      <a href="#services">General Repairs</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+441324556677">01324 556 677</a>
+      <a href="mailto:hello@grahammcleodhandyman.co.uk">hello@grahammcleodhandyman.co.uk</a>
+      <p>Falkirk &amp; surrounding area</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 Graham McLeod Handyman. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var menuBtn = document.querySelector('.menu-btn');
+    var navRight = document.querySelector('.nav-right');
+    if(!menuBtn || !navRight) return;
+    menuBtn.addEventListener('click', function(){
+      var isOpen = navRight.classList.toggle('open');
+      menuBtn.classList.toggle('open', isOpen);
+      menuBtn.setAttribute('aria-expanded', isOpen);
+    });
+    navRight.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navRight.classList.remove('open');
+        menuBtn.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+
+  (function(){
+    var items = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      items.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    items.forEach(function(el){ observer.observe(el); });
+  })();
+</script>
+</body>
+</html>
