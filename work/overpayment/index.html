@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mortgage Overpayment Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="calculator-shell">
+    <section class="intro">
+      <p class="eyebrow">Mortgage overpayment calculator</p>
+      <h1>See how much sooner you could be <span class="headline-accent">mortgage-free.</span></h1>
+      <p>
+        Adjust your overpayments and see the effect on your mortgage term
+        and total interest.
+      </p>
+    </section>
+
+    <section class="calculator-grid">
+      <div class="controls-panel">
+        <div class="field">
+          <label for="balance">Mortgage balance</label>
+          <div class="input-wrap">
+            <span>£</span>
+            <input id="balance" type="number" min="1000" step="1000" value="250000" />
+          </div>
+        </div>
+
+        <div class="two-column mortgage-details-stack">
+          <div class="field">
+            <label for="rate">Interest rate</label>
+            <div class="input-wrap suffix">
+              <input id="rate" type="number" min="0" max="20" step="0.05" value="4.5" />
+              <span>%</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="termYears">Remaining term</label>
+            <div class="term-combined">
+              <input id="termYears" type="number" min="0" max="50" step="1" value="25" aria-label="Remaining years" />
+              <span>years</span>
+              <span class="term-separator" aria-hidden="true"></span>
+              <input id="termMonths" type="number" min="0" max="11" step="1" value="0" aria-label="Remaining months" />
+              <span>months</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="range-heading">
+            <label for="overpayment">Monthly overpayment</label>
+            <strong id="overpaymentValue">£300</strong>
+          </div>
+
+          <input id="overpayment" type="range" min="0" max="1500" step="10" value="300" />
+
+          <div class="range-scale">
+            <span>£0</span>
+            <span>£1,500</span>
+          </div>
+
+          <div class="preset-row">
+            <button type="button" data-overpayment="50">+£50</button>
+            <button type="button" data-overpayment="100">+£100</button>
+            <button type="button" data-overpayment="250">+£250</button>
+            <button type="button" data-overpayment="500">+£500</button>
+          </div>
+        </div>
+
+        <div class="target-card">
+          <div class="target-header">
+            <div>
+              <h2>One-off lump sum</h2>
+              <p>Add an optional one-time payment.</p>
+            </div>
+
+            <label class="switch">
+              <input id="lumpSumToggle" type="checkbox" />
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div id="lumpSumPanel" class="target-panel hidden">
+            <div class="field target-input">
+              <label for="lumpSum">Lump sum amount</label>
+              <div class="input-wrap">
+                <span>£</span>
+                <input id="lumpSum" type="number" min="0" step="500" value="0" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="target-card target-card-spaced">
+          <div class="target-header">
+            <div>
+              <h2>Target payoff</h2>
+              <p>Find out what it would take to finish sooner.</p>
+            </div>
+
+            <label class="switch">
+              <input id="targetToggle" type="checkbox" />
+              <span class="switch-slider"></span>
+            </label>
+          </div>
+
+          <div id="targetPanel" class="target-panel hidden">
+            <div class="field target-input">
+              <label for="targetYears">Mortgage-free in</label>
+              <div class="input-wrap suffix">
+                <input id="targetYears" type="number" min="1" max="50" step="1" value="15" />
+                <span>years</span>
+              </div>
+            </div>
+
+            <div id="targetResult" class="target-result"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-panel">
+        <article class="summary-card main-payment-card payment-comparison-card">
+  <div class="payment-column">
+    <p>Current monthly payment</p>
+    <strong id="standardPayment">—</strong>
+  </div>
+  <div class="payment-divider" aria-hidden="true"></div>
+  <div class="payment-column payment-column-overpay">
+    <p>Monthly payment with overpayment</p>
+    <strong id="overpaymentPayment">—</strong>
+  </div>
+</article>
+
+        <div class="stat-grid">
+          <article class="summary-card">
+            <p>Interest saved</p>
+            <strong id="interestSaved">£0</strong>
+          </article>
+
+          <article class="summary-card">
+            <p>Time saved</p>
+            <strong id="timeSaved">0 years</strong>
+          </article>
+        </div>
+
+        <article class="summary-card payoff-card">
+          <p>Your mortgage would be fully repaid by</p>
+          <strong id="payoffDate">—</strong>
+        </article>
+
+        <article class="chart-card">
+          <div class="chart-header">
+            <div>
+              <h2>Mortgage balance over time</h2>
+              <p>Standard mortgage vs overpayment plan</p>
+            </div>
+          </div>
+
+          <div class="chart-wrap">
+            <svg id="mortgageChart" viewBox="0 0 720 320" role="img" aria-label="Mortgage balance over time chart"></svg>
+          </div>
+
+          <div class="legend">
+            <span><i class="legend-standard"></i>Standard mortgage</span>
+            <span><i class="legend-overpayment"></i>With overpayments</span>
+          </div>
+        </article>
+
+        <p id="validationMessage" class="validation-message"></p>
+      </div>
+    </section>
+  
+      <section class="lead-section" aria-labelledby="leadHeading">
+        <div class="lead-copy">
+          <p class="lead-eyebrow">Your personalised results</p>
+          <h2 id="leadHeading">Get your mortgage overpayment report.</h2>
+          <p>
+            Enter your details to receive a personalised summary of your results,
+            including your projected interest savings, time saved and estimated payoff date.
+          </p>
+
+          <div class="lead-points" aria-label="What happens next">
+            <span>Personalised to your figures</span>
+            <span>Your results in one place</span>
+            <span>Free mortgage overpayment report</span>
+          </div>
+        </div>
+
+        <form class="lead-form" id="leadForm" novalidate>
+          <div class="lead-form-grid">
+            <div class="lead-field">
+              <label for="leadName">Name</label>
+              <input id="leadName" name="name" type="text" autocomplete="name" placeholder="Your name" required />
+            </div>
+
+            <div class="lead-field">
+              <label for="leadEmail">Email address</label>
+              <input id="leadEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="lead-field lead-field-full">
+              <label for="leadPhone">Phone number <span>(optional)</span></label>
+              <input id="leadPhone" name="phone" type="tel" autocomplete="tel" placeholder="Your phone number" />
+            </div>
+          </div>
+
+          <label class="lead-consent">
+            <input id="leadConsent" type="checkbox" required />
+            <span>I agree to receive my mortgage overpayment report and related information by email.</span>
+          </label>
+
+          <p class="lead-form-message" id="leadFormMessage" role="status" aria-live="polite"></p>
+
+          <button class="lead-submit" type="submit">
+            Send me my free report
+          </button>
+
+          <p class="lead-fineprint">
+            We’ll use your details to send your report and relevant information about mortgage overpayments.
+          </p>
+        </form>
+      </section>
+
+</main>
+
+  <script src="script.js"></script>
+</body>
+</html>
