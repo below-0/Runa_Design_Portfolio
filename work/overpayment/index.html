@@ -4,7 +4,852 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mortgage Overpayment Calculator</title>
-  <link rel="stylesheet" href="styles.css" />
+  <style>
+:root {
+  --bg: #F8FAFF;
+  --surface: #FFFFFF;
+  --surface-soft: #EEF2FF;
+  --text: #101D42;
+  --muted: #68738D;
+  --border: #DDE4F2;
+  --accent: #365CF5;
+  --tool-accent: #667FB7;
+  --tool-accent-soft: #EEF2F8;
+  --accent-soft: #E7ECFF;
+  --standard-line: #9BA8C3;
+  --overpay-line: #365CF5;
+  --radius-large: 24px;
+  --radius-medium: 16px;
+  --shadow: 0 18px 50px rgba(16, 29, 66, 0.07);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.calculator-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 72px 0 96px;
+}
+
+.intro { max-width: 720px; margin-bottom: 42px; }
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.intro h1 {
+  margin: 0;
+  font-size: clamp(2.3rem, 5vw, 4.5rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.intro > p:last-child {
+  max-width: 620px;
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.calculator-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.controls-panel, .results-panel { min-width: 0; }
+
+.controls-panel {
+  padding: 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow);
+}
+
+.results-panel { display: grid; gap: 16px; }
+.field { margin-bottom: 24px; }
+
+.field label {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.input-wrap {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-wrap:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.input-wrap > span {
+  flex: 0 0 auto;
+  padding-left: 16px;
+  color: var(--muted);
+}
+
+.input-wrap.suffix > span { padding: 0 16px 0 4px; }
+
+.input-wrap input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  padding: 15px 16px 15px 8px;
+  background: transparent;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.input-wrap.suffix input { padding-left: 16px; }
+
+.range-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.range-heading strong { font-size: 1.1rem; }
+input[type="range"] { width: 100%; accent-color: var(--accent); }
+
+.range-scale {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.preset-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.preset-row button {
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.preset-row button:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.target-card {
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+
+.target-card-spaced {
+  margin-top: 22px;
+}
+
+.target-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.target-header h2, .chart-header h2 { margin: 0; font-size: 1rem; }
+
+.target-header p, .chart-header p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.switch { position: relative; width: 50px; height: 28px; }
+.switch input { position: absolute; opacity: 0; }
+
+.switch-slider {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--border);
+  transition: 0.2s ease;
+}
+
+.switch-slider::before {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 3px;
+  top: 3px;
+  border-radius: 50%;
+  background: #fff;
+  transition: 0.2s ease;
+}
+
+.switch input:checked + .switch-slider { background: var(--tool-accent); }
+.switch input:checked + .switch-slider::before { transform: translateX(22px); }
+
+.target-panel { margin-top: 20px; }
+.target-input { max-width: 260px; }
+
+.target-result {
+  padding: 16px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(46, 125, 132, 0.18);
+  border-radius: 12px;
+  line-height: 1.55;
+}
+
+.hidden { display: none; }
+
+.summary-card, .chart-card, .comparison-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-medium);
+}
+
+.summary-card { padding: 22px; }
+
+.summary-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.summary-card strong {
+  display: block;
+  margin-top: 5px;
+  font-size: clamp(1.55rem, 4vw, 2.3rem);
+  letter-spacing: -0.04em;
+}
+
+.main-payment-card {
+  background: var(--text);
+  color: #FFFFFF;
+  border-color: var(--text);
+  box-shadow: 0 12px 30px rgba(18, 48, 74, 0.14);
+}
+
+.main-payment-card p { color: rgba(255, 253, 248, 0.72); }
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.payoff-card span {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.chart-card { padding: 22px; }
+.chart-wrap { margin-top: 20px; overflow: hidden; }
+#mortgageChart { display: block; width: 100%; height: auto; }
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.legend span {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.legend i {
+  width: 26px;
+  height: 3px;
+  display: inline-block;
+  border-radius: 999px;
+}
+
+.legend-standard { background: var(--standard-line); }
+.legend-overpayment { background: var(--overpay-line); }
+
+.comparison-card { overflow: hidden; }
+
+.comparison-heading, .comparison-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  padding: 15px 18px;
+}
+
+.comparison-heading {
+  background: var(--surface-soft);
+  color: var(--text);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.comparison-row {
+  border-top: 1px solid var(--border);
+  font-size: 0.88rem;
+}
+
+.comparison-row span:last-child,
+.comparison-heading span:last-child { text-align: right; }
+
+.comparison-row span:last-child { font-weight: 700; }
+
+.validation-message {
+  margin: 0;
+  color: #8b3f32;
+  font-size: 0.84rem;
+}
+
+@media (max-width: 850px) {
+  .calculator-shell { padding-top: 44px; }
+  .calculator-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .calculator-shell {
+    width: min(100% - 20px, 1180px);
+    padding-top: 28px;
+  }
+
+  .controls-panel { padding: 20px; }
+  .two-column, .stat-grid { grid-template-columns: 1fr; }
+
+  .comparison-heading, .comparison-row {
+    grid-template-columns: 0.9fr 1.1fr 1fr;
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 0.76rem;
+  }
+}
+
+
+.headline-accent {
+  color: var(--accent);
+}
+
+.summary-card strong,
+.payoff-card strong {
+  color: var(--text);
+}
+
+.main-payment-card strong {
+  color: #FFFFFF;
+}
+
+.preset-row button:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.target-result {
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.comparison-heading {
+  background: var(--surface-soft);
+  color: var(--text);
+}
+
+/* Variant design treatment */
+
+body{
+  background:
+    radial-gradient(circle at 8% 12%, rgba(54,92,245,.10) 0 10%, transparent 26%),
+    radial-gradient(circle at 88% 10%, rgba(108,140,255,.09) 0 9%, transparent 24%),
+    radial-gradient(circle at 82% 72%, rgba(54,92,245,.07) 0 11%, transparent 28%),
+    radial-gradient(circle at 18% 88%, rgba(108,140,255,.08) 0 10%, transparent 26%),
+    #F8FAFF;
+  background-attachment: fixed;
+}
+.intro{max-width:760px}.headline-accent{color:#365CF5}
+.controls-panel{box-shadow:0 18px 45px rgba(16,29,66,.07)}
+.results-panel{gap:12px}
+.main-payment-card{background:#101D42;border:0;box-shadow:0 18px 38px rgba(54,92,245,.18);padding:28px}
+.main-payment-card p{color:rgba(255,255,255,.72)}.main-payment-card strong{color:white;font-size:clamp(2rem,5vw,3.2rem)}
+.stat-grid{gap:12px}
+.stat-grid .summary-card{background:#EEF2FF;border-color:#DDE4F2}
+.stat-grid .summary-card strong{color:#101D42}
+.payoff-card{border-left:5px solid var(--tool-accent)}
+.chart-card{box-shadow:0 12px 32px rgba(16,29,66,.05)}
+.target-result{background:#EEF2FF;border-color:#CFD8FF}
+.comparison-heading{background:#101D42;color:white}
+
+
+/* Keep the stronger brand blue in headline/brand copy only */
+.headline-accent,
+.eyebrow {
+  color: var(--accent);
+}
+
+/* Quieter related accent inside the calculator */
+input[type="range"] {
+  accent-color: var(--tool-accent);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  background: var(--tool-accent);
+}
+
+input[type="range"]::-moz-range-thumb {
+  background: var(--tool-accent);
+}
+
+.payoff-card {
+  border-left-color: var(--tool-accent);
+}
+
+.payoff-card strong {
+  color: var(--tool-accent);
+}
+
+.target-result {
+  background: var(--tool-accent-soft);
+  border-color: #D8DFEC;
+}
+
+
+/* Dynamic result cards: clearer separation from the page background */
+.stat-grid .summary-card {
+  background: #FFFFFF;
+  border: 1px solid #DDE4F2;
+  box-shadow: 0 8px 24px rgba(16, 29, 66, 0.055);
+}
+
+/* Tie all changing result values together with the same muted tool accent */
+.stat-grid .summary-card strong {
+  color: var(--tool-accent);
+}
+
+
+/* Current vs overpayment monthly payment comparison */
+.payment-comparison-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 1px minmax(0, 1fr);
+  align-items: stretch;
+  gap: 24px;
+}
+
+.payment-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.payment-column p {
+  margin: 0 0 8px;
+}
+
+.payment-column strong {
+  display: block;
+  font-size: clamp(1.65rem, 4vw, 2.45rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.payment-column-overpay strong {
+  color: #FFFFFF;
+}
+
+.payment-divider {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+@media (max-width: 560px) {
+  .payment-comparison-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .payment-divider {
+    width: 100%;
+    height: 1px;
+  }
+}
+
+
+/* Softer current-vs-overpayment comparison */
+.main-payment-card.payment-comparison-card {
+  background: #E9EEF8;
+  border: 1px solid #D5DDEC;
+  box-shadow: 0 10px 28px rgba(16, 29, 66, 0.055);
+  color: var(--text);
+}
+
+.main-payment-card.payment-comparison-card p {
+  color: #68738D;
+}
+
+.main-payment-card.payment-comparison-card strong {
+  color: #101D42;
+}
+
+.main-payment-card.payment-comparison-card .payment-column-overpay strong {
+  color: var(--tool-accent);
+}
+
+.main-payment-card.payment-comparison-card .payment-divider {
+  background: #CDD6E6;
+}
+
+
+/* Payment comparison: neutral card with clear separation from the tinted page */
+.main-payment-card.payment-comparison-card {
+  background: #FFFFFF;
+  border: 1px solid #D8E0ED;
+  box-shadow: 0 10px 30px rgba(16, 29, 66, 0.075);
+}
+
+.main-payment-card.payment-comparison-card .payment-divider {
+  background: #D8E0ED;
+}
+
+
+/* v8: remaining term supports years + months */
+.term-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+.term-fields .input-wrap input {
+  min-width: 0;
+}
+
+@media (max-width: 560px) {
+  .term-fields {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+/* v9: one combined remaining-term control */
+.term-fields {
+  display: contents;
+}
+
+.term-combined {
+  display: grid;
+  grid-template-columns: minmax(52px, 0.7fr) auto 1px minmax(52px, 0.7fr) auto;
+  align-items: center;
+  min-height: 54px;
+  background: #FFFFFF;
+  border: 1px solid #DDE4F2;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.term-combined:focus-within {
+  border-color: var(--tool-accent);
+  box-shadow: 0 0 0 3px rgba(102, 127, 183, 0.10);
+}
+
+.term-combined input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  padding: 14px 8px 14px 14px;
+  font: inherit;
+}
+
+.term-combined > span:not(.term-separator) {
+  color: var(--muted);
+  font-size: .88rem;
+  white-space: nowrap;
+  padding-right: 14px;
+}
+
+.term-separator {
+  width: 1px;
+  height: 28px;
+  background: #E2E8F2;
+  justify-self: center;
+}
+
+@media (max-width: 560px) {
+  .term-combined {
+    grid-template-columns: minmax(44px, .75fr) auto 1px minmax(44px, .75fr) auto;
+  }
+
+  .term-combined input {
+    padding-left: 10px;
+    padding-right: 4px;
+  }
+
+  .term-combined > span:not(.term-separator) {
+    padding-right: 9px;
+    font-size: .8rem;
+  }
+}
+
+
+/* v11: full-width mortgage detail fields */
+.mortgage-details-stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+}
+
+
+/* v12: lead capture */
+.lead-section {
+  margin-top: 42px;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 34px;
+  align-items: center;
+  padding: 36px;
+  background: #FFFFFF;
+  border: 1px solid #D8E0ED;
+  border-radius: 28px;
+  box-shadow: 0 14px 38px rgba(16, 29, 66, 0.06);
+}
+
+.lead-copy {
+  min-width: 0;
+}
+
+.lead-eyebrow {
+  margin: 0 0 10px;
+  color: #365CF5;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lead-copy h2 {
+  margin: 0;
+  color: #101D42;
+  font-size: clamp(1.9rem, 4vw, 3.2rem);
+  line-height: 1.03;
+  letter-spacing: -0.045em;
+}
+
+.lead-copy > p:not(.lead-eyebrow) {
+  margin: 16px 0 0;
+  max-width: 560px;
+  color: #68738D;
+  line-height: 1.65;
+}
+
+.lead-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.lead-points span {
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: #F1F4FA;
+  color: #586680;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.lead-form {
+  padding: 24px;
+  background: #F8FAFF;
+  border: 1px solid #E0E6F0;
+  border-radius: 22px;
+}
+
+.lead-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.lead-field {
+  min-width: 0;
+}
+
+.lead-field-full {
+  grid-column: 1 / -1;
+}
+
+.lead-field label {
+  display: block;
+  margin: 0 0 7px;
+  color: #4E5A72;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.lead-field label span {
+  color: #8A95A8;
+  font-weight: 500;
+}
+
+.lead-field input {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid #D8E0ED;
+  border-radius: 14px;
+  background: #FFFFFF;
+  color: #101D42;
+  padding: 13px 14px;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.lead-field input::placeholder {
+  color: #A3ACBB;
+}
+
+.lead-field input:focus {
+  border-color: #667FB7;
+  box-shadow: 0 0 0 3px rgba(102, 127, 183, 0.10);
+}
+
+.lead-field input[aria-invalid="true"] {
+  border-color: #B65B5B;
+  box-shadow: 0 0 0 3px rgba(182, 91, 91, 0.08);
+}
+
+.lead-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 16px;
+  color: #68738D;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.lead-consent input {
+  width: 17px;
+  height: 17px;
+  margin: 1px 0 0;
+  accent-color: #667FB7;
+  flex: 0 0 auto;
+}
+
+.lead-form-message {
+  min-height: 1.3em;
+  margin: 12px 0 0;
+  color: #B65B5B;
+  font-size: 0.78rem;
+}
+
+.lead-form-message.is-success {
+  color: #4E765D;
+}
+
+.lead-submit {
+  width: 100%;
+  min-height: 52px;
+  border: 0;
+  border-radius: 14px;
+  background: #101D42;
+  color: #FFFFFF;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease;
+}
+
+.lead-submit:hover {
+  background: #172A5A;
+}
+
+.lead-submit:active {
+  transform: translateY(1px);
+}
+
+.lead-submit:focus-visible {
+  outline: 3px solid rgba(54, 92, 245, 0.24);
+  outline-offset: 3px;
+}
+
+.lead-fineprint {
+  margin: 10px 0 0;
+  color: #98A2B3;
+  font-size: 0.7rem;
+  line-height: 1.45;
+  text-align: center;
+}
+
+@media (max-width: 850px) {
+  .lead-section {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+}
+
+@media (max-width: 560px) {
+  .lead-section {
+    margin-top: 30px;
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .lead-form {
+    padding: 18px;
+  }
+
+  .lead-form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lead-field-full {
+    grid-column: auto;
+  }
+}
+
+</style>
 </head>
 <body>
   <main class="calculator-shell">
@@ -225,6 +1070,440 @@
 
 </main>
 
-  <script src="script.js"></script>
+  <script>
+const balanceInput = document.getElementById("balance");
+const rateInput = document.getElementById("rate");
+const termYearsInput = document.getElementById("termYears");
+const termMonthsInput = document.getElementById("termMonths");
+const overpaymentInput = document.getElementById("overpayment");
+const lumpSumInput = document.getElementById("lumpSum");
+const lumpSumToggle = document.getElementById("lumpSumToggle");
+const lumpSumPanel = document.getElementById("lumpSumPanel");
+
+const overpaymentPayment = document.getElementById("overpaymentPayment");
+
+const overpaymentValue = document.getElementById("overpaymentValue");
+const standardPaymentEl = document.getElementById("standardPayment");
+const interestSavedEl = document.getElementById("interestSaved");
+const timeSavedEl = document.getElementById("timeSaved");
+const payoffDateEl = document.getElementById("payoffDate");
+const chart = document.getElementById("mortgageChart");
+const validationMessage = document.getElementById("validationMessage");
+
+const targetToggle = document.getElementById("targetToggle");
+const targetPanel = document.getElementById("targetPanel");
+const targetYearsInput = document.getElementById("targetYears");
+const targetResult = document.getElementById("targetResult");
+
+const money = new Intl.NumberFormat("en-GB", {
+  style: "currency",
+  currency: "GBP",
+  maximumFractionDigits: 0
+});
+
+const moneyDetailed = new Intl.NumberFormat("en-GB", {
+  style: "currency",
+  currency: "GBP",
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2
+});
+
+function clamp(value, min, max, fallback) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return fallback;
+  return Math.min(max, Math.max(min, number));
+}
+
+function calculateMonthlyPayment(principal, annualRate, months) {
+  if (principal <= 0 || months <= 0) return 0;
+
+  const monthlyRate = annualRate / 100 / 12;
+
+  if (monthlyRate === 0) {
+    return principal / months;
+  }
+
+  return principal * monthlyRate / (1 - Math.pow(1 + monthlyRate, -months));
+}
+
+function simulateMortgage(
+  originalPrincipal,
+  annualRate,
+  originalMonths,
+  monthlyOverpayment = 0,
+  lumpSum = 0
+) {
+  let balance = Math.max(0, originalPrincipal - lumpSum);
+
+  const standardPayment = calculateMonthlyPayment(
+    originalPrincipal,
+    annualRate,
+    originalMonths
+  );
+
+  const actualPayment = standardPayment + monthlyOverpayment;
+  const monthlyRate = annualRate / 100 / 12;
+
+  let totalInterest = 0;
+  let month = 0;
+
+  const points = [{ month: 0, balance }];
+
+  while (balance > 0.01 && month < 1200) {
+    const monthlyInterest = balance * monthlyRate;
+    const principalRepayment = actualPayment - monthlyInterest;
+
+    if (principalRepayment <= 0) {
+      return { invalid: true };
+    }
+
+    totalInterest += monthlyInterest;
+    balance = Math.max(0, balance - principalRepayment);
+    month += 1;
+
+    if (month % 6 === 0 || balance === 0) {
+      points.push({ month, balance });
+    }
+  }
+
+  return {
+    invalid: false,
+    months: month,
+    totalInterest,
+    standardPayment,
+    actualPayment,
+    points
+  };
+}
+
+function formatDuration(months) {
+  months = Math.max(0, Math.round(months));
+
+  const years = Math.floor(months / 12);
+  const remainingMonths = months % 12;
+
+  if (years && remainingMonths) return `${years} yr ${remainingMonths} mo`;
+  if (years) return `${years} ${years === 1 ? "year" : "years"}`;
+
+  return `${remainingMonths} ${remainingMonths === 1 ? "month" : "months"}`;
+}
+
+function getPayoffDate(months) {
+  const date = new Date();
+  date.setMonth(date.getMonth() + months);
+
+  return date.toLocaleDateString("en-GB", {
+    month: "long",
+    year: "numeric"
+  });
+}
+
+function calculateTargetOverpayment(
+  balance,
+  rate,
+  originalMonths,
+  targetYears,
+  lumpSum
+) {
+  const remainingBalance = Math.max(0, balance - lumpSum);
+  const targetMonths = Math.max(1, Math.round(targetYears * 12));
+
+  const requiredPayment = calculateMonthlyPayment(
+    remainingBalance,
+    rate,
+    targetMonths
+  );
+
+  const standardPayment = calculateMonthlyPayment(
+    balance,
+    rate,
+    originalMonths
+  );
+
+  return {
+    requiredPayment,
+    extraNeeded: Math.max(0, requiredPayment - standardPayment)
+  };
+}
+
+function drawChart(standardMortgage, overpaymentMortgage, principal) {
+  const width = 720;
+  const height = 320;
+
+  const left = 62;
+  const right = 20;
+  const top = 20;
+  const bottom = 42;
+
+  const chartWidth = width - left - right;
+  const chartHeight = height - top - bottom;
+
+  const maximumMonths = Math.max(
+    standardMortgage.months,
+    overpaymentMortgage.months,
+    1
+  );
+
+  function x(month) {
+    return left + month / maximumMonths * chartWidth;
+  }
+
+  function y(balance) {
+    return top + (1 - balance / principal) * chartHeight;
+  }
+
+  function createPath(points) {
+    return points
+      .map((point, index) => {
+        const command = index === 0 ? "M" : "L";
+        return `${command}${x(point.month).toFixed(2)},${y(point.balance).toFixed(2)}`;
+      })
+      .join(" ");
+  }
+
+  let svg = "";
+
+  for (let i = 0; i <= 4; i += 1) {
+    const gridY = top + i / 4 * chartHeight;
+    const value = principal * (1 - i / 4);
+
+    svg += `
+      <line
+        x1="${left}"
+        y1="${gridY}"
+        x2="${width - right}"
+        y2="${gridY}"
+        stroke="#E1E7F2"
+        stroke-width="1"
+      />
+      <text
+        x="${left - 10}"
+        y="${gridY + 4}"
+        text-anchor="end"
+        font-size="11"
+        fill="#68738D"
+      >
+        £${Math.round(value / 1000)}k
+      </text>
+    `;
+  }
+
+  for (let i = 0; i <= 4; i += 1) {
+    const month = maximumMonths * i / 4;
+    const gridX = x(month);
+
+    svg += `
+      <text
+        x="${gridX}"
+        y="${height - 11}"
+        text-anchor="middle"
+        font-size="11"
+        fill="#68738D"
+      >
+        ${Math.round(month / 12)}y
+      </text>
+    `;
+  }
+
+  svg += `
+    <path
+      d="${createPath(standardMortgage.points)}"
+      fill="none"
+      stroke="#A7B0C0"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="${createPath(overpaymentMortgage.points)}"
+      fill="none"
+      stroke="#667FB7"
+      stroke-width="4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  `;
+
+  chart.innerHTML = svg;
+}
+
+
+function updateCalculator() {
+  const balance = clamp(balanceInput.value, 1000, 5000000, 250000);
+  const rate = clamp(rateInput.value, 0, 20, 4.5);
+  const termYears = clamp(termYearsInput.value, 0, 50, 25);
+  const termMonths = clamp(termMonthsInput.value, 0, 11, 0);
+  const months = Math.max(1, Math.min(600, Math.round(termYears * 12 + termMonths)));
+  const termYearsDecimal = months / 12;
+  const overpayment = clamp(overpaymentInput.value, 0, 1500, 0);
+  const lumpSum = lumpSumToggle.checked ? clamp(lumpSumInput.value, 0, balance, 0) : 0;
+
+  overpaymentValue.textContent = money.format(overpayment);
+
+  const standardMortgage = simulateMortgage(
+    balance,
+    rate,
+    months,
+    0,
+    0
+  );
+
+  const overpaymentMortgage = simulateMortgage(
+    balance,
+    rate,
+    months,
+    overpayment,
+    lumpSum
+  );
+
+  if (standardMortgage.invalid || overpaymentMortgage.invalid) {
+    validationMessage.textContent =
+      "These values do not produce a valid repayment mortgage.";
+    return;
+  }
+
+  validationMessage.textContent = "";
+
+  const interestSaved = Math.max(
+    0,
+    standardMortgage.totalInterest - overpaymentMortgage.totalInterest
+  );
+
+  const monthsSaved = Math.max(
+    0,
+    standardMortgage.months - overpaymentMortgage.months
+  );
+
+  standardPaymentEl.textContent = moneyDetailed.format(
+    standardMortgage.standardPayment
+  );
+
+  overpaymentPayment.textContent = moneyDetailed.format(
+    overpaymentMortgage.actualPayment
+  );
+
+  interestSavedEl.textContent = money.format(interestSaved);
+  timeSavedEl.textContent = formatDuration(monthsSaved);
+  payoffDateEl.textContent = getPayoffDate(overpaymentMortgage.months);
+
+  drawChart(
+    standardMortgage,
+    overpaymentMortgage,
+    balance
+  );
+  if (targetToggle.checked) {
+    const targetYears = clamp(
+      targetYearsInput.value,
+      1,
+      Math.max(1, Math.floor(termYearsDecimal)),
+      Math.min(15, Math.max(1, Math.floor(termYearsDecimal)))
+    );
+
+    const target = calculateTargetOverpayment(
+      balance,
+      rate,
+      months,
+      targetYears,
+      lumpSum
+    );
+
+    if (target.extraNeeded < 1) {
+      targetResult.innerHTML = `
+        Your existing payment would already clear
+        the mortgage within <strong>${targetYears} years</strong>.
+      `;
+    } else {
+      targetResult.innerHTML = `
+        To clear the mortgage in
+        <strong>${targetYears} years</strong>,
+        you would need to pay approximately
+        <strong>${moneyDetailed.format(target.extraNeeded)} extra per month</strong>.
+        Your total monthly payment would be
+        <strong>${moneyDetailed.format(target.requiredPayment)}</strong>.
+      `;
+    }
+  }
+}
+
+[
+  balanceInput,
+  rateInput,
+  termYearsInput,
+  termMonthsInput,
+  overpaymentInput,
+  lumpSumInput,
+  targetYearsInput
+].forEach((input) => {
+  input.addEventListener("input", updateCalculator);
+});
+
+document.querySelectorAll("[data-overpayment]").forEach((button) => {
+  button.addEventListener("click", () => {
+    overpaymentInput.value = button.dataset.overpayment;
+    updateCalculator();
+  });
+});
+
+lumpSumToggle.addEventListener("change", () => {
+  lumpSumPanel.classList.toggle("hidden", !lumpSumToggle.checked);
+  updateCalculator();
+});
+
+targetToggle.addEventListener("change", () => {
+  targetPanel.classList.toggle("hidden", !targetToggle.checked);
+  updateCalculator();
+});
+
+updateCalculator();
+
+
+// v12: demo lead capture form
+const leadForm = document.getElementById("leadForm");
+const leadFormMessage = document.getElementById("leadFormMessage");
+
+if (leadForm && leadFormMessage) {
+  leadForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const nameInput = document.getElementById("leadName");
+    const emailInput = document.getElementById("leadEmail");
+    const consentInput = document.getElementById("leadConsent");
+
+    [nameInput, emailInput].forEach((input) => {
+      input.removeAttribute("aria-invalid");
+    });
+
+    leadFormMessage.classList.remove("is-success");
+    leadFormMessage.textContent = "";
+
+    let hasError = false;
+
+    if (!nameInput.value.trim()) {
+      nameInput.setAttribute("aria-invalid", "true");
+      hasError = true;
+    }
+
+    if (!emailInput.validity.valid || !emailInput.value.trim()) {
+      emailInput.setAttribute("aria-invalid", "true");
+      hasError = true;
+    }
+
+    if (!consentInput.checked) {
+      hasError = true;
+    }
+
+    if (hasError) {
+      leadFormMessage.textContent = "Please complete your name, email and consent to receive the report.";
+      return;
+    }
+
+    leadFormMessage.classList.add("is-success");
+    leadFormMessage.textContent = "Thanks — your mortgage overpayment report is ready to be sent.";
+    leadForm.reset();
+  });
+}
+
+</script>
 </body>
 </html>
+
