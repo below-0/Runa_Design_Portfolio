@@ -93,16 +93,10 @@
   .service-list li{ font-size:0.95rem; color:var(--ink-soft); }
   .p-shot{ position:relative; overflow:hidden; aspect-ratio:16/9; background:var(--bg); display:block; }
   .grid-2x2{ grid-template-columns:repeat(2, 1fr); }
-  .shot-chrome{ position:absolute; top:0; left:0; right:0; height:22px; background:rgba(255,255,255,0.92); display:flex; align-items:center; gap:5px; padding:0 10px; z-index:2; }
-  .shot-chrome span{ width:6px; height:6px; border-radius:50%; background:#D8D8D4; }
-  .shot-cta{
-    position:absolute; bottom:14px; left:14px; background:rgba(26,23,28,0.85); color:#fff;
-    font-size:0.8rem; font-weight:600; padding:8px 14px; border-radius:100px;
-    opacity:0; transform:translateY(6px); transition:opacity .25s ease, transform .25s ease; z-index:2;
-  }
-  .p-card:hover .shot-cta{ opacity:1; transform:translateY(0); }
-  .p-tag{ font-size:0.72rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:6px; }
-  .p-tag--live{ color:#1F4B3F; }
+  .p-body-top{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:6px; }
+  .p-body-top h3{ margin-bottom:0; }
+  .p-body-top a.link{ white-space:nowrap; }
+  .p-tag--live{ font-size:0.7rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:#1F4B3F; background:#E3F0EA; padding:3px 9px; border-radius:100px; margin-left:8px; vertical-align:middle; }
   .p-card--empty{ opacity:0.55; }
   .p-shot-empty{ aspect-ratio:16/9; border:1px dashed var(--border); border-radius:var(--radius-md); background:var(--bg); }
   .p-card--empty .p-body p{ font-size:0.85rem; color:var(--ink-soft); font-style:italic; }
@@ -111,6 +105,8 @@
   .p-shot--wide .p-thumb{ width:100%; height:100%; margin:0; }
   .p-shot img{ width:100%; height:100%; object-fit:cover; object-position:top; display:block; transition:transform .35s ease; }
   .p-card:hover .p-shot img{ transform:scale(1.06); }
+  .p-shot--letterbox{ background:#0A0A0F; }
+  .p-shot--letterbox img{ object-fit:contain; object-position:center; }
 
   /* Process */
   .process{ background:var(--bg); padding:100px 32px; }
@@ -178,7 +174,8 @@
     <div class="logo">Runa Design</div>
     <div class="nav-right">
       <ul class="nav-links">
-        <li><a href="#work">Services</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#services">Services</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -193,15 +190,15 @@
   <div class="hero-inner">
     <p class="eyebrow">Web Design for Local Businesses</p>
     <h1>Fast, modern websites that make your business look as good as it is.</h1>
-    <p>We design and build clean, professional websites for local businesses — quick turnaround, fair pricing, and no long-term contract.</p>
+    <p>Your website should reflect the quality of your business. I design and build professional, easy-to-use websites that help customers understand what you do, trust your business, and get in touch.</p>
     <div class="btn-row">
       <a class="btn-primary" href="#contact">Get a free quote</a>
-      <a class="btn-secondary" href="#work">See our work</a>
+      <a class="btn-secondary" href="#work">See my work</a>
     </div>
     <div class="trust-line">
-      <span>Fixed, upfront pricing</span>
-      <span>Delivered in days, not months</span>
-      <span>No long-term contract</span>
+      <span>Clear, upfront pricing</span>
+      <span>Built to work on every device</span>
+      <span>Support after launch</span>
     </div>
   </div>
 </section>
@@ -209,8 +206,8 @@
 <section class="portfolio" id="work">
   <div class="wrap">
     <div class="section-head" style="max-width:none;">
-      <p class="eyebrow">Services</p>
-      <h2>Websites, tools, and the growth work that follows.</h2>
+      <p class="eyebrow">Selected Work</p>
+      <h2>Websites and tools I've designed and built.</h2>
     </div>
 
     <div class="category-block">
@@ -221,45 +218,49 @@
       <div class="portfolio-grid grid-2x2">
         <div class="p-card">
           <a class="p-shot" href="https://runadesign.co.uk/work/cafe/" target="_blank" rel="noopener">
-            <div class="shot-chrome"><span></span><span></span><span></span></div>
             <img src="/images/cafe-preview.webp" alt="Preview of Birchwood Coffee & Bakery" loading="lazy">
-            <span class="shot-cta">View website &#8599;</span>
           </a>
           <div class="p-body">
-            <p class="p-tag">Concept</p>
+            <div class="p-body-top">
+              <h3>Birchwood Coffee &amp; Bakery</h3>
+              <a class="link" href="https://runadesign.co.uk/work/cafe/" target="_blank" rel="noopener">View site &#8599;</a>
+            </div>
             <p>A warm, photo-led site for a café or bakery — full menu, story, and visit info.</p>
           </div>
         </div>
         <div class="p-card">
           <a class="p-shot" href="https://runadesign.co.uk/work/landscaping/" target="_blank" rel="noopener">
-            <div class="shot-chrome"><span></span><span></span><span></span></div>
             <img src="/images/landscaping-preview.webp" alt="Preview of Braemar Landscaping" loading="lazy">
-            <span class="shot-cta">View website &#8599;</span>
           </a>
           <div class="p-body">
-            <p class="p-tag">Concept</p>
+            <div class="p-body-top">
+              <h3>Braemar Landscaping</h3>
+              <a class="link" href="https://runadesign.co.uk/work/landscaping/" target="_blank" rel="noopener">View site &#8599;</a>
+            </div>
             <p>An editorial, image-rich site for a garden design and landscaping business.</p>
           </div>
         </div>
         <div class="p-card">
           <a class="p-shot" href="https://runadesign.co.uk/work/bjj/" target="_blank" rel="noopener">
-            <div class="shot-chrome"><span></span><span></span><span></span></div>
             <img src="/images/bjj-preview.webp" alt="Preview of Clyde BJJ" loading="lazy">
-            <span class="shot-cta">View website &#8599;</span>
           </a>
           <div class="p-body">
-            <p class="p-tag">Concept</p>
+            <div class="p-body-top">
+              <h3>Clyde BJJ</h3>
+              <a class="link" href="https://runadesign.co.uk/work/bjj/" target="_blank" rel="noopener">View site &#8599;</a>
+            </div>
             <p>A bold, multi-page site for a BJJ academy — schedule, coaching, and instructor pages.</p>
           </div>
         </div>
         <div class="p-card">
           <a class="p-shot" href="https://runadesign.co.uk/work/handyman/" target="_blank" rel="noopener">
-            <div class="shot-chrome"><span></span><span></span><span></span></div>
             <img src="/images/handyman-preview.webp" alt="Preview of Graham McLeod Handyman" loading="lazy">
-            <span class="shot-cta">View website &#8599;</span>
           </a>
           <div class="p-body">
-            <p class="p-tag">Concept</p>
+            <div class="p-body-top">
+              <h3>Graham McLeod Handyman</h3>
+              <a class="link" href="https://runadesign.co.uk/work/handyman/" target="_blank" rel="noopener">View site &#8599;</a>
+            </div>
             <p>A comprehensive, trust-focused site for a local handyman — services, FAQ, and coverage area.</p>
           </div>
         </div>
@@ -274,27 +275,38 @@
       <div class="portfolio-grid grid-featured">
         <div class="p-card p-card--featured">
           <a class="p-shot p-shot--wide" href="https://batterycalculator.co.uk" target="_blank" rel="noopener">
-            <div class="shot-chrome"><span></span><span></span><span></span></div>
             <img src="/images/battery-preview.webp" alt="Preview of Battery Calculator" loading="lazy">
-            <span class="shot-cta">Launch tool &#8599;</span>
           </a>
           <div class="p-body">
-            <p class="p-tag p-tag--live">Live</p>
+            <div class="p-body-top">
+              <h3>Solar &amp; Battery Calculator <span class="p-tag--live">Live</span></h3>
+              <a class="link" href="https://batterycalculator.co.uk" target="_blank" rel="noopener">Launch tool &#8599;</a>
+            </div>
             <p>A live, interactive lead-generation tool built for UK solar battery installers — real users, real leads.</p>
           </div>
         </div>
         <div class="p-card p-card--featured">
           <a class="p-shot p-shot--wide" href="https://runadesign.co.uk/work/overpayment" target="_blank" rel="noopener">
-            <div class="shot-chrome"><span></span><span></span><span></span></div>
             <img src="/images/overpayment-preview.webp" alt="Preview of Mortgage Overpayment Calculator" loading="lazy">
-            <span class="shot-cta">Launch tool &#8599;</span>
           </a>
           <div class="p-body">
-            <p class="p-tag p-tag--live">Live</p>
+            <div class="p-body-top">
+              <h3>Mortgage Overpayment Calculator <span class="p-tag--live">Live</span></h3>
+              <a class="link" href="https://runadesign.co.uk/work/overpayment" target="_blank" rel="noopener">Launch tool &#8599;</a>
+            </div>
             <p>An interactive calculator showing how monthly overpayments and lump sums change your mortgage term and total interest.</p>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio" id="services" style="background:var(--bg);">
+  <div class="wrap">
+    <div class="section-head" style="max-width:none;">
+      <p class="eyebrow">Services</p>
+      <h2>Once your site is live, I can help it grow.</h2>
     </div>
 
     <div class="category-pair">
@@ -333,13 +345,13 @@
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">How it works</p>
-      <h2>You focus on your customers. We'll handle the site.</h2>
+      <h2>You focus on your customers. I'll handle the site.</h2>
     </div>
     <div class="steps">
       <div class="step"><div class="step-dot">1</div><h3>Get in touch</h3><p>Book a free call — no obligation, no hard sell.</p></div>
-      <div class="step"><div class="step-dot">2</div><h3>Quick brief</h3><p>Tell us what you do and who your customers are.</p></div>
+      <div class="step"><div class="step-dot">2</div><h3>Quick brief</h3><p>Tell me what you do and who your customers are.</p></div>
       <div class="step"><div class="step-dot">3</div><h3>Fixed quote</h3><p>A clear, upfront price before any work starts.</p></div>
-      <div class="step"><div class="step-dot">4</div><h3>Build &amp; launch</h3><p>Your site built, hosted, and live within days.</p></div>
+      <div class="step"><div class="step-dot">4</div><h3>Build &amp; launch</h3><p>Built, hosted and live when you need it.</p></div>
     </div>
   </div>
 </section>
@@ -355,10 +367,10 @@
 <section class="cta" id="contact">
   <p class="eyebrow">Get started</p>
   <h2>Let's build your website.</h2>
-  <p>Book a free 15-minute call and tell us what you need. No pressure, no obligation.</p>
+  <p>Book a free 15-minute call and tell me what you need. No pressure, no obligation.</p>
   <div class="btn-row" style="justify-content:center;">
     <a class="btn-primary" href="https://calendar.app.google/8HBnePzxyXmGTL2v8" target="_blank" rel="noopener">Book a free consultation</a>
-    <a class="btn-secondary" href="mailto:andrew@runadesign.co.uk" style="border-color:rgba(255,255,255,0.3); color:#fff;">Email us instead</a>
+    <a class="btn-secondary" href="mailto:andrew@runadesign.co.uk" style="border-color:rgba(255,255,255,0.3); color:#fff;">Email me instead</a>
   </div>
 </section>
 
