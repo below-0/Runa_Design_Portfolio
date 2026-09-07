@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Let's get started — Runa Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F7F6F8;
+    --card: #FFFFFF;
+    --ink: #1A171C;
+    --ink-soft: #5C5763;
+    --border: #E7E4EA;
+    --accent: #4A2545;
+    --accent-light: #6B3D65;
+    --accent-tint: #F0E5EE;
+    --radius-lg: 22px;
+    --radius-md: 14px;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--bg); color:var(--ink); font-family:'Inter', sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:'Manrope', sans-serif; color:var(--ink); letter-spacing:-0.02em; }
+  a{ color:inherit; }
+  .wrap{ max-width:720px; margin:0 auto; padding:0 24px; }
+
+  header{ padding:28px 32px; }
+  .logo{ font-family:'Manrope', sans-serif; font-weight:800; font-size:1.2rem; text-decoration:none; color:var(--ink); }
+
+  main{ padding:20px 0 100px; }
+  .intro{ text-align:center; margin-bottom:44px; }
+  .eyebrow{ font-size:0.82rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; display:block; }
+  .intro h1{ font-size:clamp(1.9rem, 4vw, 2.5rem); font-weight:800; line-height:1.15; margin-bottom:14px; }
+  .intro p{ color:var(--ink-soft); font-size:1.02rem; max-width:48ch; margin:0 auto; }
+
+  /* Progress bar */
+  .progress-wrap{ margin-bottom:40px; }
+  .progress-track{ height:6px; background:var(--border); border-radius:100px; overflow:hidden; margin-bottom:14px; }
+  .progress-fill{ height:100%; background:var(--accent); border-radius:100px; transition:width .35s ease; width:33.33%; }
+  .progress-steps{ display:flex; justify-content:space-between; font-size:0.85rem; font-weight:600; color:var(--ink-soft); }
+  .progress-steps span.active{ color:var(--accent); }
+
+  /* Card */
+  .form-card{ background:var(--card); border-radius:var(--radius-lg); padding:44px clamp(24px, 5vw, 48px); box-shadow:0 24px 48px -28px rgba(26,23,28,0.18); }
+  .step{ display:none; }
+  .step.active{ display:block; }
+  .step h2{ font-size:1.35rem; font-weight:800; margin-bottom:6px; }
+  .step > p.step-sub{ color:var(--ink-soft); font-size:0.95rem; margin-bottom:28px; }
+
+  .field{ margin-bottom:24px; }
+  .field label{ display:block; font-weight:600; font-size:0.92rem; margin-bottom:8px; }
+  .field .hint{ font-weight:400; color:var(--ink-soft); font-size:0.85rem; margin-top:4px; }
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="tel"],
+  .field textarea{
+    width:100%; border:1.5px solid var(--border); border-radius:var(--radius-md);
+    padding:13px 16px; font-family:'Inter', sans-serif; font-size:0.98rem; color:var(--ink);
+    background:var(--bg); transition:border-color .2s;
+  }
+  .field input:focus, .field textarea:focus{ outline:none; border-color:var(--accent); }
+  .field textarea{ resize:vertical; min-height:88px; }
+
+  .choice-group{ display:flex; flex-direction:column; gap:10px; }
+  .choice-group.grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .choice{
+    display:flex; align-items:center; gap:10px; border:1.5px solid var(--border); border-radius:var(--radius-md);
+    padding:13px 16px; cursor:pointer; transition:border-color .2s, background .2s; font-size:0.95rem;
+  }
+  .choice:hover{ border-color:var(--accent-light); }
+  .choice input{ accent-color:var(--accent); width:16px; height:16px; flex-shrink:0; }
+  .choice.selected{ border-color:var(--accent); background:var(--accent-tint); }
+
+  .conditional-field{ margin-top:12px; display:none; }
+  .conditional-field.show{ display:block; }
+
+  .step-nav{ display:flex; justify-content:space-between; align-items:center; margin-top:36px; }
+  .btn-primary{
+    display:inline-block; background:var(--accent); color:#fff; padding:15px 30px; border:none;
+    border-radius:100px; text-decoration:none; font-weight:600; font-size:0.98rem; cursor:pointer;
+    transition:background .2s, transform .2s; font-family:'Inter', sans-serif;
+  }
+  .btn-primary:hover{ background:var(--accent-light); transform:translateY(-1px); }
+  .btn-primary:disabled{ opacity:0.5; cursor:not-allowed; transform:none; }
+  .btn-back{
+    background:none; border:none; color:var(--ink-soft); font-weight:600; font-size:0.95rem;
+    cursor:pointer; font-family:'Inter', sans-serif; padding:12px 8px;
+  }
+  .btn-back:hover{ color:var(--ink); }
+  .btn-back:disabled{ visibility:hidden; }
+
+  .success{ text-align:center; padding:20px 0; }
+  .success .icon{ font-size:2.4rem; margin-bottom:16px; }
+  .success h2{ font-size:1.5rem; margin-bottom:10px; }
+  .success p{ color:var(--ink-soft); }
+
+  .error-msg{ color:#B3261E; font-size:0.88rem; margin-top:6px; display:none; }
+  .error-msg.show{ display:block; }
+
+  @media (max-width: 560px){
+    .form-card{ padding:32px 20px; }
+    .choice-group.grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/">Runa Design</a>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="intro">
+      <span class="eyebrow">Let's get started</span>
+      <h1>Tell me about your business</h1>
+      <p>A few quick questions so I can put together exactly what you need. Takes about 3 minutes.</p>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="progress-steps">
+        <span id="stepLabel1" class="active">The Business</span>
+        <span id="stepLabel2">The Website</span>
+        <span id="stepLabel3">Content</span>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <form id="intakeForm">
+
+        <!-- STEP 1 -->
+        <div class="step active" data-step="1">
+          <h2>The Business</h2>
+          <p class="step-sub">The basics, so I know who I'm building this for.</p>
+
+          <div class="field">
+            <label for="businessName">Business name</label>
+            <input type="text" id="businessName" name="businessName" required>
+          </div>
+          <div class="field">
+            <label for="contactName">Your name</label>
+            <input type="text" id="contactName" name="contactName" required>
+          </div>
+          <div class="field">
+            <label for="whatYouDo">What do you do, in a sentence or two?</label>
+            <textarea id="whatYouDo" name="whatYouDo" required></textarea>
+          </div>
+          <div class="field">
+            <label for="areaServed">Area(s) you serve</label>
+            <input type="text" id="areaServed" name="areaServed" required>
+          </div>
+          <div class="field">
+            <label for="currentWebsite">Current website, if any</label>
+            <input type="text" id="currentWebsite" name="currentWebsite">
+          </div>
+          <div class="field">
+            <label for="phone">Best phone number</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div class="field">
+            <label for="email">Best email</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="step-nav">
+            <button type="button" class="btn-back" disabled>Back</button>
+            <button type="button" class="btn-primary" onclick="nextStep(1)">Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 2 -->
+        <div class="step" data-step="2">
+          <h2>The Website's Job</h2>
+          <p class="step-sub">What this site actually needs to do for you.</p>
+
+          <div class="field">
+            <label>What's the main goal for this site?</label>
+            <div class="choice-group" id="mainGoalGroup">
+              <label class="choice"><input type="radio" name="mainGoal" value="More enquiries/calls"> More enquiries/calls</label>
+              <label class="choice"><input type="radio" name="mainGoal" value="Online bookings"> Online bookings</label>
+              <label class="choice"><input type="radio" name="mainGoal" value="Look more credible"> Look more credible</label>
+              <label class="choice"><input type="radio" name="mainGoal" value="Showcase past work"> Showcase past work</label>
+              <label class="choice"><input type="radio" name="mainGoal" value="Other"> Other</label>
+            </div>
+            <div class="conditional-field" id="mainGoalOtherWrap">
+              <input type="text" id="mainGoalOther" name="mainGoalOther" placeholder="Tell me more">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="typicalCustomer">Who's your typical customer?</label>
+            <textarea id="typicalCustomer" name="typicalCustomer" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="differentiator">What makes you different from competitors?</label>
+            <textarea id="differentiator" name="differentiator" required></textarea>
+          </div>
+
+          <div class="field">
+            <label>Any specific pages or features needed?</label>
+            <div class="choice-group grid">
+              <label class="choice"><input type="checkbox" name="features" value="Contact form"> Contact form</label>
+              <label class="choice"><input type="checkbox" name="features" value="Photo gallery"> Photo gallery</label>
+              <label class="choice"><input type="checkbox" name="features" value="Booking/enquiry form"> Booking/enquiry form</label>
+              <label class="choice"><input type="checkbox" name="features" value="Pricing page"> Pricing page</label>
+              <label class="choice"><input type="checkbox" name="features" value="Testimonials"> Testimonials</label>
+              <label class="choice"><input type="checkbox" name="features" value="Blog"> Blog</label>
+              <label class="choice"><input type="checkbox" name="features" value="Other"> Other</label>
+            </div>
+          </div>
+
+          <div class="step-nav">
+            <button type="button" class="btn-back" onclick="prevStep(2)">Back</button>
+            <button type="button" class="btn-primary" onclick="nextStep(2)">Continue</button>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step" data-step="3">
+          <h2>Content</h2>
+          <p class="step-sub">What you already have, and what I'll need to help with.</p>
+
+          <div class="field">
+            <label>Do you have a logo already?</label>
+            <div class="choice-group" id="logoGroup">
+              <label class="choice"><input type="radio" name="hasLogo" value="Yes"> Yes</label>
+              <label class="choice"><input type="radio" name="hasLogo" value="No, need one designed"> No, need one designed</label>
+              <label class="choice"><input type="radio" name="hasLogo" value="Not sure"> Not sure</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Do you have photos you'd like used?</label>
+            <div class="choice-group" id="photosGroup">
+              <label class="choice"><input type="radio" name="hasPhotos" value="Yes, I'll send them"> Yes, I'll send them</label>
+              <label class="choice"><input type="radio" name="hasPhotos" value="No, need stock/help sourcing"> No, need stock/help sourcing</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Do you have text/copy written, or do you need that written for you?</label>
+            <div class="choice-group" id="copyGroup">
+              <label class="choice"><input type="radio" name="hasCopy" value="I have copy written"> I have copy written</label>
+              <label class="choice"><input type="radio" name="hasCopy" value="I need it written for me"> I need it written for me</label>
+              <label class="choice"><input type="radio" name="hasCopy" value="A mix of both"> A mix of both</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Do you already have a domain name?</label>
+            <div class="choice-group" id="domainGroup">
+              <label class="choice"><input type="radio" name="hasDomain" value="Yes"> Yes</label>
+              <label class="choice"><input type="radio" name="hasDomain" value="No, need help choosing one"> No, need help choosing one</label>
+            </div>
+            <div class="conditional-field" id="domainNameWrap">
+              <input type="text" id="domainName" name="domainName" placeholder="What's the domain?">
+            </div>
+          </div>
+
+          <div class="error-msg" id="submitError">Something went wrong sending this — please try again, or message me directly on WhatsApp.</div>
+
+          <div class="step-nav">
+            <button type="button" class="btn-back" onclick="prevStep(3)">Back</button>
+            <button type="submit" class="btn-primary" id="submitBtn">Submit</button>
+          </div>
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="step" data-step="success">
+          <div class="success">
+            <div class="icon">✓</div>
+            <h2>Thanks, that's everything I need.</h2>
+            <p>I'll take a look and get back to you shortly with next steps.</p>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</main>
+
+<script>
+  // ===== CONFIG =====
+  // Paste your deployed Apps Script Web App URL here after setup.
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwqHVeMn_0DEenK2b7qXlwzzQJXEOkq2R89CkFy7P1H7U2dRoACkdNFcXNIJXr6OO-6UA/exec";
+
+  let currentStep = 1;
+  const totalSteps = 3;
+  const stepLabels = { 1: 'stepLabel1', 2: 'stepLabel2', 3: 'stepLabel3' };
+
+  function showStep(step){
+    document.querySelectorAll('.step').forEach(el => el.classList.remove('active'));
+    document.querySelector(`.step[data-step="${step}"]`).classList.add('active');
+    if (typeof step === 'number') {
+      document.getElementById('progressFill').style.width = ((step / totalSteps) * 100) + '%';
+      Object.values(stepLabels).forEach(id => document.getElementById(id).classList.remove('active'));
+      document.getElementById(stepLabels[step]).classList.add('active');
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function validateStep(step){
+    const stepEl = document.querySelector(`.step[data-step="${step}"]`);
+    const required = stepEl.querySelectorAll('[required]');
+    for (const field of required){
+      if (!field.value.trim()){
+        field.focus();
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function nextStep(from){
+    if (!validateStep(from)) return;
+    currentStep = from + 1;
+    showStep(currentStep);
+  }
+
+  function prevStep(from){
+    currentStep = from - 1;
+    showStep(currentStep);
+  }
+
+  // Visual selected state for choice cards
+  document.querySelectorAll('.choice input').forEach(input => {
+    input.addEventListener('change', () => {
+      const group = input.closest('.choice-group');
+      if (input.type === 'radio'){
+        group.querySelectorAll('.choice').forEach(c => c.classList.remove('selected'));
+      }
+      input.closest('.choice').classList.toggle('selected', input.checked);
+    });
+  });
+
+  // Conditional fields
+  document.querySelectorAll('input[name="mainGoal"]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.getElementById('mainGoalOtherWrap').classList.toggle('show', r.value === 'Other' && r.checked);
+    });
+  });
+  document.querySelectorAll('input[name="hasDomain"]').forEach(r => {
+    r.addEventListener('change', () => {
+      document.getElementById('domainNameWrap').classList.toggle('show', r.value === 'Yes' && r.checked);
+    });
+  });
+
+  document.getElementById('intakeForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!validateStep(3)) return;
+
+    const submitBtn = document.getElementById('submitBtn');
+    const errorMsg = document.getElementById('submitError');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    errorMsg.classList.remove('show');
+
+    const formData = new FormData(document.getElementById('intakeForm'));
+    const data = {};
+    for (const [key, value] of formData.entries()){
+      if (data[key]) {
+        data[key] = Array.isArray(data[key]) ? [...data[key], value] : [data[key], value];
+      } else {
+        data[key] = value;
+      }
+    }
+    // Normalize features checkboxes to a comma-separated string
+    if (data.features) {
+      data.features = Array.isArray(data.features) ? data.features.join(', ') : data.features;
+    }
+    data.submittedAt = new Date().toISOString();
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(data)
+      });
+      showStep('success');
+    } catch (err) {
+      errorMsg.classList.add('show');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit';
+    }
+  });
+</script>
+
+</body>
+</html>
