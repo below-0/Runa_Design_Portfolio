@@ -66,6 +66,16 @@
 
   /* Portfolio */
   .portfolio{ background:var(--card); padding:100px 32px; }
+  .portfolio--compact{ padding:56px 32px; position:relative; overflow:hidden; }
+  .portfolio--compact::before{
+    content:''; position:absolute; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(circle at 12% 15%, rgba(255,255,255,0.95) 0%, transparent 55%),
+      radial-gradient(circle at 88% 85%, rgba(255,255,255,0.5) 0%, transparent 38%);
+  }
+  .portfolio--compact .wrap{ position:relative; z-index:1; }
+  .portfolio--compact .section-head{ margin-bottom:32px; }
+  .portfolio--compact .section-head h2{ font-size:clamp(1.4rem, 2vw, 1.7rem); }
   .section-head{ max-width:56ch; margin-bottom:52px; }
   .section-head h2{ font-size:clamp(1.8rem, 3.2vw, 2.4rem); font-weight:800; margin-top:10px; }
   .portfolio-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:24px; }
@@ -282,7 +292,7 @@
     <div class="category-block">
       <div class="category-head">
         <h3>Interactive Tools</h3>
-        <p>Purpose-built digital tools that turn ideas and data into useful experiences.</p>
+        <p>Give your customers something to interact with — answer questions, generate leads, and help your website stand out.</p>
       </div>
       <div class="portfolio-grid grid-featured">
         <div class="p-card p-card--featured">
@@ -290,7 +300,7 @@
             <div class="p-shot p-shot--wide"><img src="/images/battery-preview.webp" alt="Preview of Battery Calculator" loading="lazy"></div>
             <div class="p-overlay">
               <h3>Solar &amp; Battery Calculator <span class="p-tag--live">Live</span></h3>
-              <p>A live, interactive lead-generation tool built for UK solar battery installers — real users, real leads.</p>
+              <p>Enter your electricity usage and solar setup, and it shows how much of your own power a battery would let you use — plus estimated savings and backup hours if the grid goes down.</p>
               <span class="link">Launch tool &#8599;</span>
             </div>
           </a>
@@ -300,7 +310,7 @@
             <div class="p-shot p-shot--wide"><img src="/images/overpayment-preview.webp" alt="Preview of Mortgage Overpayment Calculator" loading="lazy"></div>
             <div class="p-overlay">
               <h3>Mortgage Overpayment Calculator <span class="p-tag--live">Live</span></h3>
-              <p>An interactive calculator showing how monthly overpayments and lump sums change your mortgage term and total interest.</p>
+              <p>Enter your mortgage balance and rate, then adjust your monthly overpayment to see exactly how much time and interest it would save.</p>
               <span class="link">Launch tool &#8599;</span>
             </div>
           </a>
@@ -310,7 +320,7 @@
   </div>
 </section>
 
-<section class="portfolio" id="services" style="background:var(--bg);">
+<section class="portfolio portfolio--compact" id="services" style="background:var(--accent-tint);">
   <div class="wrap">
     <div class="section-head" style="max-width:none;">
       <p class="eyebrow">Services</p>
