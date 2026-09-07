@@ -22,7 +22,15 @@
   }
   *{ box-sizing:border-box; margin:0; padding:0; }
   html{ scroll-behavior:smooth; }
-  body{ background:var(--bg); color:var(--ink); font-family:'Inter', sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  body{ position:relative; background:var(--bg); color:var(--ink); font-family:'Inter', sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  body::before{
+    content:''; position:fixed; inset:-120px; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(circle at 25% 8%, var(--accent-tint) 0%, transparent 42%),
+      radial-gradient(circle at 90% 22%, rgba(107,61,101,0.20) 0%, transparent 38%),
+      radial-gradient(circle at 10% 60%, var(--accent-tint) 0%, transparent 40%);
+  }
+  header, main{ position:relative; z-index:1; }
   h1,h2,h3{ font-family:'Manrope', sans-serif; color:var(--ink); letter-spacing:-0.02em; }
   a{ color:inherit; }
   .wrap{ max-width:720px; margin:0 auto; padding:0 24px; }
@@ -56,12 +64,14 @@
   .field input[type="text"],
   .field input[type="email"],
   .field input[type="tel"],
+  .field select,
   .field textarea{
     width:100%; border:1.5px solid var(--border); border-radius:var(--radius-md);
     padding:13px 16px; font-family:'Inter', sans-serif; font-size:0.98rem; color:var(--ink);
     background:var(--bg); transition:border-color .2s;
   }
-  .field input:focus, .field textarea:focus{ outline:none; border-color:var(--accent); }
+  .field select{ cursor:pointer; }
+  .field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-color:var(--accent); }
   .field textarea{ resize:vertical; min-height:88px; }
 
   .choice-group{ display:flex; flex-direction:column; gap:10px; }
@@ -154,15 +164,21 @@
             <input type="text" id="areaServed" name="areaServed" required>
           </div>
           <div class="field">
-            <label for="currentWebsite">Current website, if any</label>
-            <input type="text" id="currentWebsite" name="currentWebsite">
+            <label for="hasCurrentWebsite">Do you currently have a website?</label>
+            <select id="hasCurrentWebsite" name="hasCurrentWebsite">
+              <option value="No" selected>No</option>
+              <option value="Yes">Yes</option>
+            </select>
+            <div class="conditional-field" id="currentWebsiteWrap">
+              <input type="text" id="currentWebsite" name="currentWebsite" placeholder="What's the web address?">
+            </div>
           </div>
           <div class="field">
-            <label for="phone">Best phone number</label>
+            <label for="phone">Contact phone number</label>
             <input type="tel" id="phone" name="phone" required>
           </div>
           <div class="field">
-            <label for="email">Best email</label>
+            <label for="email">Contact email</label>
             <input type="email" id="email" name="email" required>
           </div>
 
@@ -178,13 +194,13 @@
           <p class="step-sub">What this site actually needs to do for you.</p>
 
           <div class="field">
-            <label>What's the main goal for this site?</label>
+            <label>What's the main goal for this site? (choose all that apply)</label>
             <div class="choice-group" id="mainGoalGroup">
-              <label class="choice"><input type="radio" name="mainGoal" value="More enquiries/calls"> More enquiries/calls</label>
-              <label class="choice"><input type="radio" name="mainGoal" value="Online bookings"> Online bookings</label>
-              <label class="choice"><input type="radio" name="mainGoal" value="Look more credible"> Look more credible</label>
-              <label class="choice"><input type="radio" name="mainGoal" value="Showcase past work"> Showcase past work</label>
-              <label class="choice"><input type="radio" name="mainGoal" value="Other"> Other</label>
+              <label class="choice"><input type="checkbox" name="mainGoal" value="More enquiries/calls"> More enquiries/calls</label>
+              <label class="choice"><input type="checkbox" name="mainGoal" value="Online bookings"> Online bookings</label>
+              <label class="choice"><input type="checkbox" name="mainGoal" value="Look more credible"> Look more credible</label>
+              <label class="choice"><input type="checkbox" name="mainGoal" value="Showcase past work"> Showcase past work</label>
+              <label class="choice"><input type="checkbox" name="mainGoal" value="Other"> Other</label>
             </div>
             <div class="conditional-field" id="mainGoalOtherWrap">
               <input type="text" id="mainGoalOther" name="mainGoalOther" placeholder="Tell me more">
@@ -193,12 +209,12 @@
 
           <div class="field">
             <label for="typicalCustomer">Who's your typical customer?</label>
-            <textarea id="typicalCustomer" name="typicalCustomer" required></textarea>
+            <textarea id="typicalCustomer" name="typicalCustomer" placeholder="e.g. homeowners in their 30s-50s looking to renovate their kitchen or bathroom" required></textarea>
           </div>
 
           <div class="field">
-            <label for="differentiator">What makes you different from competitors?</label>
-            <textarea id="differentiator" name="differentiator" required></textarea>
+            <label for="differentiator">Is there anything that makes your business different from your competitors that you'd like the website to highlight?</label>
+            <textarea id="differentiator" name="differentiator" placeholder="e.g. 20 years' experience, fully insured, free quotes, all work guaranteed" required></textarea>
           </div>
 
           <div class="field">
@@ -229,15 +245,14 @@
             <label>Do you have a logo already?</label>
             <div class="choice-group" id="logoGroup">
               <label class="choice"><input type="radio" name="hasLogo" value="Yes"> Yes</label>
-              <label class="choice"><input type="radio" name="hasLogo" value="No, need one designed"> No, need one designed</label>
-              <label class="choice"><input type="radio" name="hasLogo" value="Not sure"> Not sure</label>
+              <label class="choice"><input type="radio" name="hasLogo" value="No"> No</label>
             </div>
           </div>
 
           <div class="field">
             <label>Do you have photos you'd like used?</label>
             <div class="choice-group" id="photosGroup">
-              <label class="choice"><input type="radio" name="hasPhotos" value="Yes, I'll send them"> Yes, I'll send them</label>
+              <label class="choice"><input type="radio" name="hasPhotos" value="Yes, I can send them"> Yes, I can send them</label>
               <label class="choice"><input type="radio" name="hasPhotos" value="No, need stock/help sourcing"> No, need stock/help sourcing</label>
             </div>
           </div>
@@ -252,14 +267,12 @@
           </div>
 
           <div class="field">
-            <label>Do you already have a domain name?</label>
-            <div class="choice-group" id="domainGroup">
-              <label class="choice"><input type="radio" name="hasDomain" value="Yes"> Yes</label>
-              <label class="choice"><input type="radio" name="hasDomain" value="No, need help choosing one"> No, need help choosing one</label>
-            </div>
-            <div class="conditional-field" id="domainNameWrap">
-              <input type="text" id="domainName" name="domainName" placeholder="What's the domain?">
-            </div>
+            <label for="domainName">Desired website address (if you have one in mind)</label>
+            <input type="text" id="domainName" name="domainName" placeholder="e.g. yourbusiness.co.uk">
+            <label class="choice" style="margin-top:10px;">
+              <input type="checkbox" id="alreadyHasDomain" name="alreadyHasDomain" value="Yes">
+              I already own this domain
+            </label>
           </div>
 
           <div class="error-msg" id="submitError">Something went wrong sending this — please try again, or message me directly on WhatsApp.</div>
@@ -287,7 +300,7 @@
 <script>
   // ===== CONFIG =====
   // Paste your deployed Apps Script Web App URL here after setup.
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwqHVeMn_0DEenK2b7qXlwzzQJXEOkq2R89CkFy7P1H7U2dRoACkdNFcXNIJXr6OO-6UA/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzwNPq0eAvoW4Gm5hFSLodLX49cUhTm4zNlSVEgqXryIgsZvLDSlhBoll1lNeF15yC5XA/exec";
 
   let currentStep = 1;
   const totalSteps = 3;
@@ -339,14 +352,13 @@
   });
 
   // Conditional fields
-  document.querySelectorAll('input[name="mainGoal"]').forEach(r => {
-    r.addEventListener('change', () => {
-      document.getElementById('mainGoalOtherWrap').classList.toggle('show', r.value === 'Other' && r.checked);
-    });
+  document.getElementById('hasCurrentWebsite').addEventListener('change', (e) => {
+    document.getElementById('currentWebsiteWrap').classList.toggle('show', e.target.value === 'Yes');
   });
-  document.querySelectorAll('input[name="hasDomain"]').forEach(r => {
-    r.addEventListener('change', () => {
-      document.getElementById('domainNameWrap').classList.toggle('show', r.value === 'Yes' && r.checked);
+  document.querySelectorAll('input[name="mainGoal"]').forEach(c => {
+    c.addEventListener('change', () => {
+      const otherChecked = document.querySelector('input[name="mainGoal"][value="Other"]').checked;
+      document.getElementById('mainGoalOtherWrap').classList.toggle('show', otherChecked);
     });
   });
 
@@ -369,9 +381,12 @@
         data[key] = value;
       }
     }
-    // Normalize features checkboxes to a comma-separated string
+    // Normalize checkbox groups to comma-separated strings
     if (data.features) {
       data.features = Array.isArray(data.features) ? data.features.join(', ') : data.features;
+    }
+    if (data.mainGoal) {
+      data.mainGoal = Array.isArray(data.mainGoal) ? data.mainGoal.join(', ') : data.mainGoal;
     }
     data.submittedAt = new Date().toISOString();
 
