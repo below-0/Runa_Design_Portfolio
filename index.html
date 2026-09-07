@@ -93,10 +93,21 @@
   .service-list li{ font-size:0.95rem; color:var(--ink-soft); }
   .p-shot{ position:relative; overflow:hidden; aspect-ratio:16/9; background:var(--bg); display:block; }
   .grid-2x2{ grid-template-columns:repeat(2, 1fr); }
-  .p-body-top{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:6px; }
-  .p-body-top h3{ margin-bottom:0; }
-  .p-body-top a.link{ white-space:nowrap; }
-  .p-tag--live{ font-size:0.7rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:#1F4B3F; background:#E3F0EA; padding:3px 9px; border-radius:100px; margin-left:8px; vertical-align:middle; }
+  .p-overlay{
+    position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; justify-content:flex-end;
+    padding:22px; color:#fff;
+    background:linear-gradient(180deg, transparent 42%, rgba(12,9,14,0.92) 100%);
+    opacity:0; transition:opacity .3s ease;
+  }
+  .p-card:hover .p-overlay{ opacity:1; }
+  .p-overlay h3{ color:#fff; font-size:1.05rem; font-weight:700; margin-bottom:4px; }
+  .p-overlay p{ color:rgba(255,255,255,0.82); font-size:0.85rem; margin-bottom:10px; }
+  .p-overlay .link{ color:#fff; font-size:0.85rem; font-weight:600; text-decoration:none; }
+  .p-overlay .link:hover{ text-decoration:underline; }
+  .p-tag--live{ font-size:0.68rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:#0F2E22; background:#B9E6CE; padding:3px 9px; border-radius:100px; margin-left:8px; vertical-align:middle; }
+  @media (hover:none){
+    .p-overlay{ opacity:1; background:linear-gradient(180deg, transparent 58%, rgba(12,9,14,0.86) 100%); }
+  }
   .p-card--empty{ opacity:0.55; }
   .p-shot-empty{ aspect-ratio:16/9; border:1px dashed var(--border); border-radius:var(--radius-md); background:var(--bg); }
   .p-card--empty .p-body p{ font-size:0.85rem; color:var(--ink-soft); font-style:italic; }
@@ -219,50 +230,42 @@
         <div class="p-card">
           <a class="p-shot" href="https://runadesign.co.uk/work/cafe/" target="_blank" rel="noopener">
             <img src="/images/cafe-preview.webp" alt="Preview of Birchwood Coffee & Bakery" loading="lazy">
-          </a>
-          <div class="p-body">
-            <div class="p-body-top">
+            <div class="p-overlay">
               <h3>Birchwood Coffee &amp; Bakery</h3>
-              <a class="link" href="https://runadesign.co.uk/work/cafe/" target="_blank" rel="noopener">View site &#8599;</a>
+              <p>A warm, photo-led site for a café or bakery — full menu, story, and visit info.</p>
+              <span class="link">View site &#8599;</span>
             </div>
-            <p>A warm, photo-led site for a café or bakery — full menu, story, and visit info.</p>
-          </div>
+          </a>
         </div>
         <div class="p-card">
           <a class="p-shot" href="https://runadesign.co.uk/work/landscaping/" target="_blank" rel="noopener">
             <img src="/images/landscaping-preview.webp" alt="Preview of Braemar Landscaping" loading="lazy">
-          </a>
-          <div class="p-body">
-            <div class="p-body-top">
+            <div class="p-overlay">
               <h3>Braemar Landscaping</h3>
-              <a class="link" href="https://runadesign.co.uk/work/landscaping/" target="_blank" rel="noopener">View site &#8599;</a>
+              <p>An editorial, image-rich site for a garden design and landscaping business.</p>
+              <span class="link">View site &#8599;</span>
             </div>
-            <p>An editorial, image-rich site for a garden design and landscaping business.</p>
-          </div>
+          </a>
         </div>
         <div class="p-card">
           <a class="p-shot" href="https://runadesign.co.uk/work/bjj/" target="_blank" rel="noopener">
             <img src="/images/bjj-preview.webp" alt="Preview of Clyde BJJ" loading="lazy">
-          </a>
-          <div class="p-body">
-            <div class="p-body-top">
+            <div class="p-overlay">
               <h3>Clyde BJJ</h3>
-              <a class="link" href="https://runadesign.co.uk/work/bjj/" target="_blank" rel="noopener">View site &#8599;</a>
+              <p>A bold, multi-page site for a BJJ academy — schedule, coaching, and instructor pages.</p>
+              <span class="link">View site &#8599;</span>
             </div>
-            <p>A bold, multi-page site for a BJJ academy — schedule, coaching, and instructor pages.</p>
-          </div>
+          </a>
         </div>
         <div class="p-card">
           <a class="p-shot" href="https://runadesign.co.uk/work/handyman/" target="_blank" rel="noopener">
             <img src="/images/handyman-preview.webp" alt="Preview of Graham McLeod Handyman" loading="lazy">
-          </a>
-          <div class="p-body">
-            <div class="p-body-top">
+            <div class="p-overlay">
               <h3>Graham McLeod Handyman</h3>
-              <a class="link" href="https://runadesign.co.uk/work/handyman/" target="_blank" rel="noopener">View site &#8599;</a>
+              <p>A comprehensive, trust-focused site for a local handyman — services, FAQ, and coverage area.</p>
+              <span class="link">View site &#8599;</span>
             </div>
-            <p>A comprehensive, trust-focused site for a local handyman — services, FAQ, and coverage area.</p>
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -276,26 +279,22 @@
         <div class="p-card p-card--featured">
           <a class="p-shot p-shot--wide" href="https://batterycalculator.co.uk" target="_blank" rel="noopener">
             <img src="/images/battery-preview.webp" alt="Preview of Battery Calculator" loading="lazy">
-          </a>
-          <div class="p-body">
-            <div class="p-body-top">
+            <div class="p-overlay">
               <h3>Solar &amp; Battery Calculator <span class="p-tag--live">Live</span></h3>
-              <a class="link" href="https://batterycalculator.co.uk" target="_blank" rel="noopener">Launch tool &#8599;</a>
+              <p>A live, interactive lead-generation tool built for UK solar battery installers — real users, real leads.</p>
+              <span class="link">Launch tool &#8599;</span>
             </div>
-            <p>A live, interactive lead-generation tool built for UK solar battery installers — real users, real leads.</p>
-          </div>
+          </a>
         </div>
         <div class="p-card p-card--featured">
           <a class="p-shot p-shot--wide" href="https://runadesign.co.uk/work/overpayment" target="_blank" rel="noopener">
             <img src="/images/overpayment-preview.webp" alt="Preview of Mortgage Overpayment Calculator" loading="lazy">
-          </a>
-          <div class="p-body">
-            <div class="p-body-top">
+            <div class="p-overlay">
               <h3>Mortgage Overpayment Calculator <span class="p-tag--live">Live</span></h3>
-              <a class="link" href="https://runadesign.co.uk/work/overpayment" target="_blank" rel="noopener">Launch tool &#8599;</a>
+              <p>An interactive calculator showing how monthly overpayments and lump sums change your mortgage term and total interest.</p>
+              <span class="link">Launch tool &#8599;</span>
             </div>
-            <p>An interactive calculator showing how monthly overpayments and lump sums change your mortgage term and total interest.</p>
-          </div>
+          </a>
         </div>
       </div>
     </div>
