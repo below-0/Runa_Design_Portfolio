@@ -93,20 +93,29 @@
   .service-list li{ font-size:0.95rem; color:var(--ink-soft); }
   .p-shot{ position:relative; overflow:hidden; aspect-ratio:16/9; background:var(--bg); display:block; }
   .grid-2x2{ grid-template-columns:repeat(2, 1fr); }
+  .p-card-link{ display:block; position:relative; color:inherit; text-decoration:none; }
   .p-overlay{
     position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; justify-content:flex-end;
     padding:22px; color:#fff;
-    background:linear-gradient(180deg, transparent 42%, rgba(12,9,14,0.92) 100%);
+    background:linear-gradient(180deg, transparent 15%, rgba(8,6,10,0.55) 45%, rgba(6,4,8,0.97) 100%);
     opacity:0; transition:opacity .3s ease;
   }
   .p-card:hover .p-overlay{ opacity:1; }
   .p-overlay h3{ color:#fff; font-size:1.05rem; font-weight:700; margin-bottom:4px; }
-  .p-overlay p{ color:rgba(255,255,255,0.82); font-size:0.85rem; margin-bottom:10px; }
+  .p-overlay p{ color:rgba(255,255,255,0.88); font-size:0.85rem; margin-bottom:10px; }
   .p-overlay .link{ color:#fff; font-size:0.85rem; font-weight:600; text-decoration:none; }
   .p-overlay .link:hover{ text-decoration:underline; }
   .p-tag--live{ font-size:0.68rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:#0F2E22; background:#B9E6CE; padding:3px 9px; border-radius:100px; margin-left:8px; vertical-align:middle; }
   @media (hover:none){
-    .p-overlay{ opacity:1; background:linear-gradient(180deg, transparent 58%, rgba(12,9,14,0.86) 100%); }
+    .p-shot{ position:static; }
+    .p-overlay{
+      position:static; opacity:1; color:var(--ink); background:var(--card);
+      padding:18px 22px 22px;
+    }
+    .p-overlay h3{ color:var(--ink); }
+    .p-overlay p{ color:var(--ink-soft); }
+    .p-overlay .link{ color:var(--accent); }
+    .p-tag--live{ color:#1F4B3F; background:#E3F0EA; }
   }
   .p-card--empty{ opacity:0.55; }
   .p-shot-empty{ aspect-ratio:16/9; border:1px dashed var(--border); border-radius:var(--radius-md); background:var(--bg); }
@@ -228,8 +237,8 @@
       </div>
       <div class="portfolio-grid grid-2x2">
         <div class="p-card">
-          <a class="p-shot" href="https://runadesign.co.uk/work/cafe/" target="_blank" rel="noopener">
-            <img src="/images/cafe-preview.webp" alt="Preview of Birchwood Coffee & Bakery" loading="lazy">
+          <a class="p-card-link" href="https://runadesign.co.uk/work/cafe/" target="_blank" rel="noopener">
+            <div class="p-shot"><img src="/images/cafe-preview.webp" alt="Preview of Birchwood Coffee & Bakery" loading="lazy"></div>
             <div class="p-overlay">
               <h3>Birchwood Coffee &amp; Bakery</h3>
               <p>A warm, photo-led site for a café or bakery — full menu, story, and visit info.</p>
@@ -238,8 +247,8 @@
           </a>
         </div>
         <div class="p-card">
-          <a class="p-shot" href="https://runadesign.co.uk/work/landscaping/" target="_blank" rel="noopener">
-            <img src="/images/landscaping-preview.webp" alt="Preview of Braemar Landscaping" loading="lazy">
+          <a class="p-card-link" href="https://runadesign.co.uk/work/landscaping/" target="_blank" rel="noopener">
+            <div class="p-shot"><img src="/images/landscaping-preview.webp" alt="Preview of Braemar Landscaping" loading="lazy"></div>
             <div class="p-overlay">
               <h3>Braemar Landscaping</h3>
               <p>An editorial, image-rich site for a garden design and landscaping business.</p>
@@ -248,8 +257,8 @@
           </a>
         </div>
         <div class="p-card">
-          <a class="p-shot" href="https://runadesign.co.uk/work/bjj/" target="_blank" rel="noopener">
-            <img src="/images/bjj-preview.webp" alt="Preview of Clyde BJJ" loading="lazy">
+          <a class="p-card-link" href="https://runadesign.co.uk/work/bjj/" target="_blank" rel="noopener">
+            <div class="p-shot"><img src="/images/bjj-preview.webp" alt="Preview of Clyde BJJ" loading="lazy"></div>
             <div class="p-overlay">
               <h3>Clyde BJJ</h3>
               <p>A bold, multi-page site for a BJJ academy — schedule, coaching, and instructor pages.</p>
@@ -258,8 +267,8 @@
           </a>
         </div>
         <div class="p-card">
-          <a class="p-shot" href="https://runadesign.co.uk/work/handyman/" target="_blank" rel="noopener">
-            <img src="/images/handyman-preview.webp" alt="Preview of Graham McLeod Handyman" loading="lazy">
+          <a class="p-card-link" href="https://runadesign.co.uk/work/handyman/" target="_blank" rel="noopener">
+            <div class="p-shot"><img src="/images/handyman-preview.webp" alt="Preview of Graham McLeod Handyman" loading="lazy"></div>
             <div class="p-overlay">
               <h3>Graham McLeod Handyman</h3>
               <p>A comprehensive, trust-focused site for a local handyman — services, FAQ, and coverage area.</p>
@@ -277,8 +286,8 @@
       </div>
       <div class="portfolio-grid grid-featured">
         <div class="p-card p-card--featured">
-          <a class="p-shot p-shot--wide" href="https://batterycalculator.co.uk" target="_blank" rel="noopener">
-            <img src="/images/battery-preview.webp" alt="Preview of Battery Calculator" loading="lazy">
+          <a class="p-card-link" href="https://batterycalculator.co.uk" target="_blank" rel="noopener">
+            <div class="p-shot p-shot--wide"><img src="/images/battery-preview.webp" alt="Preview of Battery Calculator" loading="lazy"></div>
             <div class="p-overlay">
               <h3>Solar &amp; Battery Calculator <span class="p-tag--live">Live</span></h3>
               <p>A live, interactive lead-generation tool built for UK solar battery installers — real users, real leads.</p>
@@ -287,8 +296,8 @@
           </a>
         </div>
         <div class="p-card p-card--featured">
-          <a class="p-shot p-shot--wide" href="https://runadesign.co.uk/work/overpayment" target="_blank" rel="noopener">
-            <img src="/images/overpayment-preview.webp" alt="Preview of Mortgage Overpayment Calculator" loading="lazy">
+          <a class="p-card-link" href="https://runadesign.co.uk/work/overpayment" target="_blank" rel="noopener">
+            <div class="p-shot p-shot--wide"><img src="/images/overpayment-preview.webp" alt="Preview of Mortgage Overpayment Calculator" loading="lazy"></div>
             <div class="p-overlay">
               <h3>Mortgage Overpayment Calculator <span class="p-tag--live">Live</span></h3>
               <p>An interactive calculator showing how monthly overpayments and lump sums change your mortgage term and total interest.</p>
