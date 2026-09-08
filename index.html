@@ -61,6 +61,8 @@
   .btn-primary:hover{ background:var(--accent-light); transform:translateY(-1px); }
   .btn-secondary{ display:inline-block; padding:16px 26px; border-radius:100px; border:1.5px solid var(--border); text-decoration:none; color:var(--ink); font-weight:600; font-size:0.95rem; transition:border-color .2s; }
   .btn-secondary:hover{ border-color:var(--ink); }
+  .btn-secondary--on-dark{ border-color:rgba(255,255,255,0.3); color:#fff; }
+  .btn-secondary--on-dark:hover{ border-color:#fff; background:rgba(255,255,255,0.08); }
   .trust-line{ display:flex; gap:26px; flex-wrap:wrap; justify-content:center; font-size:0.86rem; color:var(--ink-soft); }
   .trust-line span{ display:flex; align-items:center; gap:6px; }
 
@@ -222,7 +224,7 @@
     <h1>Fast, modern websites that make your business look as good as it is.</h1>
     <p>Your website should reflect the quality of your business. I design and build professional, easy-to-use websites that help customers understand what you do, trust your business, and get in touch.</p>
     <div class="btn-row">
-      <a class="btn-primary" href="#contact">Get a free quote</a>
+      <a class="btn-primary" href="#contact">Get in touch</a>
       <a class="btn-secondary" href="#work">See my work</a>
     </div>
     <div class="trust-line">
@@ -387,10 +389,11 @@
 <section class="cta" id="contact">
   <p class="eyebrow">Get started</p>
   <h2>Let's build your website.</h2>
-  <p>Book a free 15-minute call and tell me what you need. No pressure, no obligation.</p>
+  <p>Book a free 15-minute call, or reach out on WhatsApp or email to get the ball rolling.</p>
   <div class="btn-row" style="justify-content:center;">
-    <a class="btn-primary" href="https://calendar.app.google/8HBnePzxyXmGTL2v8" target="_blank" rel="noopener">Book a free consultation</a>
-    <a class="btn-secondary" href="mailto:andrew@runadesign.co.uk" style="border-color:rgba(255,255,255,0.3); color:#fff;">Email me instead</a>
+    <a class="btn-primary" href="https://calendar.app.google/8HBnePzxyXmGTL2v8" target="_blank" rel="noopener">Book a free call</a>
+    <a class="btn-secondary btn-secondary--on-dark" href="https://wa.me/447424966475" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn-secondary btn-secondary--on-dark" href="mailto:andrew@runadesign.co.uk">Email me</a>
   </div>
 </section>
 
