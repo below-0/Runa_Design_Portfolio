@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gary Ashe Plumbing & Heating | Erskine</title>
+<meta name="description" content="Plumbing, heating and complete bathroom renovations across Erskine and West Dunbartonshire. Free quotes via WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+ <a class="brand" href="#"><img src="logo.jpg"><span><b>GARY ASHE</b><small>PLUMBING & HEATING</small></span></a>
+ <nav><a href="#bathrooms">Bathrooms</a><a href="#plumbing">Plumbing</a><a href="#heating">Heating</a><a href="#work">Our Work</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a></nav>
+ <a class="wa top-cta" href="#contact">◉ &nbsp; Get a Free Quote</a>
+</header>
+
+<main>
+<section class="hero">
+ <div class="shade"></div>
+ <div class="hero-inner">
+  <p class="kicker">ERSKINE & WEST DUNBARTONSHIRE</p>
+  <h1>Plumbing & Heating.<br><em>Done Properly.</em></h1>
+  <p class="intro">Complete bathroom renovations, plus professional plumbing and heating services from a local team you can rely on.</p>
+  <div class="hero-actions"><a class="wa" href="#contact">◉ &nbsp; Get a Free Quote on WhatsApp</a><a class="outline" href="#bathrooms">View Our Work</a></div>
+  <div class="proof">
+   <div><i>✓</i><span><b>Local & Trusted</b><small>Erskine & West Dunbartonshire</small></span></div>
+   <div><i>✓</i><span><b>Free Quotes</b><small>No obligation</small></span></div>
+   <div><i>✓</i><span><b>Experienced Team</b><small>Quality workmanship</small></span></div>
+  </div>
+ </div>
+</section>
+
+<section class="services" id="bathrooms">
+ <div class="heading"><p class="kicker blue">OUR SERVICES</p><h2>Bathrooms, <span>Plumbing & Heating</span></h2></div>
+ <div class="cards">
+  <article class="featured"><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1000&q=85"><div class="card-body"><h3>Bathroom Renovations</h3><p>Complete bathroom transformations from removal of your old bathroom through to the finished installation. We handle the entire project, giving you one team and one point of contact.</p><a href="#contact">Explore Bathrooms →</a></div></article>
+  <article id="plumbing"><img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=900&q=85"><div class="card-body"><h3>Plumbing</h3><p>Reliable plumbing repairs, replacements and installations for your home, from everyday faults to larger projects.</p><a href="#contact">Plumbing Services →</a></div></article>
+  <article id="heating"><img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=900&q=85"><div class="card-body"><h3>Heating</h3><p>Heating repairs, upgrades and installations to keep your home warm, comfortable and running efficiently.</p><a href="#contact">Heating Services →</a></div></article>
+ </div>
+</section>
+
+
+<section class="work" id="work">
+  <div class="heading">
+    <p class="kicker blue">RECENT WORK</p>
+    <h2>Bathrooms we've <span>transformed.</span></h2>
+    <p class="section-copy">A selection of completed bathroom projects. These images are placeholders until Gary's own project photos are added.</p>
+  </div>
+  <div class="work-grid">
+    <img class="wide" src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1200&q=85" alt="Bathroom project placeholder">
+    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=85" alt="Bathroom project placeholder">
+    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=800&q=85" alt="Bathroom project placeholder">
+    <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=85" alt="Bathroom project placeholder">
+    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=85" alt="Bathroom project placeholder">
+  </div>
+</section>
+
+<section class="about">
+  <div class="about-photo"><div class="photo-placeholder"><span>Team / van photo</span><small>Gary's real photo will go here</small></div></div>
+  <div class="about-copy">
+    <p class="kicker blue">ABOUT US</p>
+    <h2>Your local plumbing & heating team.</h2>
+    <p>Based in Erskine, we provide plumbing, heating and complete bathroom renovations across West Dunbartonshire and the surrounding area.</p>
+    <p>We focus on dependable service, straightforward communication and quality workmanship — whether it's a small repair or a full bathroom transformation.</p>
+    <a class="text-button" href="#contact">Get a Free Quote →</a>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="heading">
+    <p class="kicker blue">CUSTOMER REVIEWS</p>
+    <h2>Trusted by <span>local customers.</span></h2>
+  </div>
+  <div class="review-grid">
+    <article><div class="stars">★★★★★</div><p>“Customer review will be added here once Gary's existing reviews are supplied.”</p><b>Customer Name</b><small>Google review placeholder</small></article>
+    <article><div class="stars">★★★★★</div><p>“A second customer testimonial will appear here to reinforce the quality of the work and service.”</p><b>Customer Name</b><small>Google review placeholder</small></article>
+    <article><div class="stars">★★★★★</div><p>“A third review can highlight a bathroom renovation or another substantial project.”</p><b>Customer Name</b><small>Google review placeholder</small></article>
+  </div>
+</section>
+
+<section class="benefits">
+ <div><i>£</i><span><b>Free Quotes</b><small>No obligation, clear pricing</small></span></div>
+ <div><i>⌂</i><span><b>Local Team</b><small>Based in Erskine</small></span></div>
+ <div><i>✓</i><span><b>Quality Workmanship</b><small>Attention to detail</small></span></div>
+ <div><i>●</i><span><b>Residential Specialists</b><small>Homes across the local area</small></span></div>
+</section>
+
+<section class="cta" id="contact">
+ <h2>Get Your Free Quote Today</h2>
+ <p>The quickest way to get in touch is via WhatsApp. Send us a few details about your project and we'll get back to you.</p>
+ <a class="wa" href="#">◉ &nbsp; Get a Free Quote on WhatsApp</a>
+ <small>WhatsApp number to be added</small>
+</section>
+</main>
+
+<footer>
+ <a class="brand" href="#"><img src="logo.jpg"><span><b>GARY ASHE</b><small>PLUMBING & HEATING</small></span></a>
+ <div><b>Erskine, West Dunbartonshire</b><small>Covering surrounding areas</small></div>
+ <div><b>Get a Free Quote</b><small>via WhatsApp</small></div>
+</footer>
+</body></html>
