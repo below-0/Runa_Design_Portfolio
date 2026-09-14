@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — Runa Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F6F8; --card:#FFFFFF; --ink:#1A171C; --ink-soft:#5C5763; --border:#E7E4EA;
+    --accent:#4A2545; --accent-light:#6B3D65; --accent-tint:#F0E5EE;
+    --radius-lg:22px; --radius-md:14px;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{ background:var(--bg); color:var(--ink); font-family:'Inter', sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:'Manrope', sans-serif; color:var(--ink); letter-spacing:-0.02em; }
+  a{ color:inherit; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
+
+  header{ padding:28px 32px; }
+  .logo{ font-family:'Manrope', sans-serif; font-weight:800; font-size:1.2rem; text-decoration:none; color:var(--ink); }
+
+  .intro{ text-align:center; padding:64px 24px 20px; }
+  .eyebrow{ font-size:0.82rem; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--accent); margin-bottom:12px; display:block; }
+  .intro h1{ font-size:clamp(2rem, 4vw, 2.6rem); font-weight:800; margin-bottom:14px; }
+  .intro p{ color:var(--ink-soft); font-size:1.05rem; max-width:52ch; margin:0 auto; }
+
+  .plans{ display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; padding:56px 0 40px; align-items:stretch; }
+  .plan{ background:var(--card); border:1.5px solid var(--border); border-radius:var(--radius-lg); padding:36px 30px; display:flex; flex-direction:column; }
+  .plan--featured{ border-color:var(--accent); position:relative; box-shadow:0 20px 40px -24px rgba(74,37,69,0.35); }
+  .plan-badge{ position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; font-size:0.72rem; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; padding:5px 14px; border-radius:100px; }
+  .plan h3{ font-size:1.2rem; font-weight:800; margin-bottom:6px; }
+  .plan .plan-sub{ color:var(--ink-soft); font-size:0.9rem; margin-bottom:20px; }
+  .plan .price{ font-family:'Manrope', sans-serif; font-size:2.2rem; font-weight:800; margin-bottom:2px; }
+  .plan .price span{ font-size:1rem; font-weight:600; color:var(--ink-soft); }
+  .plan .price-note{ font-size:0.82rem; color:var(--ink-soft); margin-bottom:24px; }
+  .plan ul{ list-style:none; margin-bottom:28px; flex-grow:1; }
+  .plan ul li{ font-size:0.92rem; color:var(--ink-soft); padding:9px 0 9px 24px; position:relative; border-top:1px solid var(--border); }
+  .plan ul li:first-child{ border-top:none; }
+  .plan ul li::before{ content:'\2713'; position:absolute; left:0; top:9px; color:var(--accent); font-weight:700; font-size:0.85rem; }
+  .plan ul li.group-label{ padding-left:0; border-top:none; margin-top:14px; font-weight:700; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--ink); }
+  .plan ul li.group-label::before{ content:none; }
+  .plan-cta{ display:block; text-align:center; padding:14px 20px; border-radius:100px; font-weight:600; font-size:0.95rem; text-decoration:none; }
+  .plan-cta.primary{ background:var(--accent); color:#fff; }
+  .plan-cta.primary:hover{ background:var(--accent-light); }
+  .plan-cta.secondary{ border:1.5px solid var(--border); color:var(--ink); }
+  .plan-cta.secondary:hover{ border-color:var(--ink); }
+
+  .note-strip{ max-width:720px; margin:0 auto 60px; text-align:center; padding:0 24px; }
+  .note-strip p{ color:var(--ink-soft); font-size:0.92rem; }
+
+  .cta{ background:var(--accent); color:#fff; padding:80px 32px; text-align:center; }
+  .cta .eyebrow{ color:rgba(255,255,255,0.7); }
+  .cta h2{ color:#fff; font-size:clamp(1.6rem,3vw,2.1rem); margin-bottom:14px; }
+  .cta p{ color:rgba(255,255,255,0.85); margin-bottom:32px; }
+  .btn-row{ display:flex; gap:14px; flex-wrap:wrap; align-items:center; justify-content:center; }
+  .btn-primary{ display:inline-block; background:#fff; color:var(--accent); padding:16px 30px; border-radius:100px; text-decoration:none; font-weight:600; font-size:0.98rem; transition:background .2s; }
+  .btn-primary:hover{ background:#F2F2F2; }
+  .btn-secondary{ display:inline-block; padding:16px 26px; border-radius:100px; border:1.5px solid rgba(255,255,255,0.3); text-decoration:none; color:#fff; font-weight:600; font-size:0.95rem; transition:border-color .2s, background .2s; }
+  .btn-secondary:hover{ border-color:#fff; background:rgba(255,255,255,0.08); }
+
+  footer{ text-align:center; padding:32px; font-size:0.85rem; color:var(--ink-soft); }
+
+  @media (max-width:900px){
+    .plans{ grid-template-columns:1fr; padding:40px 24px; }
+    .plan--featured{ order:-1; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="https://runadesign.co.uk">Runa Design</a>
+</header>
+
+<div class="intro">
+  <span class="eyebrow">Pricing</span>
+  <h1>Simple, transparent pricing.</h1>
+  <p>One monthly price, no separate build fee. Choose the level of support that fits your business — upgrade any time as you grow.</p>
+</div>
+
+<div class="wrap">
+  <div class="plans">
+
+    <div class="plan">
+      <h3>Basic</h3>
+      <p class="plan-sub">Get online, properly.</p>
+      <div class="price">£79<span>/mo</span></div>
+      <p class="price-note">No long-term contract. Cancel any time.</p>
+      <ul>
+        <li>Custom-designed website, built around your business</li>
+        <li>Live, hosted and interactive</li>
+        <li>Fully mobile-friendly</li>
+        <li>Ongoing hosting &amp; maintenance</li>
+        <li>Ongoing updates — text and photo changes</li>
+      </ul>
+      <a class="plan-cta secondary" href="https://buy.stripe.com/dRm14o4tWesVbRM2BqcAo00" target="_blank" rel="noopener">Get started</a>
+    </div>
+
+    <div class="plan plan--featured">
+      <span class="plan-badge">Most popular</span>
+      <h3>Growth</h3>
+      <p class="plan-sub">Help your customers find you.</p>
+      <div class="price">£129<span>/mo</span></div>
+      <p class="price-note">Everything in Basic, plus local SEO.</p>
+      <ul>
+        <li>Google Business Profile fully optimised</li>
+        <li>On-page SEO across your site</li>
+        <li>Local keyword research for your trade &amp; area</li>
+        <li>Listed consistently across key directories</li>
+        <li>Search ranking tracked for your key terms</li>
+        <li>Business listing checked &amp; kept accurate</li>
+      </ul>
+      <a class="plan-cta primary" href="https://buy.stripe.com/3cI4gA4tWacF4pk6RGcAo01" target="_blank" rel="noopener">Get started</a>
+    </div>
+
+    <div class="plan">
+      <h3>Pro</h3>
+      <p class="plan-sub">Full management.</p>
+      <div class="price">£179<span>/mo</span></div>
+      <p class="price-note">Everything in Growth, plus active management.</p>
+      <ul>
+        <li>Google Business Profile management</li>
+        <li>Photo updates to showcase your work</li>
+        <li>Posts and offers for your customers</li>
+        <li>Ongoing reporting to keep you informed of your position</li>
+      </ul>
+      <a class="plan-cta secondary" href="https://buy.stripe.com/5kQ9AUf8AckNg82dg4cAo02" target="_blank" rel="noopener">Get started</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="note-strip">
+  <p>Not sure which level is right for you? Get started on Basic and upgrade whenever you're ready — nothing is locked in.</p>
+</div>
+
+<section class="cta" id="contact">
+  <span class="eyebrow">Get started</span>
+  <h2>Let's get your business online.</h2>
+  <p>Book a free 15-minute call, or reach out on WhatsApp or email to get the ball rolling.</p>
+  <div class="btn-row">
+    <a class="btn-primary" href="https://calendar.app.google/8HBnePzxyXmGTL2v8" target="_blank" rel="noopener">Book a free call</a>
+    <a class="btn-secondary" href="https://wa.me/447424966475" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn-secondary" href="mailto:andrew@runadesign.co.uk">Email me</a>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Runa Design. All rights reserved.
+</footer>
+
+</body>
+</html>
