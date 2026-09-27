@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Runa Builder V3.14.4</title><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;600;700&family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head><body>
+<header><div class="brand">RUNA <span>BUILDER</span><small>v3.14.4</small></div><input id="projectName" aria-label="Project name" value="Untitled website"><div class="header-actions"><button id="new">New</button><button id="open">Open</button><button id="save">Save</button><details class="header-more"><summary>More</summary><div class="header-menu"><button id="export">Export project</button><button id="import">Import project</button></div></details></div></header>
+<main><aside id="left">
+<div class="left-tabs"><button id="pagesTab" class="active">Pages</button><button id="libraryTab">Components</button><button id="assetsTab">Assets</button><button id="treeTab">Page tree</button></div>
+
+<div id="pagesPanel" class="left-panel">
+  <div class="pages-panel-head"><div><strong>Site pages</strong><small id="pageCount"></small></div><button id="addPage" class="compact-primary">+ Add page</button></div>
+  <div id="pagesList"></div>
+  <div class="starter-card"><strong>Design prototype</strong><span>Build the new image-led editorial BJJ home page on the current page.</span><button id="editorialStarter" class="compact-primary">Load editorial BJJ prototype</button></div>
+  <div class="left-note">Switch pages here. Each page keeps its own Sections while sharing the site's Style.</div>
+</div>
+
+<div id="libraryPanel" class="left-panel" hidden>
+  <div class="library-section-actions"><button id="addBlankSectionBtn" class="compact-primary">+ New blank section</button></div>
+  <div class="component-search-wrap"><input id="componentSearch" type="search" placeholder="Search components…" aria-label="Search components"></div>
+  <div id="library"></div>
+  <div class="drag-hint">Drag a component onto the page, or use Add.</div>
+  <div class="left-note">Start with a strong component, then make quick edits.<br>Advanced controls stay available when you need them.</div>
+</div>
+
+<div id="assetsPanel" class="left-panel" hidden>
+  <div class="pages-panel-head"><div><strong>Project assets</strong><small id="assetCount"></small></div><button id="addAsset" class="compact-primary">+ Upload</button></div>
+  <div id="assetsList"></div>
+  <div class="left-note">Images are stored once per project. Reusing an asset does not duplicate the image data.</div>
+</div>
+
+<div id="treePanel" class="left-panel" hidden><div id="tree"></div></div>
+</aside><section id="workspace">
+<div class="canvas-toolbar">
+  <div class="workspace-view-toggle"><button id="pageViewBtn" class="active">Page</button><button id="siteViewBtn">Site</button></div><div class="history-controls"><button id="undoBtn" title="Undo (Ctrl/Cmd+Z)" disabled>↶ Undo</button><button id="redoBtn" title="Redo (Ctrl/Cmd+Shift+Z)" disabled>↷ Redo</button></div>
+  <div class="active-page-chip"><span>Page</span><strong id="activePageName">Home</strong><small id="activePageSlug">/</small></div>
+  <div id="pageViewControls" class="page-view-controls">
+    <div class="devices"><button data-device="desktop" class="active">Desktop</button><button data-device="tablet">Tablet</button><button data-device="mobile">Mobile</button></div>
+    <span id="deviceNote">Editing desktop defaults</span>
+    <div class="editor-view-actions"><button id="toggleLeft" title="Show or hide the left panel">Hide left</button><button id="previewPage" title="Preview the current page at full browser width">Preview</button><button id="toggleRight" title="Show or hide the inspector">Hide right</button></div>
+  </div>
+  <div id="siteViewControls" class="site-view-controls" hidden>
+    <button id="siteZoomOut" title="Zoom out">−</button>
+    <button id="siteZoomReset" title="Reset zoom">50%</button>
+    <button id="siteZoomIn" title="Zoom in">+</button>
+    <button id="siteFocus" title="Centre the selected page">Focus page</button>
+    <button id="siteFit" title="Show the whole site">Fit site</button>
+  </div>
+</div>
+<div id="pageEditorSurface"><div id="scroll"><div id="stageShell"><div id="stage"><div id="canvas"></div></div></div></div></div>
+<div id="siteCanvasSurface" hidden><div id="siteViewport"><div id="siteWorld"><div id="sitePages"></div></div></div></div>
+</section><aside id="right"><div class="inspector-top"><button id="styleTab">Style</button><span id="scopeName">Page defaults</span></div><div class="inspector-modes"><button id="quickMode" class="active">Quick edit</button><button id="advancedMode">Advanced</button></div><div id="breadcrumb"></div><div id="inspector"></div></aside></main><button id="exitPreview" class="exit-preview" hidden>Exit preview</button><div id="toast" role="status"></div><dialog id="dialog"><div id="dialogContent"></div></dialog><input type="file" id="fileImport" accept="application/json,.json" hidden><script src="components.js"></script><script src="stock-assets.js"></script><script src="style-contract.js"></script><script src="app.js"></script><script src="site-canvas.js"></script></body></html>
