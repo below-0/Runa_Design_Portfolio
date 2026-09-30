@@ -324,7 +324,7 @@ const GALLERY_FEATURE_THUMBS={
 const GALLERY_FULL_STRIP={
   id:"bjj-gallery-full-strip-01",family:"gallery",name:"Gallery 02 · Full-Width Strip",category:"Gallery",
   description:"A wide photographic band for a fast visual hit without a long gallery section",preview:"academy-gallery",
-  meta:{stableId:"bjj-gallery-full-strip-01",version:1,category:"Gallery",visualFamilies:["Editorial","Immersive"],useCases:["visual break","training atmosphere","compact gallery"],tags:["gallery","strip","full width","lightbox"],compositionRecipe:"A compact full-width strip keeps multiple training moments visible simultaneously.",requiredSlots:["repeatable gallery images"],optionalSlots:["intro","captions","lightbox"],imageRoles:["training moments"],responsiveRecipe:"Four images sit across wide screens, two across tablet, and one per row on mobile.",minimumBuilderVersion:"3.11",capabilityRequirements:["gallery collection","lightbox","responsive strip"],provenance:{status:"Runa original",approach:"modular gallery family",source:"Runa V3.11",licence:"Runa"},verificationStatus:"prototype"},
+  meta:{stableId:"bjj-gallery-full-strip-01",version:1,category:"Gallery",visualFamilies:["Editorial","Immersive"],useCases:["visual break","training atmosphere","compact gallery"],tags:["gallery","strip","full width","lightbox"],compositionRecipe:"A compact full-width strip keeps multiple training moments visible simultaneously.",requiredSlots:["repeatable gallery images"],optionalSlots:["intro","captions","lightbox"],imageRoles:["training moments"],responsiveRecipe:"Four images sit across wide screens, two across tablet, and a compact two-column band on mobile.",minimumBuilderVersion:"3.11",capabilityRequirements:["gallery collection","lightbox","responsive strip"],provenance:{status:"Runa original",approach:"modular gallery family",source:"Runa V3.11",licence:"Runa"},verificationStatus:"prototype"},
   create(){const photos=[
     galleryPhoto(GALLERY_IMG.sparring,"Live rounds","Live rounds",{ratio:"3 / 4"}),
     galleryPhoto(GALLERY_IMG.detail,"Technical coaching","Coaching",{ratio:"3 / 4"}),
@@ -605,14 +605,14 @@ function makeHeroActions(layout="primary",primaryText="Book a trial class",prima
     layout==="two"?[button("primary","main"),button("secondary","alternative")]:
     layout==="primaryText"?[button("primary","main"),button("secondary","text")]:
     [button("primary","text"),button("secondary","text")];
-  return{id:uid("el"),type:"group",role:"heroActions",name:"Hero actions",actionLayout:layout,actionContent,style:{direction:"row",gap:16,justify,alignItems:"center",width:100},baseResponsive:{mobile:{direction:"column",gap:12,alignItems:justify==="center"?"center":"start"}},children};
+  return{id:uid("el"),type:"group",role:"heroActions",name:"Hero actions",actionLayout:layout,actionContent,style:{direction:"row",gap:16,justify,alignItems:"center",width:100,wrap:"wrap"},baseResponsive:{tablet:{gap:12,wrap:"wrap"},mobile:{direction:"column",gap:12,alignItems:justify==="center"?"center":"start",wrap:"nowrap"}},children};
 }
 
 const NAVBAR_EDITORIAL={
   id:"bjj-nav-editorial-01",family:"navbar",name:"Navbar 02 · Editorial",category:"Nav",
   description:"Transparent site-wide navigation for photographic heroes",preview:"nav-clean",
   meta:{stableId:"bjj-nav-editorial-01",version:1,category:"Nav",visualFamilies:["Editorial"],useCases:["image-led BJJ site"],tags:["navbar","transparent","editorial"],compositionRecipe:"Transparent navigation floats over the opening hero and becomes solid when scrolled.",requiredSlots:["brand","navigation","CTA"],optionalSlots:[],responsiveRecipe:"Desktop navigation becomes a hamburger menu on mobile.",minimumBuilderVersion:"3.5",capabilityRequirements:["transparent navbar"],provenance:{status:"Runa original",approach:"editorial BJJ prototype",source:"Runa V3.5",licence:"Runa"},verificationStatus:"prototype"},
-  create(){return{id:uid("sec"),type:"navbar",name:"Navbar 02 · Editorial",styleRole:"background",navMode:"smart",smartInitial:"hero",navTransparent:true,navTopColor:"$onDark",navScrolledBackground:"$bg",navScrolledColor:"$text",mobileMenu:"hamburger",style:{},elements:[
+  create(){return{id:uid("sec"),type:"navbar",name:"Navbar 02 · Editorial",styleRole:"background",navMode:"smart",smartInitial:"hero",navTransparent:true,navTopContext:"auto",navTopColor:"$onDark",navScrolledBackground:"$bg",navScrolledColor:"$text",mobileMenu:"hamburger",style:{},elements:[
     {id:uid("el"),type:"group",role:"navLayout",style:{direction:"row",gap:28,justify:"space-between",alignItems:"center",width:100},children:[
       {id:uid("el"),type:"text",role:"brand",text:"APEX JIU-JITSU",textStyleRole:"brand",style:{}},
       {id:uid("el"),type:"group",role:"navLinks",style:{direction:"row",gap:28,justify:"center",alignItems:"center",width:40},children:[
@@ -629,7 +629,7 @@ const HERO_FULL_BLEED={
   id:"bjj-hero-full-bleed-01",family:"hero",name:"Hero 06 · Full Bleed",category:"Hero",
   description:"Full-screen photographic hero with open typography",preview:"hero-editorial",
   meta:{stableId:"bjj-hero-full-bleed-01",version:1,category:"Hero",visualFamilies:["Editorial"],useCases:["BJJ academy home page"],tags:["hero","full bleed","photography","editorial"],compositionRecipe:"Viewport-height background photography with a restrained lower-left content block.",requiredSlots:["hero image","headline","intro","CTA"],optionalSlots:["kicker"],imageRoles:["training action"],responsiveRecipe:"Keeps the image immersive while reducing headline scale and vertical space on smaller screens.",minimumBuilderVersion:"3.5",capabilityRequirements:["section background image","full-height section"],provenance:{status:"Runa original",approach:"editorial BJJ prototype",source:"Runa V3.5",licence:"Runa"},verificationStatus:"prototype"},
-  create(){return{id:uid("sec"),type:"hero",name:"Hero 06 · Full Bleed",styleRole:"dark",baseStyle:{top:150,bottom:84,side:48,contentWidth:1440,minHeight:"screen",vAlign:"bottom",bgImage:EDITORIAL_IMG.hero,bgFit:"cover",bgPos:"center",overlayColor:"$dark",overlayOpacity:.48},baseResponsive:{tablet:{top:120,bottom:64,side:32,minHeight:720},mobile:{top:110,bottom:48,side:20,minHeight:660}},style:{},elements:[
+  create(){return{id:uid("sec"),type:"hero",name:"Hero 06 · Full Bleed",styleRole:"dark",baseStyle:{top:150,bottom:84,side:48,contentWidth:1440,minHeight:"screen",vAlign:"bottom",bgImage:EDITORIAL_IMG.hero,bgFit:"cover",bgPos:"center",overlayColor:"#000000",overlayOpacity:.48},baseResponsive:{tablet:{top:120,bottom:64,side:32,minHeight:720},mobile:{top:110,bottom:48,side:20,minHeight:660}},style:{},elements:[
     {id:uid("el"),type:"group",role:"heroEditorialCopy",style:{direction:"column",gap:20,justify:"end",alignItems:"start",width:72},baseResponsive:{tablet:{width:86,gap:18},mobile:{width:100,gap:14}},children:[
       {id:uid("el"),type:"heading",role:"h1",text:"Train somewhere that makes you want to come back tomorrow.",textScale:{desktop:1.34,tablet:1.08,mobile:.76},style:{maxWidth:1040},motion:{reveal:"mask"}},
       {id:uid("el"),type:"text",role:"lead",text:"Technical training, good people and a clear place to start — whether this is your first class or your thousandth.",style:{maxWidth:700},motion:{reveal:"rise",delay:90}},
@@ -904,11 +904,39 @@ const TIMETABLE_EDITORIAL={
   }
 };
 
+function testimonialStockItem(quote,name,meta,rating="★★★★★"){
+  return{id:uid("el"),type:"group",role:"testimonialItem",name:name||"Testimonial",style:{direction:"column",gap:16,justify:"space-between",alignItems:"start",width:100,padding:0,radius:"@square",overflow:"visible"},baseResponsive:{mobile:{gap:12}},children:[
+    {id:uid("el"),type:"text",role:"testimonialRating",text:rating,textStyleRole:"label",textRole:"accent1",style:{}},
+    {id:uid("el"),type:"heading",role:"testimonialQuote",text:quote,textStyleRole:"h3",textScale:{desktop:.84,tablet:.82,mobile:.78},style:{maxWidth:760}},
+    {id:uid("el"),type:"group",role:"testimonialAttribution",style:{direction:"column",gap:4,justify:"start",alignItems:"start",width:100},children:[
+      {id:uid("el"),type:"text",role:"testimonialName",text:name,textStyleRole:"label",style:{}},
+      {id:uid("el"),type:"text",role:"testimonialMeta",text:meta,textStyleRole:"small",textRole:"secondary",style:{}}
+    ]}
+  ]};
+}
+
+const TESTIMONIALS_FEATURED={
+  id:"bjj-testimonials-featured-01",family:"trust",name:"Testimonials 01 · Featured Reviews",category:"Trust",
+  description:"One dominant member quote supported by repeatable shorter testimonials",preview:"trust-reviews",
+  meta:{stableId:"bjj-testimonials-featured-01",version:1,category:"Trust",visualFamilies:["Editorial","Warm"],useCases:["member reviews","social proof","beginner reassurance"],tags:["testimonials","reviews","featured quote","trust"],compositionRecipe:"A dominant testimonial anchors the section while supporting member voices form a restrained editorial column.",requiredSlots:["testimonial quote","member attribution"],optionalSlots:["section intro","member context","rating"],responsiveRecipe:"Featured quote and supporting reviews collapse to a single reading column on mobile.",minimumBuilderVersion:"3.15",capabilityRequirements:["testimonial collection","responsive grid"],provenance:{status:"Runa original",approach:"editorial testimonial family",source:"Runa V3.15",licence:"Runa"},verificationStatus:"prototype"},
+  create(){return{id:uid("sec"),type:"trust",name:"Testimonials 01 · Featured Reviews",styleRole:"background",baseStyle:{top:64,bottom:64,side:48,contentWidth:1440},baseResponsive:{tablet:{top:52,bottom:52,side:32},mobile:{top:40,bottom:40,side:20}},style:{},elements:[
+    {id:uid("el"),type:"group",role:"testimonialIntro",style:{direction:"column",gap:12,justify:"start",alignItems:"start",width:68},baseResponsive:{tablet:{width:82},mobile:{width:100}},children:[
+      {id:uid("el"),type:"text",role:"kicker",text:"MEMBER VOICES",textRole:"accent1",style:{}},
+      {id:uid("el"),type:"heading",role:"h2",text:"The room should be something people want to come back to.",style:{maxWidth:900}}
+    ]},
+    {id:uid("el"),type:"group",role:"testimonialCollection",testimonialCollection:true,testimonialLayout:"featured",testimonialConfig:{intro:true,context:true,rating:false},style:{direction:"grid",columns:2,gap:24,justify:"start",alignItems:"stretch",width:100,marginTop:40},baseResponsive:{tablet:{columns:2,gap:20,marginTop:32},mobile:{direction:"column",gap:22,marginTop:26}},children:[
+      testimonialStockItem("I expected the training to be hard. I didn’t expect people to be so generous with their time. That made it much easier to keep showing up.","Sam","Beginner · training 18 months"),
+      testimonialStockItem("The coaching is detailed without making you feel lost. You always leave knowing what you should work on next.","Maya","Blue belt"),
+      testimonialStockItem("Hard rounds, friendly people and no ego. It feels serious without ever feeling unwelcoming.","Daniel","Member since 2023")
+    ]}
+  ]}}
+};
+
 const TRUST_STATEMENT={
-  id:"bjj-trust-statement-01",family:"trust",name:"Trust 02 · Statement",category:"Trust",
+  id:"bjj-trust-statement-01",family:"trust",name:"Testimonials 02 · Statement",category:"Trust",
   description:"Oversized testimonial statement without cards",preview:"trust-reviews",
   meta:{stableId:"bjj-trust-statement-01",version:1,category:"Trust",visualFamilies:["Editorial"],useCases:["testimonial","social proof"],tags:["quote","testimonial","statement"],compositionRecipe:"One confident testimonial is treated as editorial content rather than a review card grid.",requiredSlots:["quote","attribution"],optionalSlots:["rating"],responsiveRecipe:"Statement scale reduces while preserving a broad readable measure.",minimumBuilderVersion:"3.5",capabilityRequirements:["text scaling"],provenance:{status:"Runa original",approach:"editorial BJJ prototype",source:"Runa V3.5",licence:"Runa"},verificationStatus:"prototype"},
-  create(){return{id:uid("sec"),type:"trust",name:"Trust 02 · Statement",styleRole:"background",baseStyle:{top:64,bottom:64,side:48,contentWidth:1440},baseResponsive:{tablet:{top:52,bottom:52,side:32},mobile:{top:40,bottom:40,side:20}},style:{},elements:[
+  create(){return{id:uid("sec"),type:"trust",name:"Testimonials 02 · Statement",styleRole:"background",baseStyle:{top:64,bottom:64,side:48,contentWidth:1440},baseResponsive:{tablet:{top:52,bottom:52,side:32},mobile:{top:40,bottom:40,side:20}},style:{},elements:[
     {id:uid("el"),type:"group",role:"testimonialStatement",style:{direction:"column",gap:26,justify:"start",alignItems:"start",width:92},baseResponsive:{tablet:{width:100},mobile:{gap:20}},children:[
       {id:uid("el"),type:"text",role:"kicker",text:"FROM THE MAT",textRole:"accent1",style:{}},
       {id:uid("el"),type:"heading",role:"h2",text:"“I expected the training to be hard. I didn’t expect the room to feel this easy to walk into.”",textScale:{desktop:1.34,tablet:1.12,mobile:.84},style:{maxWidth:1180},motion:{reveal:"rise"}},
@@ -1278,10 +1306,10 @@ const PROGRAMS_TEXT_CARDS={
   description:"Compact text-only cards for a lower-page program overview",preview:"services-cards",
   meta:{stableId:"bjj-programs-text-cards-01",version:2,category:"Programs",visualFamilies:["Editorial","Clean"],useCases:["lower-page program overview","information-dense program list","3–8 programs"],tags:["programs","cards","text","repeatable","overview"],compositionRecipe:"Text-only cards provide a compact secondary overview when the visitor has already seen the academy imagery elsewhere on the page.",requiredSlots:["repeatable program items"],optionalSlots:["section intro"],imageRoles:[],responsiveRecipe:"Cards form a responsive grid on desktop and tablet and a clean single-column stack on mobile.",minimumBuilderVersion:"3.8",capabilityRequirements:["repeatable program collection","responsive grid"],provenance:{status:"Runa original",approach:"modular editorial program system",source:"Runa V3.8.1",licence:"Runa"},verificationStatus:"prototype"},
   create(){const items=[
-    programTextCardItem("Beginner Jiu-Jitsu","Start here","Learn the basic positions, movement and training habits in a structured environment designed for people with no previous grappling experience.",["No previous experience required","Learn the core positions and movements","Structured route into regular classes"]),
-    programTextCardItem("Adult BJJ","Gi + no-gi","Ongoing technical classes and live rounds for adults developing a complete jiu-jitsu game at their own pace.",["Gi and no-gi sessions","Technical coaching plus live rounds","Suitable for a range of experience levels"]),
-    programTextCardItem("Kids BJJ","Ages 6–12","Age-appropriate coaching focused on coordination, confidence, discipline and practical problem solving.",["Age-appropriate coaching","Build confidence and coordination","Clear expectations and progression"]),
-    programTextCardItem("Competition Training","Experienced students","Focused rounds, competition strategy and higher-intensity training for students preparing to compete.",["Higher-intensity rounds","Competition strategy and preparation","For students actively planning to compete"])
+    programTextCardItem("Beginner Jiu-Jitsu","Start here","Learn the core positions, movement and training habits in a structured beginner-friendly environment.",["No previous experience required","Learn the core positions and movements","Structured route into regular classes"]),
+    programTextCardItem("Adult BJJ","Gi + no-gi","Technical classes and live rounds for adults building a complete jiu-jitsu game.",["Gi and no-gi sessions","Technical coaching plus live rounds","Suitable for a range of experience levels"]),
+    programTextCardItem("Kids BJJ","Ages 6–12","Age-appropriate coaching for coordination, confidence, discipline and problem solving.",["Age-appropriate coaching","Build confidence and coordination","Clear expectations and progression"]),
+    programTextCardItem("Competition Training","Experienced students","Higher-intensity rounds and competition strategy for students preparing to compete.",["Higher-intensity rounds","Competition strategy and preparation","For students actively planning to compete"])
   ];return{id:uid("sec"),type:"services",name:"Programs 05 · Text Cards",anchor:"programs",styleRole:"background",baseStyle:{top:48,bottom:48,side:48,contentWidth:1440},baseResponsive:{tablet:{top:44,bottom:44,side:32},mobile:{top:36,bottom:36,side:20}},style:{},elements:[
     {id:uid("el"),type:"group",role:"programsWrap",style:{direction:"column",gap:24,justify:"start",alignItems:"stretch",width:100},children:[
       {id:uid("el"),type:"group",role:"contentGroup",style:{direction:"row",gap:28,justify:"space-between",alignItems:"end",width:100,firstColumn:62},baseResponsive:{tablet:{direction:"column",gap:10,alignItems:"start"},mobile:{direction:"column",gap:8}},children:[
@@ -1330,10 +1358,10 @@ const PROGRAMS_ALTERNATING_EDITORIAL={
 
 
 const TRUST_STORY_EDITORIAL={
-  id:"bjj-trust-story-editorial-01",family:"trust",name:"Trust 03 · Student Story",category:"Trust",
+  id:"bjj-trust-story-editorial-01",family:"trust",name:"Testimonials 03 · Student Story",category:"Trust",
   description:"Image-led testimonial feature with a longer student story",preview:"trust-reviews",
   meta:{stableId:"bjj-trust-story-editorial-01",version:1,category:"Trust",visualFamilies:["Editorial"],useCases:["testimonial","student story","social proof"],tags:["testimonial","story","image","trust"],compositionRecipe:"A full-width split pairs a training image with a longer first-person testimonial rather than review cards.",requiredSlots:["image","quote","attribution"],optionalSlots:["supporting copy"],imageRoles:["student training image"],responsiveRecipe:"Desktop split feature stacks image above quote on smaller screens.",minimumBuilderVersion:"3.6",capabilityRequirements:["zero-gutter section","responsive split"],provenance:{status:"Runa original",approach:"editorial BJJ prototype",source:"Runa V3.6",licence:"Runa"},verificationStatus:"prototype"},
-  create(){return{id:uid("sec"),type:"trust",name:"Trust 03 · Student Story",styleRole:"alternative",baseStyle:{top:0,bottom:0,side:0,contentWidth:0},style:{},elements:[
+  create(){return{id:uid("sec"),type:"trust",name:"Testimonials 03 · Student Story",styleRole:"alternative",baseStyle:{top:0,bottom:0,side:0,contentWidth:0},style:{},elements:[
     {id:uid("el"),type:"group",role:"trustStoryLayout",style:{direction:"row",gap:0,justify:"start",alignItems:"stretch",width:100,firstColumn:50},baseResponsive:{tablet:{direction:"column",gap:0},mobile:{direction:"column",gap:0}},children:[
       {id:uid("el"),type:"image",role:"visual",src:EDITORIAL_IMG.beginner,alt:"Student training during class",imageShapeRole:"bleed",style:{frameMode:"fill",height:620,radius:"@square",focalX:52,focalY:42},baseResponsive:{tablet:{frameMode:"ratio",aspectRatio:"16 / 10",height:420},mobile:{frameMode:"ratio",aspectRatio:"4 / 3",height:320}}},
       {id:uid("el"),type:"group",role:"trustStoryCopy",style:{direction:"column",gap:18,justify:"center",alignItems:"start",width:100,padding:72},baseResponsive:{tablet:{padding:52},mobile:{padding:28,gap:14}},children:[
@@ -1342,6 +1370,24 @@ const TRUST_STORY_EDITORIAL={
         {id:uid("el"),type:"text",role:"body",text:"The classes were hard in a good way, but the structure made a big difference. I didn’t feel like I had to guess what I was supposed to be learning.",style:{maxWidth:620}},
         {id:uid("el"),type:"text",role:"body",text:"— Sam · Beginner student",textRole:"secondary",style:{maxWidth:500}}
       ]}
+    ]}
+  ]}}
+};
+
+const TESTIMONIALS_VOICES={
+  id:"bjj-testimonials-voices-01",family:"trust",name:"Testimonials 04 · Member Voices",category:"Trust",
+  description:"Repeatable editorial review grid for several concise member testimonials",preview:"trust-reviews",
+  meta:{stableId:"bjj-testimonials-voices-01",version:1,category:"Trust",visualFamilies:["Clean","Editorial"],useCases:["member reviews","social proof","larger testimonial sets"],tags:["testimonials","reviews","grid","trust"],compositionRecipe:"Short testimonials sit in an open grid with strong quotes and restrained attribution rather than boxed review cards.",requiredSlots:["testimonial quote","member attribution"],optionalSlots:["section intro","member context","rating"],responsiveRecipe:"Grid reduces from three columns to two and then a single mobile column as the collection grows.",minimumBuilderVersion:"3.15",capabilityRequirements:["testimonial collection","responsive grid"],provenance:{status:"Runa original",approach:"editorial testimonial family",source:"Runa V3.15",licence:"Runa"},verificationStatus:"prototype"},
+  create(){return{id:uid("sec"),type:"trust",name:"Testimonials 04 · Member Voices",styleRole:"alternative",baseStyle:{top:64,bottom:64,side:48,contentWidth:1440},baseResponsive:{tablet:{top:52,bottom:52,side:32},mobile:{top:40,bottom:40,side:20}},style:{},elements:[
+    {id:uid("el"),type:"group",role:"testimonialIntro",style:{direction:"row",gap:32,justify:"space-between",alignItems:"end",width:100,firstColumn:58},baseResponsive:{tablet:{direction:"column",gap:16},mobile:{direction:"column",gap:14}},children:[
+      {id:uid("el"),type:"heading",role:"h2",text:"Different reasons for staying. The same room.",style:{maxWidth:820}},
+      {id:uid("el"),type:"text",role:"body",text:"Use real member voices here—short, specific and varied enough to sound like different people rather than marketing copy.",textRole:"secondary",style:{maxWidth:520}}
+    ]},
+    {id:uid("el"),type:"group",role:"testimonialCollection",testimonialCollection:true,testimonialLayout:"voices",testimonialConfig:{intro:true,context:true,rating:false},style:{direction:"grid",columns:3,gap:38,justify:"start",alignItems:"stretch",width:100,marginTop:44},baseResponsive:{tablet:{columns:2,gap:28,marginTop:34},mobile:{direction:"column",gap:30,marginTop:28}},children:[
+      testimonialStockItem("I joined because I wanted to learn something difficult. I stayed because the coaching made the difficult parts make sense.","Chris","Member · 2 years"),
+      testimonialStockItem("Nobody expected me to know what I was doing on day one. That sounds obvious, but it made starting much easier.","Aisha","Beginner"),
+      testimonialStockItem("There is enough intensity to make you improve and enough patience to make you want to keep learning.","Ben","Purple belt"),
+      testimonialStockItem("The best thing is the consistency. The room is organised, the coaching is clear and people actually help each other.","Lena","Member since 2022")
     ]}
   ]}}
 };
@@ -1427,6 +1473,6 @@ function defineComponent(def){
 
 // Editorial-first stock library. Legacy card-heavy stock sections have been removed from the
 // picker so the Builder now presents one coherent design language while the new system expands.
-const PROTOTYPE_COMPONENTS=[BLANK_SECTION,NAVBAR_EDITORIAL,HERO_FULL_BLEED,HERO_SPLIT_EDITORIAL,HERO_TYPO_STATEMENT,HERO_CENTERED_IMAGE,HERO_ASYMMETRIC_EDITORIAL,INTRO_STATEMENT,ACADEMY_FULL_SPLIT,ACADEMY_VALUES_EDITORIAL,ACADEMY_IMAGE_STORY,ACADEMY_STORY_PROOF,GALLERY_CLEAN_GRID,GALLERY_FULL_STRIP,GALLERY_SCROLL_RAIL,GALLERY_FEATURE_RAIL,PROGRAMS_ROWS_EDITORIAL,PROGRAMS_INDEX_EDITORIAL,PROGRAMS_IMAGE_STRIP,PROGRAMS_IMAGE_CARDS,PROGRAMS_TEXT_CARDS,PROGRAMS_HIGHLIGHT_CARDS,COACHES_FULL_FEATURE,COACHES_EDITORIAL_PROFILE,COACHES_CARDS,COACHES_LEAD_TEAM,TIMETABLE_EDITORIAL,FAQ_EDITORIAL,TRUST_STATEMENT,TRUST_STORY_EDITORIAL,CONVERSION_DISPLAY,LOCATION_EDITORIAL,FOOTER_EDITORIAL];
+const PROTOTYPE_COMPONENTS=[BLANK_SECTION,NAVBAR_EDITORIAL,HERO_FULL_BLEED,HERO_SPLIT_EDITORIAL,HERO_TYPO_STATEMENT,HERO_CENTERED_IMAGE,HERO_ASYMMETRIC_EDITORIAL,INTRO_STATEMENT,ACADEMY_FULL_SPLIT,ACADEMY_VALUES_EDITORIAL,ACADEMY_IMAGE_STORY,ACADEMY_STORY_PROOF,GALLERY_CLEAN_GRID,GALLERY_FULL_STRIP,GALLERY_SCROLL_RAIL,GALLERY_FEATURE_RAIL,PROGRAMS_ROWS_EDITORIAL,PROGRAMS_INDEX_EDITORIAL,PROGRAMS_IMAGE_STRIP,PROGRAMS_IMAGE_CARDS,PROGRAMS_TEXT_CARDS,PROGRAMS_HIGHLIGHT_CARDS,COACHES_FULL_FEATURE,COACHES_EDITORIAL_PROFILE,COACHES_CARDS,COACHES_LEAD_TEAM,TIMETABLE_EDITORIAL,FAQ_EDITORIAL,TESTIMONIALS_FEATURED,TRUST_STATEMENT,TRUST_STORY_EDITORIAL,TESTIMONIALS_VOICES,CONVERSION_DISPLAY,LOCATION_EDITORIAL,FOOTER_EDITORIAL];
 const COMPONENTS=PROTOTYPE_COMPONENTS.map(defineComponent);
 
