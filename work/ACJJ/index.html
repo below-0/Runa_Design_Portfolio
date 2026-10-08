@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andrew Cairns Jiu Jitsu</title>
+<meta name="description" content="Brazilian jiu jitsu black belt coaching in Penang: group classes, private lessons, seminars and online coaching.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<style>
+/* Single deliberate look, taken from the canvas design: stone ground, ink, mustard accent. */
+@font-face{font-family:'FFF AZADLIQ';src:url('fonts/fff-azadliq.woff2') format('woff2');font-weight:400 900;font-style:normal;font-display:swap}
+:root{color-scheme:light}
+[hidden]{display:none!important}
+body{margin:0;background:#B9B7B2;color:#161616}
+a{color:inherit}
+#top a:focus-visible,#top button:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+#top .rf-shot:focus-visible{outline:4px solid #EEECE7;outline-offset:-10px}
+#top button{font:inherit}
+#top .rf-link:hover{text-decoration:underline;text-underline-offset:0.18em;text-decoration-thickness:1px}
+#top .rf-w{display:inline-block;overflow:hidden;vertical-align:top;padding:0.1em 0.02em;margin:-0.1em -0.02em}
+#top .rf-wi{display:inline-block;transition:transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+#top.rf-ready[data-hs="word-rise"] [data-head].rf-pending:not(.is-in) .rf-wi{transform:translateY(110%)}
+#top.rf-ready[data-hs="wipe"] [data-head]{transition:clip-path 1.1s cubic-bezier(.65,0,.25,1)}
+#top.rf-ready[data-hs="wipe"] [data-head].rf-pending:not(.is-in){clip-path:inset(0 100% 0 0)}
+#top.rf-ready [data-reveal]{transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms)}
+#top.rf-ready[data-rs="fade-up"] [data-reveal].rf-pending:not(.is-in){opacity:0;transform:translateY(32px)}
+#top[data-tone="mono"] .rf-ph{filter:grayscale(1) contrast(1.06)}
+#top .rf-ph{transition:filter .6s ease}
+#top .rf-zoom img{transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .6s ease}
+#top[data-tone="mono"] .rf-offer:focus-within .rf-ph,#top[data-tone="mono"] .rf-shot:focus-visible .rf-ph{filter:none}
+@keyframes rf-fill-down{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes rf-rise-up{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes rf-fade-in{from{opacity:0}to{opacity:1}}
+@keyframes rf-wipe-in{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+#top.rf-ready .rf-fill{animation:rf-fill-down .9s cubic-bezier(.65,0,.35,1) .1s both}
+#top.rf-ready .rf-fill-2{animation-duration:.7s;animation-delay:.35s}
+#top.rf-ready .rf-after{animation:rf-fade-in .5s ease .95s both}
+#top.rf-ready .rf-rise{animation:rf-rise-up .9s cubic-bezier(.65,0,.35,1) .45s both}
+#top.rf-ready .rf-rise-2{animation-delay:.6s}
+#top.rf-ready[data-hs="sweep"] .rf-l1{animation:rf-fade-in .7s ease .35s both}
+#top.rf-ready[data-hs="sweep"] .rf-l2{animation:rf-wipe-in .8s cubic-bezier(.65,0,.35,1) .6s both}
+#top .rf-tall{min-height:clamp(440px,44vw,640px);box-sizing:border-box}
+#top .rf-offer{position:relative;transition:background-color .35s ease}
+#top.rf-ready .rf-offer[data-reveal]{transition:background-color .35s ease 0s,opacity .8s cubic-bezier(.2,.7,.2,1) var(--d,0ms),transform .8s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
+#top .rf-btn{transition:background-color .35s ease,color .35s ease}
+#top .rf-btn::after{content:"";position:absolute;inset:0}
+#top .rf-offer:focus-within{background-color:var(--acc)!important}
+#top .rf-offer:focus-within .rf-btn{background:#161616;color:var(--acc)}
+#top .rf-smoke{opacity:calc(1 - min(1, var(--p,1) * 1.2))}
+#top .rf-smoke span{transform:translate(calc(var(--dx,0%) * var(--p,1)),calc(var(--dy,0%) * var(--p,1))) scale(calc(1 + var(--p,1) * 0.35))}
+#top.rf-ready .rf-foot{clip-path:inset(0 0 0 0);transition:clip-path 1.2s cubic-bezier(.25,1,.5,1)}
+#top.rf-ready .rf-foot.rf-pending:not(.is-in){clip-path:inset(100% 0 0 0)}
+#top .rf-clear{filter:blur(calc((1 - min(1, var(--p,1) * 1.6)) * 12px));opacity:calc(min(1, 0.35 + var(--p,1) * 1.1))}
+#top.rf-ready[data-rs="fade-up"] [data-draw]{transition:transform 1s cubic-bezier(.65,0,.25,1)}
+#top.rf-ready[data-rs="fade-up"] [data-draw].rf-pending:not(.is-in){transform:scaleX(0)}
+#top .rf-cta .rf-arrow{transition:transform .35s ease}
+#top .rf-strip{scrollbar-width:none}
+#top .rf-strip::-webkit-scrollbar{display:none}
+@media (hover:hover){
+#top .rf-zoom:hover img,#top .rf-offer:hover .rf-zoom img{transform:scale(1.04)}
+#top[data-tone="mono"] .rf-zoom:hover .rf-ph,#top[data-tone="mono"] .rf-offer:hover .rf-ph,#top[data-tone="mono"] .rf-ph:hover{filter:none}
+#top .rf-cta:hover .rf-arrow{transform:translate(6px,-6px)}
+#top .rf-offer:hover{background-color:var(--acc)!important}
+#top .rf-offer:hover .rf-btn{background:#161616;color:var(--acc)}
+}
+@media (max-width:900px){
+#top .g-split{grid-template-columns:1fr!important}
+}
+@media (max-width:700px){
+#top .rf-tall{min-height:0}
+}
+@media (prefers-reduced-motion:reduce){
+#top [data-reveal],#top [data-head],#top .rf-wi{opacity:1!important;transform:none!important;clip-path:none!important;transition:none!important}
+#top .rf-zoom img,#top .rf-cta .rf-arrow{transition:none!important;transform:none!important}
+#top .rf-strip{scroll-behavior:auto!important}
+#top .rf-smoke{display:none}
+#top .rf-foot{clip-path:none!important}
+#top .rf-fill,#top .rf-after,#top .rf-rise,#top .rf-l1,#top .rf-l2{animation:none!important}
+#top .rf-clear{filter:none!important;opacity:1!important}
+#top [data-draw]{transform:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div id="top" data-rs="fade-up" data-hs="sweep" data-tone="mono" style="--acc: #D9A23B; font-family: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif; color: #161616; background: #B9B7B2; -webkit-font-smoothing: antialiased">
+
+<header class="g-split" style="display: grid; grid-template-columns: 3fr 1fr; background: #161616">
+<div style="min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; min-height: clamp(460px, 50vw, 720px); padding: 28px clamp(20px, 4vw, 56px) clamp(28px, 3vw, 44px); box-sizing: border-box; position: relative; isolation: isolate; background: #B9B7B2; color: #161616">
+<div class="rf-fill" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; background: #D9A23B"></div>
+<a href="#top" aria-label="ACJJ, Andrew Cairns Jiu Jitsu, back to top" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; font-family: 'FFF AZADLIQ', Impact, 'Arial Narrow', sans-serif; font-size: 34px; line-height: 1; text-decoration: none">ACJJ</a>
+<h1 data-head="" style="margin: 0; container-type: inline-size; display: flex; flex-direction: column; font-family: 'FFF AZADLIQ', Impact, 'Arial Narrow', sans-serif; font-weight: 400; line-height: 0.88; text-transform: uppercase">
+<span id="line1" class="rf-w rf-l1" style="display: block; white-space: nowrap; font-size: calc(100cqw * 1.00 / 6.484)"><span class="rf-wi" style="--d: 0ms">Andrew Cairns<svg aria-hidden="true" viewBox="0 0 550 700" style="display: inline-block; width: 0.55em; height: 0.7em; margin-left: 0.08em; overflow: visible"><path d="M425 0V160L125 540V700" fill="none" stroke="currentColor" stroke-width="180" stroke-linejoin="miter" stroke-miterlimit="10"></path></svg></span></span>
+<span id="line2" class="rf-w rf-l2" style="display: block; white-space: nowrap; font-size: calc(100cqw * 1.00 / 3.152)"><span class="rf-wi" style="--d: 120ms">Jiu Jitsu</span></span>
+</h1>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; background: #B9B7B2">
+<div style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; padding: 28px clamp(20px, 2.5vw, 40px) 36px; background: #B9B7B2">
+<a href="#contact" style="align-self: flex-end; display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border: 1px solid #161616; border-radius: 999px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none">Get in touch</a>
+<p data-reveal="up" style="--d: 300ms; margin: 0; font-size: clamp(22px, 2vw, 30px); line-height: 1.12; font-weight: 500; letter-spacing: -0.015em">Brazilian jiu jitsu black belt, coaching in Penang.</p>
+</div>
+<nav aria-label="Sections" style="position: relative; isolation: isolate; padding: 30px clamp(20px, 2.5vw, 40px) 36px; color: #EEECE7">
+<div class="rf-fill rf-fill-2" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; background: #161616"></div>
+<p class="rf-after" style="margin: 0 0 14px; font-size: 24px; line-height: 1.1; font-weight: 500; letter-spacing: -0.01em">Index</p>
+<ol class="rf-after" style="margin: 0; padding: 0; list-style: none; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase">
+<li><a href="#work" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; border-top: 1px solid rgba(238, 236, 231, 0.16); text-decoration: none"><span><span aria-hidden="true">01.&nbsp; </span>Work with me</span><span aria-hidden="true" style="flex: 0 0 auto; width: 6px; height: 6px; border-radius: 50%; background: currentColor"></span></a></li>
+<li><a href="#approach" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; border-top: 1px solid rgba(238, 236, 231, 0.16); text-decoration: none"><span><span aria-hidden="true">02.&nbsp; </span>Approach</span><span aria-hidden="true" style="flex: 0 0 auto; width: 6px; height: 6px; border-radius: 50%; background: currentColor"></span></a></li>
+<li><a href="#gallery" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; border-top: 1px solid rgba(238, 236, 231, 0.16); text-decoration: none"><span><span aria-hidden="true">03.&nbsp; </span>On the mat</span><span aria-hidden="true" style="flex: 0 0 auto; width: 6px; height: 6px; border-radius: 50%; background: currentColor"></span></a></li>
+<li><a href="#contact" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; border-top: 1px solid rgba(238, 236, 231, 0.16); border-bottom: 1px solid rgba(238, 236, 231, 0.16); text-decoration: none"><span><span aria-hidden="true">04.&nbsp; </span>Contact</span><span aria-hidden="true" style="flex: 0 0 auto; width: 6px; height: 6px; border-radius: 50%; background: currentColor"></span></a></li>
+</ol>
+</nav>
+</div>
+</header>
+
+<div class="g-split" style="display: grid; grid-template-columns: 3fr 1fr">
+<div class="rf-zoom rf-rise" style="position: relative; min-height: clamp(320px, 42vw, 640px); overflow: hidden; background: #2A2A2A">
+<img class="rf-ph" src="images/watching-the-drill.webp" alt="Students drilling while Andrew watches from his knees" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 85% 35%">
+</div>
+<a href="#work" class="rf-cta rf-rise rf-rise-2" style="display: flex; flex-direction: column; justify-content: space-between; gap: 48px; min-height: 260px; padding: 32px clamp(20px, 2.5vw, 40px) 36px; box-sizing: border-box; background: #D9A23B; color: #161616; text-decoration: none">
+<svg class="rf-arrow" aria-hidden="true" viewBox="0 0 100 100" style="align-self: flex-end; width: clamp(72px, 8vw, 124px); height: auto"><path d="M20 80 L78 22 M36 22 H78 V64" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="square"></path></svg>
+<span style="font-size: clamp(24px, 2.2vw, 32px); line-height: 1.1; font-weight: 500; letter-spacing: -0.015em">Work with me.</span>
+</a>
+</div>
+
+<section id="work" aria-labelledby="work-title" style="background: #B9B7B2; border-top: 1px solid #8E8C87">
+<div style="padding: clamp(32px, 3.67vw, 44px) clamp(20px, 4vw, 56px) 28px">
+<h2 id="work-title" data-reveal="up" style="margin: 0; font-size: clamp(44px, 5vw, 76px); line-height: 0.95; font-weight: 500; letter-spacing: -0.035em">Work with me</h2>
+</div>
+<h3 style="margin: 0; padding: 16px clamp(20px, 4vw, 56px); border-top: 1px solid #8E8C87; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase">In person</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 1px; background: #8E8C87; border-top: 1px solid #8E8C87">
+<article class="rf-offer rf-tall" data-reveal="up" style="--d: 0ms; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 30px clamp(20px, 3vw, 44px) 36px; background: #B9B7B2">
+<div class="rf-zoom" style="flex: 0 0 auto; position: relative; margin: -30px calc(clamp(20px, 3vw, 44px) * -1) 8px; aspect-ratio: 16 / 9; overflow: hidden; background: #2A2A2A"><img class="rf-ph" src="images/walking-the-mat.webp" alt="Andrew walking the mat as pairs drill" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%"></div>
+<p style="margin: 0; display: inline-flex; align-items: center; gap: 10px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase"><span aria-hidden="true" style="flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: #161616"></span>Available now</p>
+<h4 style="margin: auto 0 0; padding-top: 48px; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.05; font-weight: 500; letter-spacing: -0.02em">Attend a class</h4>
+<p style="margin: 0; max-width: 460px; font-size: 17px; line-height: 1.6">Group classes at gyms around Penang. Times and places are below.</p>
+<a class="rf-btn" href="#timetable" style="margin-top: 8px; align-self: flex-start; display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border: 1px solid #161616; border-radius: 999px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none">See the timetable</a>
+</article>
+<article class="rf-offer rf-tall" data-reveal="up" style="--d: 90ms; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 30px clamp(20px, 3vw, 44px) 36px; background: #B9B7B2">
+<div class="rf-zoom" style="flex: 0 0 auto; position: relative; margin: -30px calc(clamp(20px, 3vw, 44px) * -1) 8px; aspect-ratio: 16 / 9; overflow: hidden; background: #2A2A2A"><img class="rf-ph" src="images/armbar-correction.webp" alt="Andrew correcting an armbar on a student" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%"></div>
+<p style="margin: 0; display: inline-flex; align-items: center; gap: 10px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase"><span aria-hidden="true" style="flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: #161616"></span>Available now</p>
+<h4 style="margin: auto 0 0; padding-top: 48px; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.05; font-weight: 500; letter-spacing: -0.02em">Private lessons</h4>
+<p style="margin: 0; max-width: 460px; font-size: 17px; line-height: 1.6">One-to-one sessions built around your game.</p>
+<p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; line-height: 1.7; letter-spacing: 0.06em; text-transform: uppercase">[Where · length · price]</p>
+<a class="rf-btn" href="https://wa.me/" style="margin-top: 8px; align-self: flex-start; display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border: 1px solid #161616; border-radius: 999px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none">Book on WhatsApp</a>
+</article>
+<article class="rf-offer rf-tall" data-reveal="up" style="--d: 180ms; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 30px clamp(20px, 3vw, 44px) 36px; background: #B9B7B2">
+<div class="rf-zoom" style="flex: 0 0 auto; position: relative; margin: -30px calc(clamp(20px, 3vw, 44px) * -1) 8px; aspect-ratio: 16 / 9; overflow: hidden; background: #2A2A2A"><img class="rf-ph" src="images/class-demo.webp" alt="Andrew demonstrating a technique while the class watches" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%"></div>
+<p style="margin: 0; display: inline-flex; align-items: center; gap: 10px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase"><span aria-hidden="true" style="flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: #161616"></span>Available now</p>
+<h4 style="margin: auto 0 0; padding-top: 48px; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.05; font-weight: 500; letter-spacing: -0.02em">Book a seminar</h4>
+<p style="margin: 0; max-width: 460px; font-size: 17px; line-height: 1.6">Bring me to your gym to teach a seminar.</p>
+<p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; line-height: 1.7; letter-spacing: 0.06em; text-transform: uppercase">[Topics · format · travel]</p>
+<a class="rf-btn" href="https://wa.me/" style="margin-top: 8px; align-self: flex-start; display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border: 1px solid #161616; border-radius: 999px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none">Enquire on WhatsApp</a>
+</article>
+</div>
+<h3 style="margin: 0; padding: 16px clamp(20px, 4vw, 56px); border-top: 1px solid #8E8C87; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase">Online</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 1px; background: #8E8C87; border-top: 1px solid #8E8C87">
+<article class="rf-offer rf-tall" data-reveal="up" style="--d: 0ms; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 30px clamp(20px, 3vw, 44px) 36px; background: #B9B7B2">
+<p style="margin: 0; display: inline-flex; align-items: center; gap: 10px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase"><span aria-hidden="true" style="flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: #161616"></span>Available now</p>
+<h4 style="margin: auto 0 0; padding-top: 48px; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.05; font-weight: 500; letter-spacing: -0.02em">Virtual coaching</h4>
+<p style="margin: 0; max-width: 460px; font-size: 17px; line-height: 1.6">Start with a diagnostic analysis of your game, then monthly coaching across five areas: wrestling, passing, guard, pinning and escaping.</p>
+<p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; line-height: 1.7; letter-spacing: 0.06em; text-transform: uppercase">[Pricing]</p>
+<a class="rf-btn" href="https://wa.me/" style="margin-top: 8px; align-self: flex-start; display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border: 1px solid #161616; border-radius: 999px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none">Enquire on WhatsApp</a>
+</article>
+<article class="rf-tall" data-reveal="up" style="--d: 90ms; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 30px clamp(20px, 3vw, 44px) 36px; background: #B9B7B2">
+<p style="margin: 0; display: inline-flex; align-items: center; gap: 10px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase"><span aria-hidden="true" style="flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid #161616; box-sizing: border-box"></span>In the works</p>
+<h4 style="margin: auto 0 0; padding-top: 48px; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.05; font-weight: 500; letter-spacing: -0.02em">Instructional content</h4>
+<p style="margin: 0; max-width: 460px; font-size: 17px; line-height: 1.6">Recorded instruction you can study and train from.</p>
+</article>
+<article class="rf-tall" data-reveal="up" style="--d: 180ms; min-width: 0; display: flex; flex-direction: column; gap: 16px; padding: 30px clamp(20px, 3vw, 44px) 36px; background: #B9B7B2">
+<p style="margin: 0; display: inline-flex; align-items: center; gap: 10px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase"><span aria-hidden="true" style="flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid #161616; box-sizing: border-box"></span>In the works</p>
+<h4 style="margin: auto 0 0; padding-top: 48px; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.05; font-weight: 500; letter-spacing: -0.02em">The book</h4>
+<p style="margin: 0; max-width: 460px; font-size: 17px; line-height: 1.6">My coaching book, still being written.</p>
+<p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; line-height: 1.7; letter-spacing: 0.06em; text-transform: uppercase">[Working title]</p>
+</article>
+</div>
+</section>
+
+<section id="timetable" aria-labelledby="timetable-title" style="background: #B9B7B2; border-top: 1px solid #8E8C87">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 48px; padding: clamp(32px, 3.67vw, 44px) clamp(20px, 4vw, 56px) 28px">
+<h2 id="timetable-title" data-reveal="up" style="margin: 0; font-size: clamp(44px, 5vw, 76px); line-height: 0.95; font-weight: 500; letter-spacing: -0.035em">Class timetable</h2>
+<p data-reveal="up" style="--d: 120ms; margin: 0; max-width: 420px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; line-height: 1.75; letter-spacing: 0.08em; text-transform: uppercase">[A line about where you teach each week.]</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 1px; background: #8E8C87; border-top: 1px solid #8E8C87; border-bottom: 1px solid #8E8C87">
+
+<article data-reveal="up" style="min-width: 0; display: flex; flex-direction: column; gap: 22px; padding: 36px clamp(20px, 3vw, 44px) 40px; background: #B9B7B2">
+<div>
+<h3 style="margin: 0; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.05; font-weight: 500; letter-spacing: -0.02em">[Gym name]</h3>
+<p style="margin: 10px 0 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase">[Area], Penang</p>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; line-height: 1.6; letter-spacing: 0.06em; text-transform: uppercase">
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 11px 0; border-top: 1px solid rgba(22, 22, 22, 0.3)"><span>[Day]</span><span>[Time], [class type]</span></li>
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 11px 0; border-top: 1px solid rgba(22, 22, 22, 0.3)"><span>[Day]</span><span>[Time], [class type]</span></li>
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 11px 0; border-top: 1px solid rgba(22, 22, 22, 0.3); border-bottom: 1px solid rgba(22, 22, 22, 0.3)"><span>[Day]</span><span>[Time], [class type]</span></li>
+</ul>
+<p style="margin: auto 0 0; font-size: 17px; line-height: 1.6">[How to book]</p>
+</article>
+
+<article data-reveal="up" style="--d: 90ms; min-width: 0; display: flex; flex-direction: column; gap: 22px; padding: 36px clamp(20px, 3vw, 44px) 40px; background: #B9B7B2">
+<div>
+<h3 style="margin: 0; font-size: clamp(28px, 2.6vw, 38px); line-height: 1.05; font-weight: 500; letter-spacing: -0.02em">[Gym name]</h3>
+<p style="margin: 10px 0 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase">[Area], Penang</p>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; line-height: 1.6; letter-spacing: 0.06em; text-transform: uppercase">
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 11px 0; border-top: 1px solid rgba(22, 22, 22, 0.3)"><span>[Day]</span><span>[Time], [class type]</span></li>
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 11px 0; border-top: 1px solid rgba(22, 22, 22, 0.3)"><span>[Day]</span><span>[Time], [class type]</span></li>
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 11px 0; border-top: 1px solid rgba(22, 22, 22, 0.3); border-bottom: 1px solid rgba(22, 22, 22, 0.3)"><span>[Day]</span><span>[Time], [class type]</span></li>
+</ul>
+<p style="margin: auto 0 0; font-size: 17px; line-height: 1.6">[How to book]</p>
+</article>
+
+<div class="rf-zoom" style="position: relative; min-height: 420px; overflow: hidden; background: #2A2A2A">
+<img class="rf-ph" src="images/light-streaks.webp" alt="A student drilling a pin while Andrew looks on" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 82% 45%">
+</div>
+
+</div>
+</section>
+
+<section id="approach" aria-labelledby="approach-title" class="g-split" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #8E8C87; border-bottom: 1px solid #8E8C87">
+<div style="min-width: 0; display: flex; flex-direction: column; background: #161616; color: #EEECE7">
+<div class="rf-zoom" style="position: relative; min-height: clamp(360px, 40vw, 600px); overflow: hidden; background: #2A2A2A">
+<img class="rf-ph" src="images/andrew-portrait.webp" alt="Andrew in a black rash guard, standing in the gym" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%">
+</div>
+<div style="padding: 36px clamp(20px, 4vw, 56px) 44px">
+<h2 id="approach-title" data-reveal="up" style="margin: 0; font-size: clamp(44px, 5vw, 76px); line-height: 0.95; font-weight: 500; letter-spacing: -0.035em">My approach</h2>
+</div>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 1px; background: #8E8C87">
+<div data-reveal="up" style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; padding: 36px clamp(20px, 3vw, 44px); background: #B9B7B2">
+<p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase">01 / Philosophy</p>
+<p style="margin: 0; max-width: 560px; font-size: 17px; line-height: 1.6">[Your training philosophy.]</p>
+</div>
+<div data-reveal="up" style="--d: 90ms; flex: 1 1 auto; display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; padding: 36px clamp(20px, 3vw, 44px); background: #B9B7B2">
+<p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase">02 / How I coach</p>
+<p style="margin: 0; max-width: 560px; font-size: 17px; line-height: 1.6">[More on how you coach, if you want a second paragraph.]</p>
+</div>
+<div data-reveal="up" style="--d: 180ms; flex: 1 1 auto; display: flex; flex-direction: column; justify-content: flex-end; gap: 14px; padding: 36px clamp(20px, 3vw, 44px); background: #B9B7B2">
+<p style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase">03 / Background</p>
+<p style="margin: 0; max-width: 560px; font-size: 17px; line-height: 1.6">[Your background: how long you have trained, who promoted you.]</p>
+</div>
+</div>
+</section>
+
+<section id="gallery" aria-labelledby="gallery-title" style="background: #B9B7B2">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px 48px; padding: clamp(32px, 3.67vw, 44px) clamp(20px, 4vw, 56px) 28px">
+<h2 id="gallery-title" data-reveal="up" style="margin: 0; font-size: clamp(44px, 5vw, 76px); line-height: 0.95; font-weight: 500; letter-spacing: -0.035em">On the mat</h2>
+<div style="display: flex; gap: 12px">
+<button type="button" id="strip-prev" aria-label="Previous photos" style="display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; padding: 0; border: 0; border-radius: 50%; background: #161616; color: #EEECE7; cursor: pointer"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="M20 12H4M10 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg></button>
+<button type="button" id="strip-next" aria-label="Next photos" style="display: inline-flex; align-items: center; justify-content: center; width: 64px; height: 64px; padding: 0; border: 0; border-radius: 50%; background: #161616; color: #EEECE7; cursor: pointer"><svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path d="M4 12h16M14 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6"></path></svg></button>
+</div>
+</div>
+<div id="strip" class="rf-strip" style="display: flex; gap: 1px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; background: #8E8C87; border-top: 1px solid #8E8C87; border-bottom: 1px solid #8E8C87">
+<button type="button" class="rf-shot rf-zoom" data-alt="Andrew kneeling on the mat mid-technique, looking at the camera" aria-label="Open photo: Andrew kneeling on the mat mid-technique, looking at the camera" style="flex: 0 0 auto; position: relative; display: block; padding: 0; border: 0; overflow: hidden; scroll-snap-align: start; background: #2A2A2A; cursor: zoom-in"><img class="rf-ph" src="images/kneeling-to-camera.webp" alt="" loading="lazy" style="display: block; height: clamp(280px, 32vw, 480px); width: auto; aspect-ratio: 1280 / 853; object-fit: cover"></button>
+<button type="button" class="rf-shot rf-zoom" data-alt="Andrew crouched beside two students, coaching them through a guard position" aria-label="Open photo: Andrew crouched beside two students, coaching them through a guard position" style="flex: 0 0 auto; position: relative; display: block; padding: 0; border: 0; overflow: hidden; scroll-snap-align: start; background: #2A2A2A; cursor: zoom-in"><img class="rf-ph" src="images/coaching-guard.webp" alt="" loading="lazy" style="display: block; height: clamp(280px, 32vw, 480px); width: auto; aspect-ratio: 1280 / 853; object-fit: cover"></button>
+<button type="button" class="rf-shot rf-zoom" data-alt="Andrew laughing while showing an armbar on a student" aria-label="Open photo: Andrew laughing while showing an armbar on a student" style="flex: 0 0 auto; position: relative; display: block; padding: 0; border: 0; overflow: hidden; scroll-snap-align: start; background: #2A2A2A; cursor: zoom-in"><img class="rf-ph" src="images/armbar-laughing.webp" alt="" loading="lazy" style="display: block; height: clamp(280px, 32vw, 480px); width: auto; aspect-ratio: 1067 / 1600; object-fit: cover"></button>
+<button type="button" class="rf-shot rf-zoom" data-alt="Andrew walking the mat as pairs drill" aria-label="Open photo: Andrew walking the mat as pairs drill" style="flex: 0 0 auto; position: relative; display: block; padding: 0; border: 0; overflow: hidden; scroll-snap-align: start; background: #2A2A2A; cursor: zoom-in"><img class="rf-ph" src="images/walking-the-mat.webp" alt="" loading="lazy" style="display: block; height: clamp(280px, 32vw, 480px); width: auto; aspect-ratio: 1280 / 853; object-fit: cover"></button>
+<button type="button" class="rf-shot rf-zoom" data-alt="Andrew demonstrating a technique while the class watches" aria-label="Open photo: Andrew demonstrating a technique while the class watches" style="flex: 0 0 auto; position: relative; display: block; padding: 0; border: 0; overflow: hidden; scroll-snap-align: start; background: #2A2A2A; cursor: zoom-in"><img class="rf-ph" src="images/class-demo.webp" alt="" loading="lazy" style="display: block; height: clamp(280px, 32vw, 480px); width: auto; aspect-ratio: 1280 / 853; object-fit: cover"></button>
+<button type="button" class="rf-shot rf-zoom" data-alt="Andrew correcting an armbar on a student" aria-label="Open photo: Andrew correcting an armbar on a student" style="flex: 0 0 auto; position: relative; display: block; padding: 0; border: 0; overflow: hidden; scroll-snap-align: start; background: #2A2A2A; cursor: zoom-in"><img class="rf-ph" src="images/armbar-correction.webp" alt="" loading="lazy" style="display: block; height: clamp(280px, 32vw, 480px); width: auto; aspect-ratio: 1067 / 1600; object-fit: cover"></button>
+<button type="button" class="rf-shot rf-zoom" data-alt="Students drilling while Andrew watches from his knees" aria-label="Open photo: Students drilling while Andrew watches from his knees" style="flex: 0 0 auto; position: relative; display: block; padding: 0; border: 0; overflow: hidden; scroll-snap-align: start; background: #2A2A2A; cursor: zoom-in"><img class="rf-ph" src="images/watching-the-drill.webp" alt="" loading="lazy" style="display: block; height: clamp(280px, 32vw, 480px); width: auto; aspect-ratio: 1280 / 853; object-fit: cover"></button>
+<button type="button" class="rf-shot rf-zoom" data-alt="Andrew smiling as two students laugh mid-drill" aria-label="Open photo: Andrew smiling as two students laugh mid-drill" style="flex: 0 0 auto; position: relative; display: block; padding: 0; border: 0; overflow: hidden; scroll-snap-align: start; background: #2A2A2A; cursor: zoom-in"><img class="rf-ph" src="images/clinch-drill.webp" alt="" loading="lazy" style="display: block; height: clamp(280px, 32vw, 480px); width: auto; aspect-ratio: 1280 / 853; object-fit: cover"></button>
+<button type="button" class="rf-shot rf-zoom" data-alt="Andrew coaching a pair, seen between heavy bags" aria-label="Open photo: Andrew coaching a pair, seen between heavy bags" style="flex: 0 0 auto; position: relative; display: block; padding: 0; border: 0; overflow: hidden; scroll-snap-align: start; background: #2A2A2A; cursor: zoom-in"><img class="rf-ph" src="images/through-the-bags.webp" alt="" loading="lazy" style="display: block; height: clamp(280px, 32vw, 480px); width: auto; aspect-ratio: 1280 / 853; object-fit: cover"></button>
+<button type="button" class="rf-shot rf-zoom" data-alt="Students watching a demonstration" aria-label="Open photo: Students watching a demonstration" style="flex: 0 0 auto; position: relative; display: block; padding: 0; border: 0; overflow: hidden; scroll-snap-align: start; background: #2A2A2A; cursor: zoom-in"><img class="rf-ph" src="images/students-watching.webp" alt="" loading="lazy" style="display: block; height: clamp(280px, 32vw, 480px); width: auto; aspect-ratio: 1280 / 853; object-fit: cover"></button>
+</div>
+</section>
+
+<section id="contact" aria-labelledby="contact-title" style="position: relative; overflow: hidden; background: #D9A23B; color: #161616; padding: clamp(56px, 7vw, 112px) clamp(20px, 4vw, 56px) 0">
+<div class="rf-smoke" aria-hidden="true" style="position: absolute; inset: 0; z-index: 1; pointer-events: none">
+<span style="position: absolute; left: -10%; top: -12%; width: 62%; height: 70%; border-radius: 50%; background: radial-gradient(closest-side, rgba(22, 22, 22, 0.92), rgba(22, 22, 22, 0)); --dx: -14%; --dy: -12%"></span>
+<span style="position: absolute; left: 34%; top: -18%; width: 58%; height: 62%; border-radius: 50%; background: radial-gradient(closest-side, rgba(22, 22, 22, 0.92), rgba(22, 22, 22, 0)); --dx: 10%; --dy: -16%"></span>
+<span style="position: absolute; left: 62%; top: 18%; width: 50%; height: 62%; border-radius: 50%; background: radial-gradient(closest-side, rgba(22, 22, 22, 0.92), rgba(22, 22, 22, 0)); --dx: 16%; --dy: 4%"></span>
+<span style="position: absolute; left: 4%; top: 38%; width: 56%; height: 52%; border-radius: 50%; background: radial-gradient(closest-side, rgba(22, 22, 22, 0.92), rgba(22, 22, 22, 0)); --dx: -12%; --dy: 10%"></span>
+<span style="position: absolute; left: 42%; top: 40%; width: 48%; height: 48%; border-radius: 50%; background: radial-gradient(closest-side, rgba(22, 22, 22, 0.92), rgba(22, 22, 22, 0)); --dx: 6%; --dy: 14%"></span>
+</div>
+<h2 id="contact-title" class="rf-clear" style="margin: 0; text-align: center; font-family: 'FFF AZADLIQ', Impact, 'Arial Narrow', sans-serif; font-weight: 400; font-size: clamp(64px, 11vw, 176px); line-height: 0.9; text-transform: uppercase"><span class="rf-w"><span class="rf-wi" style="--d: 0ms">Get</span></span> <span class="rf-w"><span class="rf-wi" style="--d: 80ms">in</span></span> <span class="rf-w"><span class="rf-wi" style="--d: 160ms">touch</span></span></h2>
+<div data-reveal="up" style="--d: 200ms; display: flex; justify-content: center; margin-top: clamp(28px, 4vw, 52px)">
+<a href="https://wa.me/" class="rf-link" style="display: inline-flex; align-items: center; gap: clamp(16px, 3vw, 44px); min-height: 44px; font-size: clamp(24px, 3vw, 44px); line-height: 1.1; font-weight: 500; letter-spacing: -0.02em; text-decoration: none"><span aria-hidden="true" style="font-size: 2.2em; font-weight: 400; line-height: 0.8">(</span><span>Message me on WhatsApp</span><span aria-hidden="true" style="font-size: 2.2em; font-weight: 400; line-height: 0.8">)</span></a>
+</div>
+<div data-draw="" style="height: 1px; margin-top: clamp(48px, 6vw, 88px); background: #161616; transform-origin: left center"></div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 28px 40px; padding: 28px 0 clamp(40px, 5vw, 64px)">
+<p data-reveal="up" style="--d: 450ms; margin: 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; line-height: 1.75; letter-spacing: 0.08em; text-transform: uppercase">Penang, Malaysia</p>
+<div data-reveal="up" style="--d: 530ms">
+<p style="margin: 0 0 6px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase">WhatsApp</p>
+<a href="https://wa.me/" class="rf-link" style="display: inline-flex; align-items: center; min-height: 44px; font-size: clamp(22px, 2vw, 28px); font-weight: 500; letter-spacing: -0.015em; text-decoration: none">[Number]</a>
+</div>
+<div data-reveal="up" style="--d: 610ms">
+<p style="margin: 0 0 6px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase">Instagram</p>
+<a href="https://www.instagram.com/" class="rf-link" style="display: inline-flex; align-items: center; min-height: 44px; font-size: clamp(22px, 2vw, 28px); font-weight: 500; letter-spacing: -0.015em; text-decoration: none">[@handle]</a>
+</div>
+<div data-reveal="up" style="--d: 690ms">
+<p style="margin: 0 0 6px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase">Email</p>
+<a href="mailto:" class="rf-link" style="display: inline-flex; align-items: center; min-height: 44px; font-size: clamp(22px, 2vw, 28px); font-weight: 500; letter-spacing: -0.015em; text-decoration: none">[Email address]</a>
+</div>
+</div>
+</section>
+
+<footer style="background: #D9A23B; padding: 0 clamp(10px, 2vw, 28px)">
+<div id="foot-wrap" style="overflow: hidden; border-radius: 12px">
+<div class="rf-foot" style="border-radius: 12px; background: #161616; color: #D9A23B; padding: clamp(28px, 3vw, 48px) clamp(20px, 3vw, 48px) clamp(20px, 2.5vw, 36px); overflow: hidden">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 28px 40px">
+<p style="margin: 0; font-family: 'FFF AZADLIQ', Impact, 'Arial Narrow', sans-serif; font-size: 34px; line-height: 1">ACJJ</p>
+<nav aria-label="Footer">
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; font-size: clamp(22px, 2vw, 30px); line-height: 1.1; font-weight: 500; letter-spacing: -0.015em">
+<li><a href="#work" class="rf-link" style="display: inline-flex; align-items: center; min-height: 44px; text-decoration: none">Work with me</a></li>
+<li><a href="#approach" class="rf-link" style="display: inline-flex; align-items: center; min-height: 44px; text-decoration: none">Approach</a></li>
+<li><a href="#gallery" class="rf-link" style="display: inline-flex; align-items: center; min-height: 44px; text-decoration: none">On the mat</a></li>
+<li><a href="#contact" class="rf-link" style="display: inline-flex; align-items: center; min-height: 44px; text-decoration: none">Contact</a></li>
+</ul>
+</nav>
+<p style="margin: 0; align-self: end; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; line-height: 1.75; letter-spacing: 0.08em; text-transform: uppercase">Brazilian jiu jitsu<br>Penang, Malaysia</p>
+</div>
+<div style="container-type: inline-size; margin-top: clamp(40px, 6vw, 96px)">
+<p aria-hidden="true" style="margin: 0; font-family: 'FFF AZADLIQ', Impact, 'Arial Narrow', sans-serif; font-weight: 400; font-size: calc(100cqw / 5.854); line-height: 0.8; white-space: nowrap; text-transform: uppercase"><span id="mark" style="display: inline-block">Andrew Cairns</span></p>
+</div>
+</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 32px; padding: 10px clamp(10px, 2vw, 20px) 14px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #161616">
+<span>© 2026 Andrew Cairns</span>
+<a href="#top" class="rf-link" style="display: inline-flex; align-items: center; min-height: 44px; text-decoration: none">Back to top</a>
+</div>
+</footer>
+
+<div id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer" style="position: fixed; inset: 0; z-index: 50; display: flex; flex-direction: column; background: rgba(14, 14, 14, 0.96); color: #EEECE7">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px clamp(12px, 3vw, 32px)">
+<p id="lb-count" aria-live="polite" style="margin: 0; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em"></p>
+<button type="button" id="lb-close" style="min-height: 44px; padding: 0 22px; border: 1px solid rgba(238, 236, 231, 0.5); border-radius: 999px; background: transparent; color: #EEECE7; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer">Close</button>
+</div>
+<div style="flex: 1 1 auto; min-height: 0; display: flex; align-items: center; justify-content: center; padding: 0 clamp(12px, 3vw, 32px)">
+<img id="lb-img" class="rf-ph" src="images/kneeling-to-camera.webp" alt="" style="display: block; max-width: 100%; max-height: calc(100vh - 152px); object-fit: contain">
+</div>
+<div style="display: flex; justify-content: center; gap: 12px; padding: 12px">
+<button type="button" id="lb-prev" style="min-height: 44px; padding: 0 22px; border: 1px solid rgba(238, 236, 231, 0.5); border-radius: 999px; background: transparent; color: #EEECE7; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer">Previous</button>
+<button type="button" id="lb-next" style="min-height: 44px; padding: 0 22px; border: 1px solid rgba(238, 236, 231, 0.5); border-radius: 999px; background: transparent; color: #EEECE7; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer">Next</button>
+</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  var root = document.getElementById('top');
+  if (!root) { return; }
+  var reduce = false;
+  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+
+  /* Reveal on scroll */
+  function observe() {
+    var els = root.querySelectorAll('[data-reveal],[data-head],[data-draw]');
+    if (typeof IntersectionObserver === 'undefined') {
+      els.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(function (el) {
+      if (!el.classList.contains('is-in')) { el.classList.add('rf-pending'); }
+      io.observe(el);
+    });
+  }
+
+  /* Size the display lines to fill their width exactly */
+  function fit(outer, inner) {
+    if (!outer || !inner || typeof getComputedStyle === 'undefined') { return; }
+    var fs = parseFloat(getComputedStyle(inner).fontSize);
+    var w = inner.offsetWidth;
+    if (fs > 0 && w > 0) {
+      var em = Math.round((w / fs) * 1000) / 1000;
+      outer.style.fontSize = 'calc(100cqw / ' + em + ')';
+    }
+  }
+  function fitLines() {
+    var l1 = document.getElementById('line1');
+    var l2 = document.getElementById('line2');
+    var mk = document.getElementById('mark');
+    fit(l1, l1 && l1.querySelector('.rf-wi'));
+    fit(l2, l2 && l2.querySelector('.rf-wi'));
+    fit(mk && mk.parentNode, mk);
+  }
+
+  /* Gallery strip arrows */
+  var strip = document.getElementById('strip');
+  function stripBy(dir) {
+    if (!strip) { return; }
+    var dist = Math.max(240, Math.round(strip.clientWidth * 0.8));
+    try { strip.scrollBy({ left: dir * dist, behavior: reduce ? 'auto' : 'smooth' }); }
+    catch (e) { strip.scrollLeft += dir * dist; }
+  }
+  var prevBtn = document.getElementById('strip-prev');
+  var nextBtn = document.getElementById('strip-next');
+  if (prevBtn) { prevBtn.addEventListener('click', function () { stripBy(-1); }); }
+  if (nextBtn) { nextBtn.addEventListener('click', function () { stripBy(1); }); }
+
+  /* Photo viewer */
+  var shots = Array.prototype.slice.call(document.querySelectorAll('#strip .rf-shot'));
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lb-img');
+  var lbCount = document.getElementById('lb-count');
+  var lbClose = document.getElementById('lb-close');
+  var lbPrev = document.getElementById('lb-prev');
+  var lbNext = document.getElementById('lb-next');
+  var cur = -1;
+  var returnFocus = null;
+  function show(i) {
+    var n = shots.length;
+    cur = (i + n) % n;
+    var shot = shots[cur];
+    var img = shot.querySelector('img');
+    lbImg.src = img ? img.getAttribute('src') : '';
+    lbImg.alt = shot.getAttribute('data-alt') || '';
+    lbCount.textContent = (cur + 1) + ' / ' + n;
+  }
+  function openAt(i, btn) {
+    returnFocus = btn || null;
+    show(i);
+    lb.hidden = false;
+    try { document.documentElement.style.overflow = 'hidden'; } catch (e) {}
+    lbClose.focus();
+  }
+  function closeLb() {
+    lb.hidden = true;
+    cur = -1;
+    try { document.documentElement.style.overflow = ''; } catch (e) {}
+    if (returnFocus && returnFocus.focus) { returnFocus.focus(); }
+  }
+  shots.forEach(function (btn, i) {
+    btn.addEventListener('click', function () { openAt(i, btn); });
+  });
+  lbClose.addEventListener('click', closeLb);
+  lbPrev.addEventListener('click', function () { show(cur - 1); });
+  lbNext.addEventListener('click', function () { show(cur + 1); });
+  lb.addEventListener('keydown', function (e) {
+    var k = e.key;
+    if (k === 'Escape') { e.preventDefault(); closeLb(); return; }
+    if (k === 'ArrowLeft') { e.preventDefault(); show(cur - 1); return; }
+    if (k === 'ArrowRight') { e.preventDefault(); show(cur + 1); return; }
+    if (k === 'Tab') {
+      var b = lb.querySelectorAll('button');
+      var first = b[0];
+      var last = b[b.length - 1];
+      var a = document.activeElement;
+      if (e.shiftKey && a === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && a === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+
+  /* Contact smoke clears as you scroll in; footer panel rises */
+  var contact = document.getElementById('contact');
+  var footWrap = document.getElementById('foot-wrap');
+  var panel = footWrap ? footWrap.querySelector('.rf-foot') : null;
+  function canScroll() {
+    return document.documentElement.scrollHeight > (window.innerHeight || 0) + 4;
+  }
+  function smoke() {
+    var vh = window.innerHeight || 0;
+    if (!vh) { return; }
+    var live = !reduce && canScroll();
+    if (contact) {
+      var p = 1;
+      if (live) {
+        p = (vh - contact.getBoundingClientRect().top) / (vh * 0.7);
+        p = p < 0 ? 0 : (p > 1 ? 1 : p);
+      }
+      contact.style.setProperty('--p', p.toFixed(3));
+    }
+    if (!live && panel) { panel.classList.add('is-in'); }
+  }
+  function setupFooter() {
+    if (!panel || reduce || !canScroll() || typeof IntersectionObserver === 'undefined') { return; }
+    panel.classList.add('rf-pending');
+    var fio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { panel.classList.add('is-in'); fio.disconnect(); }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40% 0px' });
+    fio.observe(footWrap);
+  }
+  var raf = 0;
+  function onScroll() {
+    if (raf) { return; }
+    raf = requestAnimationFrame(function () { raf = 0; smoke(); });
+  }
+
+  root.classList.add('rf-ready');
+  setTimeout(function () {
+    observe();
+    fitLines();
+    setupFooter();
+    smoke();
+  }, 60);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', function () { onScroll(); fitLines(); });
+  try {
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(fitLines);
+      document.fonts.addEventListener('loadingdone', fitLines);
+    }
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>
