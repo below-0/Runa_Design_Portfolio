@@ -65,6 +65,8 @@ a{color:inherit}
 }
 @media (max-width:900px){
 #top .g-split{grid-template-columns:1fr!important}
+#top .rf-touch-sm{display:inline-flex!important}
+#top .rf-touch-lg{display:none!important}
 }
 @media (max-width:700px){
 #top .rf-tall{min-height:0}
@@ -85,17 +87,20 @@ a{color:inherit}
 <div id="top" data-rs="fade-up" data-hs="sweep" data-tone="mono" style="--acc: #D9A23B; font-family: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif; color: #161616; background: #B9B7B2; -webkit-font-smoothing: antialiased">
 
 <header class="g-split" style="display: grid; grid-template-columns: 3fr 1fr; background: #161616">
-<div style="min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; min-height: clamp(460px, 50vw, 720px); padding: 28px clamp(20px, 4vw, 56px) clamp(28px, 3vw, 44px); box-sizing: border-box; position: relative; isolation: isolate; background: #B9B7B2; color: #161616">
+<div style="min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: clamp(56px, 6vw, 96px); padding: 28px clamp(20px, 4vw, 56px) clamp(28px, 3vw, 44px); box-sizing: border-box; position: relative; isolation: isolate; background: #B9B7B2; color: #161616">
 <div class="rf-fill" aria-hidden="true" style="position: absolute; inset: 0; z-index: -1; background: #D9A23B"></div>
-<a href="#top" aria-label="ACJJ, Andrew Cairns Jiu Jitsu, back to top" style="align-self: flex-start; display: inline-flex; align-items: center; min-height: 44px; font-family: 'FFF AZADLIQ', Impact, 'Arial Narrow', sans-serif; font-size: 34px; line-height: 1; text-decoration: none">ACJJ</a>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" aria-label="ACJJ, Andrew Cairns Jiu Jitsu, back to top" style="display: inline-flex; align-items: center; min-height: 44px; font-family: 'FFF AZADLIQ', Impact, 'Arial Narrow', sans-serif; font-size: 34px; line-height: 1; text-decoration: none">ACJJ</a>
+<a href="#contact" class="rf-touch-sm" style="display: none; align-items: center; min-height: 48px; padding: 0 22px; border: 1px solid #161616; border-radius: 999px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none">Get in touch</a>
+</div>
 <h1 data-head="" style="margin: 0; container-type: inline-size; display: flex; flex-direction: column; font-family: 'FFF AZADLIQ', Impact, 'Arial Narrow', sans-serif; font-weight: 400; line-height: 0.88; text-transform: uppercase">
-<span id="line1" class="rf-w rf-l1" style="display: block; white-space: nowrap; font-size: calc(100cqw * 1.00 / 6.484)"><span class="rf-wi" style="--d: 0ms">Andrew Cairns<svg aria-hidden="true" viewBox="0 0 550 700" style="display: inline-block; width: 0.55em; height: 0.7em; margin-left: 0.08em; overflow: visible"><path d="M425 0V160L125 540V700" fill="none" stroke="currentColor" stroke-width="180" stroke-linejoin="miter" stroke-miterlimit="10"></path></svg></span></span>
+<span id="line1" class="rf-w rf-l1" style="display: block; white-space: nowrap; font-size: calc(100cqw * 1.00 / 5.854)"><span class="rf-wi" style="--d: 0ms">Andrew Cairns</span></span>
 <span id="line2" class="rf-w rf-l2" style="display: block; white-space: nowrap; font-size: calc(100cqw * 1.00 / 3.152)"><span class="rf-wi" style="--d: 120ms">Jiu Jitsu</span></span>
 </h1>
 </div>
 <div style="min-width: 0; display: flex; flex-direction: column; background: #B9B7B2">
 <div style="flex: 1 1 auto; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; padding: 28px clamp(20px, 2.5vw, 40px) 36px; background: #B9B7B2">
-<a href="#contact" style="align-self: flex-end; display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border: 1px solid #161616; border-radius: 999px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none">Get in touch</a>
+<a href="#contact" class="rf-touch-lg" style="align-self: flex-end; display: inline-flex; align-items: center; min-height: 48px; padding: 0 24px; border: 1px solid #161616; border-radius: 999px; font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none">Get in touch</a>
 <p data-reveal="up" style="--d: 300ms; margin: 0; font-size: clamp(22px, 2vw, 30px); line-height: 1.12; font-weight: 500; letter-spacing: -0.015em">Brazilian jiu jitsu black belt, coaching in Penang.</p>
 </div>
 <nav aria-label="Sections" style="position: relative; isolation: isolate; padding: 30px clamp(20px, 2.5vw, 40px) 36px; color: #EEECE7">
